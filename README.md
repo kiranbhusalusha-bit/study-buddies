@@ -1,2 +1,18 @@
-# study-buddies-app
-An online tool called Study Buddies assists college students in finding study partners. Individuals can create profiles, list subjects, seek for other students, and communicate to plan study sessions. The platform reduces isolation and promotes peer learning.
+# Study Buddies
+
+Study Buddies is a web application that helps university students find peers to study with. Users can create profiles, list subjects, search for other students, and communicate to arrange study sessions. The platform supports peer learning and reduces isolation.
+
+## Team Members
+- Usha Kiran Bhusal
+- Niraj Shah
+
+## Planned Features
+- User registration and login
+- Profiles with subjects and preferences
+- Search by subject
+- Messaging
+- Optional ratings/feedback
+
+## Run using Docker
+1. docker compose up --build
+2. Open http://localhost:3000
