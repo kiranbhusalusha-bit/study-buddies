@@ -1,7 +1,7 @@
 # Meeting Notes
 
 ## Meeting 1 – Project Setup
-Date: (add date)
+Date: 2026/01/29
 Attendees: All group members
 
 ### Discussion
