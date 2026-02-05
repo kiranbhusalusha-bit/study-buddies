@@ -1,14 +1,14 @@
 # Team Roles – Sprint 1
 
 ## Scrum Master
-Name: Usha Kiran Bhusal
+Name: "Usha Kiran Bhusal"
 Responsibilities:
 - Organise meetings
 - Ensure tasks are progressing
 - Coordinate sprint activities
 
 ## Note Taker
-Name: Niraj Shah
+Name: "Niraj Shah"
 Responsibilities:
 - Record meeting discussions
 - Maintain meeting notes
