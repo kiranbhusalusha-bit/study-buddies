@@ -2,6 +2,7 @@
 
 ## Scrum Master
 Name: "Usha Kiran Bhusal"
+
 Responsibilities:
 - Organise meetings
 - Ensure tasks are progressing
@@ -9,6 +10,7 @@ Responsibilities:
 
 ## Note Taker
 Name: "Niraj Shah"
+
 Responsibilities:
 - Record meeting discussions
 - Maintain meeting notes
