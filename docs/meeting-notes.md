@@ -2,6 +2,7 @@
 
 ## Meeting 1 – Project Setup
 Date: 2026/01/29
+
 Attendees: All group members
 
 ### Discussion
