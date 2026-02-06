@@ -3,7 +3,7 @@
 ## Meeting 1 – Project Setup
 Date: 2026/01/29
 
-Attendees: All group members
+Attendees: All group members(Usha,Niraj,Prashamsa)
 
 ### Discussion
 - Reviewed module requirements
