@@ -5,6 +5,7 @@ Study Buddies is a web application that helps university students find peers to 
 ## Team Members
 - Usha Kiran Bhusal
 - Niraj Shah
+- Prashamsha Senchuri
 
 ## Planned Features
 - User registration and login
