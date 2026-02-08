@@ -1,41 +1,21 @@
-## Persona 2: Sam Patel
+## Persona 1: Alex Johnson
 
-**Age:** 23  
-**Course:** BA Business Management (Final Year)  
-
-### Background
-Sam is a final-year student preparing for exams while balancing part-time work. Time is limited, and Sam prefers efficient and focused study sessions.
-
-### Goals
-- Organise effective group revision sessions
-- Share notes and exam tips with peers
-- Manage study time efficiently
-
-### Problems / Needs
-- Difficult to coordinate study times with classmates
-- Limited time to meet people in person
-- Needs motivated study partners
-
-### How Study Buddies Helps
-Study Buddies helps Sam quickly find other motivated students with similar academic interests and arrange study sessions that fit around work and other commitments.
-
-## Persona 3: Mei Lin
-
-**Age:** 21  
-**Course:** MSc Data Science  
+**Age:** 19  
+**Course:** BSc Computer Science (Year 1)
 
 ### Background
-Mei is an international student who recently moved to the country and is still adjusting to a new academic and social environment.
+Alex is a first-year university student who just started college and is still getting used to studying on his own and living on campus.
 
 ### Goals
-- Find study partners who are patient and supportive
-- Improve understanding of course content
-- Build confidence in academic discussions
+- Look for other friends to learn together.
+- Enhance knowledge of the course content.
+- Feel less alone when stdying.
 
 ### Problems / Needs
-- Language and cultural barriers
-- Hesitant to speak up in class
-- Limited local academic network
+- Has trouble approaching classmates.
+- Lots of the time, he studies alone
+- Lacks the courage to ask questions
 
-### How Study Buddies Helps
-Study Buddies allows Mei to find study partners with shared academic interests in a supportive and inclusive environment.
+### How the Study Buddies App Helps
+Alex can locate students who are studying similar topics and set up study sessions in a friendly setting by using the Study Buddies app.
+
