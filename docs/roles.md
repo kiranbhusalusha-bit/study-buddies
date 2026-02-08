@@ -20,4 +20,5 @@ Responsibilities:
 - Help with personas and ethical issues.
 - As needed, contribute code or documentation.
 
+
 Note: Roles are assigned for Sprint 1, which may change in next sprints.
