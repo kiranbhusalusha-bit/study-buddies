@@ -41,7 +41,7 @@ Sprint 1 focuses on **planning, setup, and documentation**, rather than feature 
 ---
 
 ## Project Structure
-
+```text
 study-buddies/
 ├── app/
 │   ├── routes/
@@ -58,7 +58,7 @@ study-buddies/
 ├── package.json
 ├── README.md
 └── .gitignore
-
+```
 
 ## Running the Project Using Docker
 To run the project locally using Docker:
