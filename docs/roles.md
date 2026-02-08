@@ -1,23 +1,23 @@
 # Team Roles – Sprint 1
 
 ## Scrum Master
-Name: Kiran  
+Name: Usha  
 Responsibilities:
-- Coordinate sprint activities
-- Ensure tasks are progressing
-- Organise communication within the team
+- Organize the activities for Sprint 1.
+- Keep the Github Kanban board up to date.
+- Make sure the tasks for Sprint 1 are finished on shedule.
 
 ## Note Taker
 Name: Prashamsa  
 Responsibilities:
-- Record meeting discussions
-- Maintain meeting notes
-- Document decisions made by the group
-
+- Take notes throughout meetings.
+- Assist in creating the Sprint 1 pdf documentation.
+  
 ## Developer / Contributor
 Name: Niraj  
 Responsibilities:
-- Contribute to development tasks
-- Support documentation and testing activities
+- Support documentation and respository setup 
+- Help with personas and ethical issues.
+- As needed, contribute code or documentation.
 
-Note: Roles may rotate in future sprints.
+Note: Roles are assigned for Sprint 1, which may change in next sprints.
