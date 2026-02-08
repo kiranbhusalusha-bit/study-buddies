@@ -1,9 +1,8 @@
 # Study Buddies – Sprint 1
 
 ## Project Overview
-Study Buddies is a web application designed to help university students find peers to study with. Students can create profiles, list the subjects they are studying, and connect with other students who share similar academic interests. The aim of the application is to support collaborative learning, improve academic outcomes, and reduce isolation among students.
-
-This repository contains the **Sprint 1 (Proposal and Setup)** work for the Software Engineering module.
+Study Buddies is a web service meant to help university students locate people to study with. Students can connect with other students who have similar academic interests, establish profiles, and identify the subjects they are studying. The application's goals are to lessen student isolation, enhance academic performance, and encourage collaborative learning.
+The Software Engineering module's Sprint 1 (Proposal and Setup) work is contained in this repository.
 
 ---
 
