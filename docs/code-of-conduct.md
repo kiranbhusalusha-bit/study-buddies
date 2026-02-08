@@ -4,17 +4,18 @@
 To successfully and appropriately finish the Study Buddies project, we shall collaborate as a polite and efficient team.
 
 ## Communication
-- Primary mean of communication:
-- Response time:
+- Primary mean of communication: Whatsapp
+- Response time: It is expected of team members to respond within 24 hours.
   Respectful communication will be maintained. No personal attacks or foul language.
 
 ## Meetings
-- We'll meet once a week, for example, and send out updates in between.
+- We'll meet once a week and send out updates in between.
 - Members are required to notify the group in advance if they will be absent.
 - Notes from meetings will be taken and stored in the repository.
 
 ## Contribution and Deadlines
-- The team will distribute the work equitably.Every sprint, each member is required to make at least one significant GitHub commit.
+- The team will distribute the work equitably.
+- Every sprint, each member is required to make at least one significant GitHub commit.
 - The GitHub Kanban board will be used to manage tasks and provide frequent updates.
 - Memebers will finish assignments by the specified date or inform one another if they require any assistance.
 
@@ -39,4 +40,4 @@ Signed:
 -Niraj
 -Prashamsa
 
-Date:
+Date:26/01/2026
