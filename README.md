@@ -2,14 +2,13 @@
 
 ## Project Overview
 Study Buddies is a web service meant to help university students locate people to study with. Students can connect with other students who have similar academic interests, establish profiles, and identify the subjects they are studying. The application's goals are to lessen student isolation, enhance academic performance, and encourage collaborative learning.
+
 The Software Engineering module's Sprint 1 (Proposal and Setup) work is contained in this repository.
 
 ---
 
 ## Group Name
 **StudyBuddiesTeam**
-
----
 
 ## Group Members
 - Usha
@@ -21,11 +20,11 @@ The Software Engineering module's Sprint 1 (Proposal and Setup) work is containe
 ## Sprint 1 Objectives
 The objectives of Sprint 1 are:
 
-- Form the project group and agree on roles and responsibilities  
-- Define and refine the project idea and intended users  
-- Set up a shared development environment using Docker  
-- Establish Agile working practices using a Kanban board  
-- Produce the required Sprint 1 documentation  
+- Establish the project team and decide on roles and duties.
+- Define and improve the project's concept and target audience. 
+- Create a shared Docker development environment. 
+- Create agile work procedures with a Kanban board
+- Create the necessary documentation for Sprint 1.  
 
 Sprint 1 focuses on **planning, setup, and documentation**, rather than feature development.
 
