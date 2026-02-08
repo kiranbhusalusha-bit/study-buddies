@@ -43,8 +43,6 @@ Sam can easily locate students who share their academic objectives and plan stud
 
 
 
-### How the Study Buddies App Helps
-
 ## Persona 3: Mei Lin
 
 **Age:** 21  
