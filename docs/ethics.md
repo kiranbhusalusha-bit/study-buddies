@@ -1,17 +1,19 @@
-# Ethical Issues – Study Buddies
+# Ethical Issues - Study Buddies
 
-This section outlines the key ethical considerations related to the development and use of the Study Buddies application.
+The main ethical issues surrounding the creation and usage of the Study Buddies app are described in this section.
 
 ## 1. Privacy and Data Protection
-The application may collect personal information such as names, courses, and study interests. There is a responsibility to protect this data and ensure it is handled securely and responsibly.
+
+Personal information including names, classes, and study interests may be gathered by the application. It is the duty to safeguard this information and make sure it is managed sensibly and securely.
 
 Considerations:
-- Collect only necessary user data
-- Protect data from unauthorised access
+- Gather only essential user data
+- Prevent unauthorized access to data
 - Be transparent about how user data is used
 
 ## 2. User Safety and Misuse
-There is a risk that the platform could be misused for harassment, spam, or inappropriate behaviour.
+
+The platform face the danger of being utilized for inappropriate behavior, spam, or harassment.
 
 Considerations:
 - Define acceptable behaviour clearly
@@ -19,15 +21,17 @@ Considerations:
 - Take reasonable steps to discourage harmful behaviour
 
 ## 3. Inclusivity and Accessibility
-The application should be inclusive and usable by students from diverse backgrounds.
 
-Considerations:
-- Avoid discrimination of any kind
-- Use clear and simple language
-- Design features that are accessible to all users
+The application should be accessible and beneficial by students from a variety of backgrounds.
+
+Matters to considerate about:
+- Avoid any form of discrimination
+- Make use of simple and polite language.
+- Create features that are usable by everyone.
 
 ## 4. Responsibility as Developers
-As student developers, there is a responsibility to act professionally and ethically throughout the project.
+
+Throughout the project, it is our duty as student developers to conduct ourselves in a professional and moral manner.
 
 Considerations:
 - Follow the agreed Code of Conduct
