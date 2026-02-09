@@ -19,6 +19,7 @@ Alex is a first-year university student who just started college and is still ge
 ### How the Study Buddies App Helps
 Alex can locate students who are studying similar topics and set up study sessions in a friendly setting by using the Study Buddies app.
 
+---
 
 ## Persona 2: Sam Patel
 
@@ -41,7 +42,7 @@ Sam, a final-year student, has to manage part-time employment and schoolwork whi
 ### How the Study Buddies App Helps
 Sam can easily locate students who share their academic objectives and plan study sessions that work with their schedules thanks to the Study Buddies app.
 
-
+---
 
 ## Persona 3: Mei Lin
 
