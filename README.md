@@ -28,7 +28,7 @@ The main objectives of Sprint 1 are as listed below:
 - Create agile work procedures with a Kanban board
 - Create the necessary documentation for Sprint 1.  
 
-Instead of developing features, Sprint 1 prioritizes on **planning,setup and documentation**.
+Instead of developing features, Sprint 1 prioritizes on planning,setup and documentation.
 
 ---
 
