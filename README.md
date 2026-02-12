@@ -38,7 +38,6 @@ Instead of developing features, Sprint 1 prioritizes on planning,setup and docum
 - Express.js
 - Docker and Docker Compose
 - Github(version control and project management)
-- GitHub (version control and project management)
 
 ---
 
