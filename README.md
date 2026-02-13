@@ -14,7 +14,7 @@ The Software Engineering module's Sprint 1 (Proposal and Setup) work is containe
 ## Group Members
 - Usha
 - Niraj
-- Prashamsa
+- Prasansa
 
 ---
 
