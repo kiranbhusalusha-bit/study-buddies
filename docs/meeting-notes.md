@@ -48,11 +48,11 @@ Every participant discussed about their first tasks and expressed how they under
   Usha, Niraj , Prashamsa
 
 ## Roundtable Updates(each group member to contribute)
+Members discussed their work on Kanban changes, ethics, personas, and Docker installation.
 • Usha updated the Kanban board and repository.
 • The ethics section was modified by Niraj.
 • Updated personalities and notes by Prashamsa
 • The Docker installation progress was communicated by all members.
-• Members discussed their work on Kanban changes, ethics, personas, and Docker installation.
 
 ## Discussion points
 • Is the application topic clear? Yes.
