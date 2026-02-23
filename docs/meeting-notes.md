@@ -33,7 +33,7 @@ Every participant discussed about their first tasks and expressed how they under
 - All members: Every participant should make sure Docker is installed on their computer and submit at least one GitHub commit.
 
 
-# Meeting 2 - 
+# Meeting 2 (Mid- SPrint Progress Check)
 - Date and Time:
   02/02/2026 - 3:00 pm
 - Project Name:
@@ -69,7 +69,7 @@ Members discussed their work on Kanban changes, ethics, personas, and Docker ins
 • Prashamsa: Complete the personas
 • All: Post progress on the Kanban board.
 
-# Meeting 3
+# Meeting 3 (Final Sprint 1 Review)
 - Date and time:
   06/02/2026 - 10 am
 - Project Name:
