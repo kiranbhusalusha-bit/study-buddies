@@ -17,7 +17,7 @@
 ## Roundtable Updates(each group member to contribute)
 Every participant discussed about their first tasks and expressed how they understood the needs of Sprint 1.
 
-### Discussion Points
+## Discussion Points
 • Is the application topic clear?  → Confirmed project idea: **Study Buddies**
 • Did you agree on a code of conduct?  → Agreed
 • All team members were added, and the Github repository was created with the appropriate branches?  → GitHub repository was made and invitation sent to every member.
@@ -26,15 +26,14 @@ Every participant discussed about their first tasks and expressed how they under
 • Talk about moral dilemmas → Prepared
 • How to proceed with the final submission preparation ?  →Planing and documentation will be the main priorities of Sprint 1
 
-### Actions
+## Actions
 - Usha:  Manage the repository and set up the Kanban board
 - Prashamsa: Document meeting minutes and help with personas
 - Niraj: Help with documentation ethics concerns
 - All members: Every participant should make sure Docker is installed on their computer and submit at least one GitHub commit.
 
 
-## Meeting 2 - 
-### Meeting Details
+# Meeting 2 - 
 - Date and Time
   02/02/2026 - 3:00 pm
 - Project Name
@@ -48,14 +47,14 @@ Every participant discussed about their first tasks and expressed how they under
 - Attendees
   Usha, Niraj , Prashamsa
 
-### Roundtable Updates(each group member to contribute)
+## Roundtable Updates(each group member to contribute)
 • Usha updated the Kanban board and repository.
 • The ethics section was modified by Niraj.
 • Updated personalities and notes by Prashamsa
 • The Docker installation progress was communicated by all members.
 • Members discussed their work on Kanban changes, ethics, personas, and Docker installation.
 
-### Discussion points
+## Discussion points
 • Is the application topic clear? Yes.
 • Did you agree on a code of conduct? Reviewed
 • All team members were added, and the Github repository was created with the appropriate branches. Verified
@@ -64,13 +63,13 @@ Every participant discussed about their first tasks and expressed how they under
 • Talk about moral dilemmas ← Ongoing
 • How to proceed with the final submission preparation Finish the documents and create a PDF.
 
-### Actions (list tasks and assign a group member)
+## Actions (list tasks and assign a group member)
 • Usha: Check the structure of the repository and help with Docker
 • Niraj: Keep up the ethical paperwork
 • Prashamsa: Complete the personas
 • All: Post progress on the Kanban board.
 
-## Meeting 3
+# Meeting 3
 - Date and time
   06/02/2026 - 10 am
 - Project Name
@@ -83,10 +82,11 @@ Every participant discussed about their first tasks and expressed how they under
   Prashamsa
 - Attendess
   Usha, Niraj, Prashamsa
-- Roundtable Updates(each group member to contribute)
+  
+## Roundtable Updates(each group member to contribute)
   All members confirmed that their assigned documents were completed and posted to GitHub.
 
-### Discussion Points
+## Discussion Points
 • Is the application topic clear? Yes.
 • Did you agree on a code of conduct? Yeah.
 • All team members were added, and the Github repository was created with the appropriate branches. Yes
@@ -94,7 +94,7 @@ Every participant discussed about their first tasks and expressed how they under
 • Talk about moral dilemmas → Done
 • How to proceed with the final submission preparation Create the final PDF and send it in.
 
-### Action(list tasks and assign a group member)
+## Action(list tasks and assign a group member)
 • Usha - Compile final PDF
 • Niraj - Review ethics section
 • Prashamsa - Review personas + meeting notes
