@@ -1,17 +1,17 @@
 # Meeting Notes
 
 ## Meeting 1 – Project Setup
-- Date and Time
+- Date and Time:
   30/01/2026 - 11 am
-- Project Name
+- Project Name:
  StudyBuddies
-- Meeting Goal
+- Meeting Goal:
   Prepare sprint1
-- Facilitator
+- Facilitator:
   Usha
-- Note taker
+- Note taker:
   Prashamsa
-- Attendees
+- Attendees:
   All group members(Usha,Niraj,Prashamsa)
 
 ## Roundtable Updates(each group member to contribute)
@@ -34,17 +34,17 @@ Every participant discussed about their first tasks and expressed how they under
 
 
 # Meeting 2 - 
-- Date and Time
+- Date and Time:
   02/02/2026 - 3:00 pm
-- Project Name
+- Project Name:
   StudyBuddies
-- Meeting Goal
+- Meeting Goal:
   Prepare Sprint1
-- Facilitator
+- Facilitator:
   Usha
-- Note taker
+- Note taker:
   Niraj
-- Attendees
+- Attendees:
   Usha, Niraj , Prashamsa
 
 ## Roundtable Updates(each group member to contribute)
@@ -70,17 +70,17 @@ Every participant discussed about their first tasks and expressed how they under
 • All: Post progress on the Kanban board.
 
 # Meeting 3
-- Date and time
+- Date and time:
   06/02/2026 - 10 am
-- Project Name
+- Project Name:
   StudyBuddies
-- Meeting Goal
+- Meeting Goal:
   Prepare Sprint 1
-- Facilitator
+- Facilitator:
   Usha
-- Note taker
+- Note taker:
   Prashamsa
-- Attendess
+- Attendess:
   Usha, Niraj, Prashamsa
   
 ## Roundtable Updates(each group member to contribute)
