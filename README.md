@@ -69,12 +69,16 @@ To run the project locally using Docker:
 
 2. Navigate into the project directory:
    cd study-buddies
+3. Create a .env file in the root using env-sample as a guide.
+   
+4. Start the development environment:
+   docker-compose up --build
 
-3. Start the development environment:
-   docker compose up --build
-
-4. Open a browser and go to:
+5. Open a browser and go to:
    http://localhost:300
+   
+6. Access phpMyAdmin
+   http://localhost:8081
 
 If it is functioning, we can certainly see:
 
