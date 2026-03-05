@@ -558,4 +558,14 @@ Available: https://docs.docker.com/get-started/overview/
 [7] Node.js Foundation, “Node.js Documentation,” 2024.  
 Available: https://nodejs.org/en/docs/  
 
-[8] Express.js, “
+[8] Express.js, “Express Documentation,” 2024. [Online]. Available:
+https://expressjs.com/.
+
+[9] Oracle Corporation, “MySQL 8.0 Reference Manual,” 2024. [Online].
+Available: https://dev.mysql.com/doc/refman/8.0/en/
+
+[10] PugJS, “Pug Template Engine Documentation,” 2024. [Online]. Available:
+https://pugjs.org/api/getting-started.html
+
+[11] U. Bhusal, “Study Buddies – GitHub Repository,” GitHub, 2026. [Online].
+Available: https://github.com/kiranbhusalusha-bit/study-buddies
