@@ -357,6 +357,7 @@ Steps:
 - Load profile page  
 
 **Figure:** Activity Diagram – Search
+![Alt text]()
 
 ### Create Study Request  
 Steps:
@@ -369,6 +370,8 @@ Steps:
 - Display updated list  
 
 **Figure:** Activity Diagram – Create Request
+![Alt text](https://github.com/kiranbhusalusha-bit/study-buddies/blob/d53e9363bfe6dad00cb4a998dcbae55ac75807d8/images/Wireframe4.png)
+
 
 ### View Study Request Details  
 Steps:
@@ -379,6 +382,9 @@ Steps:
 - Display full information  
 
 **Figure:** Activity Diagram – View Request
+![Alt text](https://github.com/kiranbhusalusha-bit/study-buddies/blob/0c5e1d5e7f008d88b9acdb45293bdc83419cae4a/images/Wireframe5.png)
+
+
 
 ---
 
