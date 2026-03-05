@@ -1,4 +1,22 @@
+# Study Buddies Project   
+### CMP-N204-0: Software Engineering  
+
+---
+
+## Submitted by
+- **Usha (A00027156)**
+- **Niraj Kumar Sah (A00023606)**
+- **Prasansa Senchuri (A00026066)**
+
+**Module Leader:** Lisa Haskel  
+**University:** University of Roehampton, London  
+**Submission:** Sprint 2 – Lab Week 6  
+**Project Title:** Study Buddies 
+
+
 # Study Buddies - Sprint 1
+
+
 
 ## Project Overview
 
