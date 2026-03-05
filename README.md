@@ -398,12 +398,18 @@ Relationships:
 - Student ↔ Student via Message (Many-to-Many)  
 
 **Figure:** ERD Diagram
+![Alt text](https://github.com/kiranbhusalusha-bit/study-buddies/blob/e2cd87a7b8250c537f620cff598fa364f125d325/images/erd1.drawio.png)
+
+
 
 ### Sequence Diagrams
 - View Student Profile  
 - Create Study Request  
 
-**Figures:** Sequence Diagrams
+**Figures:** 
+![Alt text](https://github.com/kiranbhusalusha-bit/study-buddies/blob/e2cd87a7b8250c537f620cff598fa364f125d325/images/Sequence.png)
+![Alt text](https://github.com/kiranbhusalusha-bit/study-buddies/blob/e2cd87a7b8250c537f620cff598fa364f125d325/images/Sequence2.png)
+
 
 ---
 
