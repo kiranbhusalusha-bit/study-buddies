@@ -335,7 +335,7 @@ Key elements:
 - Request cards  
 
 **Figure:** Study Request List Wireframe
-
+https://github.com/kiranbhusalusha-bit/study-buddies/blob/d852fe2c114ef14568ef555ac818a047b9e7690a/images/Wireframe4.png
 ### Study Request Detail Page  
 Key elements:
 - Title  
