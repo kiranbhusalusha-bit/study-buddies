@@ -313,6 +313,8 @@ Key elements:
 - Pagination  
 
 **Figure:** Users List Wireframe
+![Alt text](https://github.com/kiranbhusalusha-bit/study-buddies/blob/242227d227a53ac3ecf1e1dfc7ab6d20297587db/images/Wireframe2.drawio.png)
+
 
 ### Student Profile Page  
 Key elements:
