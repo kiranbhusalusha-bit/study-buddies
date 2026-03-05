@@ -421,7 +421,8 @@ Columns:
 **Task Board Link:**  
 https://github.com/users/kiranbhusalusha-bit/projects/4
 
-**Figure:** Kanban Board Screenshot (insert image)
+**Figure:** Kanban Board Screenshot 
+![Alt text](https://github.com/kiranbhusalusha-bit/study-buddies/blob/84851bea6d5468a961f417f2c1d0883fa0dfc94f/images/Screenshot%202026-03-05%20093826.png)
 
 ---
 
