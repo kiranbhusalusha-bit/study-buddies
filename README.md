@@ -270,7 +270,7 @@ As a student arranging a study session, I want to message another student.
 All use cases are inside the *Study Buddies System* boundary.  
 The Student actor is outside the boundary.
 
-**Figure 1:** Use Case Diagram (insert image)
+**Figure 1:** Use Case Diagram 
 ![Alt text](https://github.com/kiranbhusalusha-bit/study-buddies/blob/25f6c429e91eaf1df161bf3c46bdaf6a3f989374/images/USECASE%20(1).drawio.png)
 
 ---
@@ -302,6 +302,7 @@ Key elements:
 - Footer  
 
 **Figure:** Home Page Wireframe
+![Alt text](https://github.com/kiranbhusalusha-bit/study-buddies/blob/4eaaad9a5693f4d6cc6eec93002b948ff908f103/images/Wireframe1.drawio.png)
 
 ### Users List Page  
 Key elements:
