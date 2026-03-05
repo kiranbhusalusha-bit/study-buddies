@@ -443,17 +443,19 @@ https://github.com/users/kiranbhusalusha-bit/projects/4
 ---
 
 # 6. GitHub Repository Link
-GitHub supports project management, version control, and collaboration.
+GitHub is used by the Study Buddies project for project management, version control,
+and teamwork.
+GitHub Repository link here: https://github.com/kiranbhusalusha-bit/study-buddies
+The repository includes:
+- Scaffolding files
+- README customised for the project
+- Contributions from all team members
+- Link to the GitHub Project Kanban board used to manage Sprint 2 tasks
+- Upload diagrams(wireframes, activity diagrams, sequence diagrams, ERD)
 
 Repository:  
 https://github.com/kiranbhusalusha-bit/study-buddies
 
-Contents:
-- Scaffolding files  
-- Custom README  
-- Team contributions  
-- Kanban board link  
-- Uploaded diagrams  
 
 ---
 
