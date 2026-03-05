@@ -424,15 +424,13 @@ Relationships:
 ---
 
 # 5. Kanban Board Screenshot
-
-Sprint 2 tasks are managed using the GitHub Project Kanban board.
-
-Columns:
-- **Backlog** – not started  
-- **Ready** – prepared for Sprint 2  
-- **In Progress** – currently being worked on  
-- **In Review** – awaiting review  
-- **Done** – completed  
+Tasks for Sprints 2 is managed using the GitHub Project Kanban board.
+The board includes the following columns:
+• Backlog – all tasks not yet started
+• Ready – Tasks chosen for Sprint 2 are prepared and ready to start.
+• In progress - things that are being worked on right now
+• In Review - Completed tasks are awaiting review.
+• Done - Completed and approved task
 
 **Task Board Link:**  
 https://github.com/users/kiranbhusalusha-bit/projects/4
@@ -460,6 +458,7 @@ https://github.com/kiranbhusalusha-bit/study-buddies
 ---
 
 # 7. Meeting Records
+Meeting records document team collaboration and progress throughout the sprint.
 
 ## Meeting 1 – Sprint 2 Planning  
 **Date:** 12 Feb 2026  
