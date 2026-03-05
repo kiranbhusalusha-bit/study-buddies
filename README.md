@@ -326,7 +326,7 @@ Key elements:
 - Back link  
 
 **Figure:** Student Profile Wireframe
-
+https://github.com/kiranbhusalusha-bit/study-buddies/blob/3acc83876dd17c1f87134e5289f7cead51c96492/images/Wireframe3.png
 ### Study Request List Page  
 Key elements:
 - Page title  
