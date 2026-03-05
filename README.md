@@ -346,7 +346,7 @@ Key elements:
 - Back link  
 
 **Figure:** Study Request Detail Wireframe
-
+https://github.com/kiranbhusalusha-bit/study-buddies/blob/96cf6ee6515e44642ac876caa1315cba34819011/images/Wireframe5.png
 ---
 
 ## 4.4 Activity Diagrams
