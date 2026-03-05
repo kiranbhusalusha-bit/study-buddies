@@ -361,7 +361,7 @@ Steps:
 - Load profile page  
 
 **Figure:** Activity Diagram – Search
-![Alt text](https://github.com/kiranbhusalusha-bit/study-buddies/blob/96cf6ee6515e44642ac876caa1315cba34819011/images/Wireframe5.png)
+![Alt text]https://github.com/kiranbhusalusha-bit/study-buddies/blob/00d9a98f94836c0ffcf0992546e63bf3e45bd6dc/images/Activity1.drawio.png
 
 ### Create Study Request  
 Steps:
