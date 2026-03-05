@@ -271,6 +271,7 @@ All use cases are inside the *Study Buddies System* boundary.
 The Student actor is outside the boundary.
 
 **Figure 1:** Use Case Diagram (insert image)
+![Alt text](https://github.com/kiranbhusalusha-bit/study-buddies/blob/25f6c429e91eaf1df161bf3c46bdaf6a3f989374/images/USECASE%20(1).drawio.png)
 
 ---
 
