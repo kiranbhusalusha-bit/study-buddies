@@ -572,3 +572,6 @@ https://pugjs.org/api/getting-started.html
 
 [11] U. Bhusal, “Study Buddies – GitHub Repository,” GitHub, 2026. [Online].
 Available: https://github.com/kiranbhusalusha-bit/study-buddies
+
+---
+# Sprint2
