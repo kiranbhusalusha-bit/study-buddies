@@ -230,6 +230,13 @@ app.get("/study-request/:id", function(req, res) {
     });
 });
 
+// Static Pug page for About / Contact details
+app.get("/about", function(req, res) {
+    res.render("about", {
+        title: "About Study Buddies"
+    });
+});
+
 // Start server on port 3000
 // This must stay at the bottom of the file
 app.listen(3000, function() {
