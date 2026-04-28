@@ -185,7 +185,7 @@ app.get("/student-single/:id", async function (req, res) {
     var student = new Student(stId);
 
     // Ask the model to get the student's name
-    await student.getStudentName();
+    await student.getStudentDetails();
 
     // Ask the model to get the student's linked subjects
     await student.getStudentSubjects();
@@ -253,6 +253,24 @@ app.get("/subject/:id", async function(req, res) {
         subject: subject,
         students: subject.students
     });
+});
+
+// Add note to student
+app.post('/add-note', async function (req, res) {
+    let params = req.body;
+
+    var student = new Student(params.id);
+
+    try {
+        await student.addStudentNote(params.note);
+
+        // Redirect back to student page
+        res.redirect('/student-single/' + params.id);
+
+    } catch (err) {
+        console.error("Error adding note:", err.message);
+        res.send("Error");
+    }
 });
 
 // Start server on port 3000

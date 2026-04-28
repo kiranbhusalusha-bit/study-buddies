@@ -4,6 +4,10 @@ const db = require('./../services/db');
 class Student {
     // Student ID
     id;
+
+    // Student note
+    note;
+
     // Student name
     name;
     // Student subjects (Study Buddies version)
@@ -15,11 +19,13 @@ class Student {
 
     // Get student name
     // Get student name from the database
-async getStudentName() {
+async getStudentDetails() {
     if (typeof this.name !== "string") {
         var sql = "SELECT * FROM Students WHERE id = ?";
         const results = await db.query(sql, [this.id]);
+
         this.name = results[0].name;
+        this.note = results[0].note;
     }
 }
 
@@ -37,6 +43,14 @@ async getStudentSubjects() {
         const results = await db.query(sql, [this.id]);
         this.subjects = results;
     }
+}
+
+async addStudentNote(note) {
+    var sql = "UPDATE Students SET note = ? WHERE id = ?";
+    const result = await db.query(sql, [note, this.id]);
+
+    this.note = note;
+    return result;
 }
 
 }

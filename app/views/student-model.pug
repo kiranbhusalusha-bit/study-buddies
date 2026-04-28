@@ -15,5 +15,15 @@ block content
     else
         p No subjects linked to this student yet.
 
+    p Note for this student: #{student.note}
+
     p
         a(href="/study-buddies") Back to Study Buddies
+
+    h2 Add a note about this student
+
+    form(action="/add-note", method="POST")
+        input(type="hidden", name="id", value=student.id)
+        textarea(name="note", rows="6", cols="50")
+        div
+            input(type="submit", value="Submit")
