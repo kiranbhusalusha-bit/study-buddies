@@ -161,6 +161,23 @@ app.get("/", function(req, res) {
         data: test_data
     });
 });
+
+// Display a formatted list of Study Buddies students using a Pug template
+app.get("/all-students-formatted", function(req, res) {
+    // Select all rows from the Students table
+    var sql = "SELECT * FROM Students";
+
+    // Query the database
+    db.query(sql).then(results => {
+        // Send the database rows to the all-students Pug template
+        // The rows will be available in the template as a variable called data
+        res.render("all-students", {
+            title: "All Study Buddies Students",
+            data: results
+        });
+    });
+});
+
 // Start server on port 3000
 // This must stay at the bottom of the file
 app.listen(3000, function() {

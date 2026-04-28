@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    - console.log(data)
+
+    h1 All Study Buddies Students
+
+    table(border=1)
+        tr
+            th ID
+            th Name
+        each item in data
+            tr
+                td #{item.id}
+                td
+                    a(href='/db_test/' + item.id) #{item.name}
