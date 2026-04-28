@@ -15,26 +15,28 @@ app.use(express.urlencoded({ extended: true }));
 // Add static files location
 app.use(express.static("static"));
 
-// Create a route for /study-buddies with some logic processing the request string
+// Create a route for /study-buddies with JavaScript logic
+// This follows the lab task: split, splice, reverse and join
 app.get("/study-buddies", function(req, res) {
     // Print the requested URL in the VS Code terminal for debugging
     console.log(req.url);
 
-    // Store the request URL in a variable
+    // Capture the request path in a variable
     let path = req.url;
 
-    // Send only the first 3 characters of the URL to the browser
-    res.send(path.substring(0, 3));
+    // Create an array of all characters in the request path
+    let characters = path.split("");
+
+    // Remove the leading "/" from the path
+    characters.splice(0, 1);
+
+    // Reverse the characters and join them back into a string
+    let reversedPath = characters.reverse().join("");
+
+    // Send the reversed route text to the browser
+    res.send(reversedPath);
 });
 
-// Study buddies list route
-// This route represents the page where students will view available study buddies
-app.get("/study-buddies", function(req, res) {
-    // Lab instruction: practise debugging by printing the request URL
-    console.log(req.url);
-
-    res.send("Study Buddies List Page");
-});
 
 // Student profile route
 // This route represents the page where a student profile will be shown
