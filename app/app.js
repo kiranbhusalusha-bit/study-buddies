@@ -41,9 +41,12 @@ app.get("/study-buddies", function(req, res) {
 });
 
 // Student profile route
-// This route represents the page where a student profile will be shown
+// This renders a simple profile page using Pug
 app.get("/profile", function(req, res) {
-    res.send("Student Profile Page");
+    res.render("profile", {
+        title: "Student Profile",
+        heading: "Student Profile Page"
+    });
 });
 
 // Display all study requests using a Pug template
