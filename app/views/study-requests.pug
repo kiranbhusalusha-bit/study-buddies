@@ -1,0 +1,24 @@
+extends layout
+
+block content
+    h1 Study Requests
+
+    p These are study requests created by students.
+
+    table(border=1)
+        tr
+            th ID
+            th Title
+            th Subject
+            th Action
+
+        each item in data
+            tr
+                td #{item.id}
+                td #{item.title}
+                td #{item.subject_name}
+                td
+                    a(href='/study-request/' + item.id) View Details
+
+    p
+        a(href="/") Back to Home

@@ -51,25 +51,29 @@ app.get("/profile", function(req, res) {
     res.send("Student Profile Page");
 });
 
-/// ------------------------------------------------
-// Study request list route
-// URL: http://localhost:3000/study-requests
-// ------------------------------------------------
+// Display all study requests using a Pug template
 app.get("/study-requests", function(req, res) {
     // Debugging: print the requested URL in the terminal
     console.log(req.url);
 
-    res.send(
-        "<h1>Study Requests</h1>" +
-        "<p>This page will show study requests created by students.</p>" +
-        "<table border='1'>" +
-            "<tr><th>Title</th><th>Subject</th><th>Action</th></tr>" +
-            "<tr><td>Need help with JavaScript loops</td><td>JavaScript</td><td><a href='/study-request/1'>View Details</a></td></tr>" +
-            "<tr><td>Looking for CSS practice partner</td><td>CSS</td><td><a href='/study-request/2'>View Details</a></td></tr>" +
-            "<tr><td>Need help with Node.js routes</td><td>Node.js</td><td><a href='/study-request/3'>View Details</a></td></tr>" +
-        "</table>" +
-        "<p><a href='/'>Back to Home</a></p>"
-    );
+   // Join Study_Requests with Subjects so we can display the subject name
+var sql = `
+    SELECT 
+        Study_Requests.id,
+        Study_Requests.title,
+        Study_Requests.description,
+        Subjects.name AS subject_name
+    FROM Study_Requests
+    JOIN Subjects ON Study_Requests.subject_id = Subjects.id
+`;
+    // Query the database
+    db.query(sql).then(results => {
+        // Send the database rows to the study-requests Pug template
+        res.render("study-requests", {
+            title: "Study Requests",
+            data: results
+        });
+    });
 });
 
 
