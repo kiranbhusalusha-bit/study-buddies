@@ -182,20 +182,34 @@ app.get("/all-students-formatted", function(req, res) {
     });
 });
 
-// Display one student profile using a Pug template
+// Display one student profile and their linked subjects using a Pug template
 app.get("/student-single/:id", function(req, res) {
     // Capture the student ID from the URL
     let studentId = req.params.id;
 
-    // Select one student from the Students table by ID
-    var sql = "SELECT * FROM Students WHERE id = ?";
+    // Query 1: get the selected student
+    var studentSql = "SELECT * FROM Students WHERE id = ?";
 
-    // Query the database using the ID
-    db.query(sql, [studentId]).then(results => {
-        // Send the first matching student to the Pug template
-        res.render("student-single", {
-            title: "Study Buddy Profile",
-            student: results[0]
+    // Query 2: get all subjects linked to this student
+    var subjectsSql = `
+        SELECT 
+            Subjects.id,
+            Subjects.name
+        FROM Subjects
+        JOIN Student_Subject ON Subjects.id = Student_Subject.subject_id
+        WHERE Student_Subject.student_id = ?
+    `;
+
+    // First get the student
+    db.query(studentSql, [studentId]).then(studentResults => {
+        // Then get the subjects linked to that student
+        db.query(subjectsSql, [studentId]).then(subjectResults => {
+            // Send both student and subjects to the Pug template
+            res.render("student-single", {
+                title: "Study Buddy Profile",
+                student: studentResults[0],
+                subjects: subjectResults
+            });
         });
     });
 });

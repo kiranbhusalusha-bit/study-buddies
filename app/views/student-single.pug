@@ -11,6 +11,33 @@ block content
             tr
                 th Name
                 td #{student.name}
+            tr
+                th Course
+                td #{student.course}
+            tr
+                th Study Year
+                td #{student.study_year}
+            tr
+                th Bio
+                td #{student.bio}
+            tr
+                th Availability
+                td #{student.availability}
+
+        h2 Subjects linked to this student
+
+        if subjects.length
+            table(border=1)
+                tr
+                    th ID
+                    th Subject
+                each subject in subjects
+                    tr
+                        td #{subject.id}
+                        td
+                            a(href="/subject/" + subject.id) #{subject.name}
+        else
+            p No subjects are linked to this student yet.
 
         p
             a(href="/all-students-formatted") Back to all students
