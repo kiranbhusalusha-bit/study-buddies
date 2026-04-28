@@ -237,6 +237,39 @@ app.get("/about", function(req, res) {
     });
 });
 
+// Display a formatted list of subjects using a Pug template
+app.get("/subjects", function(req, res) {
+    // Select all subjects from the Subjects table
+    var sql = "SELECT * FROM Subjects";
+
+    // Query the database
+    db.query(sql).then(results => {
+        // Send the subject rows to the subjects Pug template
+        res.render("subjects", {
+            title: "Study Subjects",
+            data: results
+        });
+    });
+});
+
+// Display one subject using a Pug template
+app.get("/subject/:id", function(req, res) {
+    // Capture the subject ID from the URL
+    let subjectId = req.params.id;
+
+    // Select one subject from the Subjects table by ID
+    var sql = "SELECT * FROM Subjects WHERE id = ?";
+
+    // Query the database using the subject ID
+    db.query(sql, [subjectId]).then(results => {
+        // Send the first matching subject to the Pug template
+        res.render("subject-single", {
+            title: "Subject Details",
+            subject: results[0]
+        });
+    });
+});
+
 // Start server on port 3000
 // This must stay at the bottom of the file
 app.listen(3000, function() {
