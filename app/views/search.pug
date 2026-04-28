@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    h1 #{heading}
+
+    p Use this page to search for study buddies by subject.
+
+    form
+        p
+            label(for="subject") Enter subject:
+            input(type="text", name="subject", id="subject")
+        p
+            button(type="submit") Search
+
+    p
+        a(href="/study-buddies") Back to Study Buddies

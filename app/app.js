@@ -84,12 +84,13 @@ app.get("/create-request", function(req, res) {
 });
 
 // Search route
-// This route represents the page where students can search by subject
+// This renders a simple search page using Pug
 app.get("/search", function(req, res) {
-    res.send("Search Study Buddies by Subject");
+    res.render("search", {
+        title: "Search Study Buddies",
+        heading: "Search Study Buddies by Subject"
+    });
 });
-
-
 
 // Create a dynamic route for /buddy/<name>
 // The name can be any value typed in the browser URL
