@@ -252,20 +252,36 @@ app.get("/subjects", function(req, res) {
     });
 });
 
-// Display one subject using a Pug template
+// Display one subject and the students linked to it using a Pug template
 app.get("/subject/:id", function(req, res) {
     // Capture the subject ID from the URL
     let subjectId = req.params.id;
 
-    // Select one subject from the Subjects table by ID
-    var sql = "SELECT * FROM Subjects WHERE id = ?";
+    // Query 1: get the selected subject
+    var subjectSql = "SELECT * FROM Subjects WHERE id = ?";
 
-    // Query the database using the subject ID
-    db.query(sql, [subjectId]).then(results => {
-        // Send the first matching subject to the Pug template
-        res.render("subject-single", {
-            title: "Subject Details",
-            subject: results[0]
+    // Query 2: get all students linked to this subject
+    var studentsSql = `
+        SELECT 
+            Students.id,
+            Students.name,
+            Students.course,
+            Students.study_year
+        FROM Students
+        JOIN Student_Subject ON Students.id = Student_Subject.student_id
+        WHERE Student_Subject.subject_id = ?
+    `;
+
+    // First get the subject
+    db.query(subjectSql, [subjectId]).then(subjectResults => {
+        // Then get the students linked to that subject
+        db.query(studentsSql, [subjectId]).then(studentResults => {
+            // Send both subject and students to the Pug template
+            res.render("subject-single", {
+                title: "Subject Details",
+                subject: subjectResults[0],
+                students: studentResults
+            });
         });
     });
 });
