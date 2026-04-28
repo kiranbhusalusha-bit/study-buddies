@@ -18,6 +18,10 @@ const db = require("./services/db");
 
 // Get the models
 const { Student } = require("./models/student");
+const { Subject } = require("./models/subject");
+const { StudyRequest } = require("./models/studyRequest");
+
+
 
 // Allow Express to read POST form data later
 app.use(express.urlencoded({ extended: true }));
@@ -182,8 +186,8 @@ app.get("/student-single/:id", async function (req, res) {
 
     // Ask the model to get the student's name
     await student.getStudentName();
-    
-    // Ask the model to get the student's name
+
+    // Ask the model to get the student's linked subjects
     await student.getStudentSubjects();
 
     console.log(student);
@@ -191,35 +195,6 @@ app.get("/student-single/:id", async function (req, res) {
     res.render("student-model", { student: student });
 });
 
-// Display one study request using a Pug template
-app.get("/study-request/:id", function(req, res) {
-    // Capture the study request ID from the URL
-    let requestId = req.params.id;
-
-    // Join Study_Requests with Subjects and Students
-    // so the page can show request details, subject name, and student name
-    var sql = `
-        SELECT 
-            Study_Requests.id,
-            Study_Requests.title,
-            Study_Requests.description,
-            Subjects.name AS subject_name,
-            Students.name AS student_name
-        FROM Study_Requests
-        JOIN Subjects ON Study_Requests.subject_id = Subjects.id
-        JOIN Students ON Study_Requests.student_id = Students.id
-        WHERE Study_Requests.id = ?
-    `;
-
-    // Query the database using the request ID
-    db.query(sql, [requestId]).then(results => {
-        // Send the first matching request to the Pug template
-        res.render("study-request-single", {
-            title: "Study Request Details",
-            request: results[0]
-        });
-    });
-});
 
 // Static Pug page for About / Contact details
 app.get("/about", function(req, res) {
@@ -243,40 +218,24 @@ app.get("/subjects", function(req, res) {
     });
 });
 
-// Display one subject and the students linked to it using a Pug template
-app.get("/subject/:id", function(req, res) {
-    // Capture the subject ID from the URL
-    let subjectId = req.params.id;
 
-    // Query 1: get the selected subject
-    var subjectSql = "SELECT * FROM Subjects WHERE id = ?";
+// Display one study request using model
+app.get("/study-request/:id", async function(req, res) {
+    let requestId = req.params.id;
 
-    // Query 2: get all students linked to this subject
-    var studentsSql = `
-        SELECT 
-            Students.id,
-            Students.name,
-            Students.course,
-            Students.study_year
-        FROM Students
-        JOIN Student_Subject ON Students.id = Student_Subject.student_id
-        WHERE Student_Subject.subject_id = ?
-    `;
+    // Create object
+    var request = new StudyRequest(requestId);
 
-    // First get the subject
-    db.query(subjectSql, [subjectId]).then(subjectResults => {
-        // Then get the students linked to that subject
-        db.query(studentsSql, [subjectId]).then(studentResults => {
-            // Send both subject and students to the Pug template
-            res.render("subject-single", {
-                title: "Subject Details",
-                subject: subjectResults[0],
-                students: studentResults
-            });
-        });
+    // Get data from DB
+    await request.getRequestDetails();
+
+    console.log(request);
+
+    res.render("study-request-single", {
+        title: "Study Request",
+        request: request
     });
 });
-
 
 // Start server on port 3000
 // This must stay at the bottom of the file
