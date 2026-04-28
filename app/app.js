@@ -237,6 +237,24 @@ app.get("/study-request/:id", async function(req, res) {
     });
 });
 
+// Display one subject and the students linked to it using the Subject model
+app.get("/subject/:id", async function(req, res) {
+    let subjectId = req.params.id;
+
+    var subject = new Subject(subjectId);
+
+    await subject.getSubjectName();
+    await subject.getSubjectStudents();
+
+    console.log(subject);
+
+    res.render("subject-single", {
+        title: "Subject Details",
+        subject: subject,
+        students: subject.students
+    });
+});
+
 // Start server on port 3000
 // This must stay at the bottom of the file
 app.listen(3000, function() {
