@@ -22,28 +22,23 @@ app.use(express.urlencoded({ extended: true }));
 // Add static files location
 app.use(express.static("static"));
 
-// Create a route for /study-buddies with JavaScript logic
-// This follows the lab task: split, splice, reverse and join
+// Display Study Buddies students using a Pug template
 app.get("/study-buddies", function(req, res) {
-    // Print the requested URL in the VS Code terminal for debugging
+    // Debugging: print the requested URL in the terminal
     console.log(req.url);
 
-    // Capture the request path in a variable
-    let path = req.url;
+    // Select all students from the database
+    var sql = "SELECT * FROM Students";
 
-    // Create an array of all characters in the request path
-    let characters = path.split("");
-
-    // Remove the leading "/" from the path
-    characters.splice(0, 1);
-
-    // Reverse the characters and join them back into a string
-    let reversedPath = characters.reverse().join("");
-
-    // Send the reversed route text to the browser
-    res.send(reversedPath);
+    // Query the database
+    db.query(sql).then(results => {
+        // Send the student rows to the all-students Pug template
+        res.render("all-students", {
+            title: "Study Buddies",
+            data: results
+        });
+    });
 });
-
 
 // Student profile route
 // This route represents the page where a student profile will be shown
