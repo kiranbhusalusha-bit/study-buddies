@@ -74,11 +74,13 @@ var sql = `
     });
 });
 
-
 // Create study request route
-// This route represents the page where a student will create a study request
+// This renders a simple create request page using Pug
 app.get("/create-request", function(req, res) {
-    res.send("Create Study Request Page");
+    res.render("create-request", {
+        title: "Create Study Request",
+        heading: "Create Study Request"
+    });
 });
 
 // Search route
@@ -297,6 +299,7 @@ app.get("/subject/:id", function(req, res) {
         });
     });
 });
+
 
 // Start server on port 3000
 // This must stay at the bottom of the file
