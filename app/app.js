@@ -200,6 +200,36 @@ app.get("/student-single/:id", function(req, res) {
     });
 });
 
+// Display one study request using a Pug template
+app.get("/study-request/:id", function(req, res) {
+    // Capture the study request ID from the URL
+    let requestId = req.params.id;
+
+    // Join Study_Requests with Subjects and Students
+    // so the page can show request details, subject name, and student name
+    var sql = `
+        SELECT 
+            Study_Requests.id,
+            Study_Requests.title,
+            Study_Requests.description,
+            Subjects.name AS subject_name,
+            Students.name AS student_name
+        FROM Study_Requests
+        JOIN Subjects ON Study_Requests.subject_id = Subjects.id
+        JOIN Students ON Study_Requests.student_id = Students.id
+        WHERE Study_Requests.id = ?
+    `;
+
+    // Query the database using the request ID
+    db.query(sql, [requestId]).then(results => {
+        // Send the first matching request to the Pug template
+        res.render("study-request-single", {
+            title: "Study Request Details",
+            request: results[0]
+        });
+    });
+});
+
 // Start server on port 3000
 // This must stay at the bottom of the file
 app.listen(3000, function() {

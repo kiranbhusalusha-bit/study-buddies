@@ -1,0 +1,29 @@
+extends layout
+
+block content
+    h1 Study Request Details
+
+    if request
+        table(border=1)
+            tr
+                th ID
+                td #{request.id}
+            tr
+                th Title
+                td #{request.title}
+            tr
+                th Subject
+                td #{request.subject_name}
+            tr
+                th Posted by
+                td #{request.student_name}
+            tr
+                th Description
+                td #{request.description}
+
+        p
+            a(href="/study-requests") Back to Study Requests
+    else
+        p Study request not found.
+        p
+            a(href="/study-requests") Back to Study Requests
