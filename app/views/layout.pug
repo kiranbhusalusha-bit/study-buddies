@@ -1,5 +1,18 @@
 html 
     head    
         title #{title}
-    body 
+    body
+        h1 Study Buddies
+
+        nav
+            a(href="/") Home
+            |  | 
+            a(href="/all-students-formatted") Study Buddies
+            |  | 
+            a(href="/study-requests") Study Requests
+            |  | 
+            a(href="/about") About
+
+        hr
+
         block content
