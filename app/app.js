@@ -20,8 +20,8 @@ const db = require("./services/db");
 const { Student } = require("./models/student");
 const { Subject } = require("./models/subject");
 const { StudyRequest } = require("./models/studyRequest");
-
-
+const { getAllProgrammes } = require("./models/programmes");
+const { DateTime } = require("luxon");
 
 // Allow Express to read POST form data later
 app.use(express.urlencoded({ extended: true }));
@@ -178,21 +178,15 @@ app.get("/all-students-formatted", function(req, res) {
     });
 });
 
-app.get("/student-single/:id", async function (req, res) {
+app.get("/single-student/:id", async function (req, res) {
     var stId = req.params.id;
-
-    // Create student object
+    // Create a student class with the ID passed
     var student = new Student(stId);
-
-    // Ask the model to get the student's name
     await student.getStudentDetails();
-
-    // Ask the model to get the student's linked subjects
-    await student.getStudentSubjects();
-
+    await student.getStudentModules();
+    resultProgs = await programmes.getAllProgrammes();
     console.log(student);
-
-    res.render("student-model", { student: student });
+    res.render('student', {'student':student, 'programmes':resultProgs});
 });
 
 
@@ -272,6 +266,23 @@ app.post('/add-note', async function (req, res) {
         res.send("Error");
     }
 });
+
+app.post('/allocate-programme', async function (req, res) {
+    let params = req.body;
+
+    var student = new Student(params.id);
+
+    try {
+        await student.updateStudentProgramme(params.programme);
+
+        res.redirect('/student-single/' + params.id);
+
+    } catch (err) {
+        console.error("Error updating programme:", err.message);
+        res.send("Error");
+    }
+});
+
 
 // Start server on port 3000
 // This must stay at the bottom of the file

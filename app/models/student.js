@@ -53,6 +53,46 @@ async addStudentNote(note) {
     return result;
 }
 
+async deleteStudentProgramme() {
+    var sql = "DELETE FROM Student_Programme WHERE id = ?";
+    await db.query(sql, [this.id]);
+    this.programme = null;
+}
+
+async addStudentProgramme(programme) {
+    var sql = "INSERT INTO Student_Programme (id, programme) VALUES (?, ?)";
+    await db.query(sql, [this.id, programme]);
+    this.programme = programme;
+}
+
+async updateStudentProgramme(programme) {
+    await this.getStudentProgramme();
+
+    if (this.programme) {
+        await this.deleteStudentProgramme();
+    }
+
+    await this.addStudentProgramme(programme);
+}
+async getStudentProgramme() {
+    var sql = `
+        SELECT Programmes.id, Programmes.name
+        FROM Programmes
+        JOIN Student_Programme ON Programmes.id = Student_Programme.programme
+        WHERE Student_Programme.id = ?
+    `;
+
+    const results = await db.query(sql, [this.id]);
+
+    if (results.length > 0) {
+        this.programme = {
+            id: results[0].id,
+            pName: results[0].name
+        };
+    } else {
+        this.programme = null;
+    }
+}
 }
 module.exports = {
     Student

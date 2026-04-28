@@ -27,3 +27,18 @@ block content
         textarea(name="note", rows="6", cols="50")
         div
             input(type="submit", value="Submit")
+
+    h2 Change Programme
+
+    form(action="/allocate-programme", method="POST")
+        input(type="hidden", name="id", value=student.id)
+
+        select(name="programme")
+            each programme in programmes
+                if student.programme && programme.id == student.programme.id
+                    option(value=programme.id, selected="selected") #{programme.pName}
+                else
+                    option(value=programme.id) #{programme.pName}
+
+        div
+            input(type="submit", value="Update Programme")

@@ -8,6 +8,7 @@
   "dependencies": {
     "dotenv": "^17.4.2",
     "express": "^4.19.2",
+    "luxon": "^3.7.2",
     "mysql2": "^3.22.3",
     "pug": "^3.0.4"
   }
