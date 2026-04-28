@@ -178,6 +178,24 @@ app.get("/all-students-formatted", function(req, res) {
     });
 });
 
+// Display one student profile using a Pug template
+app.get("/student-single/:id", function(req, res) {
+    // Capture the student ID from the URL
+    let studentId = req.params.id;
+
+    // Select one student from the Students table by ID
+    var sql = "SELECT * FROM Students WHERE id = ?";
+
+    // Query the database using the ID
+    db.query(sql, [studentId]).then(results => {
+        // Send the first matching student to the Pug template
+        res.render("student-single", {
+            title: "Study Buddy Profile",
+            student: results[0]
+        });
+    });
+});
+
 // Start server on port 3000
 // This must stay at the bottom of the file
 app.listen(3000, function() {
