@@ -16,6 +16,9 @@ app.set("views", "./app/views");
 // Get the functions in the db.js file to use
 const db = require("./services/db");
 
+// Get the models
+const { Student } = require("./models/student");
+
 // Allow Express to read POST form data later
 app.use(express.urlencoded({ extended: true }));
 
@@ -171,36 +174,18 @@ app.get("/all-students-formatted", function(req, res) {
     });
 });
 
-// Display one student profile and their linked subjects using a Pug template
-app.get("/student-single/:id", function(req, res) {
-    // Capture the student ID from the URL
-    let studentId = req.params.id;
+app.get("/student-single/:id", async function (req, res) {
+    var stId = req.params.id;
 
-    // Query 1: get the selected student
-    var studentSql = "SELECT * FROM Students WHERE id = ?";
+    // Create student object
+    var student = new Student(stId);
 
-    // Query 2: get all subjects linked to this student
-    var subjectsSql = `
-        SELECT 
-            Subjects.id,
-            Subjects.name
-        FROM Subjects
-        JOIN Student_Subject ON Subjects.id = Student_Subject.subject_id
-        WHERE Student_Subject.student_id = ?
-    `;
+    // Ask the model to get the student's name
+    await student.getStudentName();
 
-    // First get the student
-    db.query(studentSql, [studentId]).then(studentResults => {
-        // Then get the subjects linked to that student
-        db.query(subjectsSql, [studentId]).then(subjectResults => {
-            // Send both student and subjects to the Pug template
-            res.render("student-single", {
-                title: "Study Buddy Profile",
-                student: studentResults[0],
-                subjects: subjectResults
-            });
-        });
-    });
+    console.log(student);
+
+    res.send(student);
 });
 
 // Display one study request using a Pug template
