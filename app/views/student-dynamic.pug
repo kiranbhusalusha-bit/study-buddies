@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    h1 Study Buddy Student Details
+
+    table(border=1)
+        tr
+            th Name
+            th ID
+        tr
+            td #{studentName}
+            td #{studentId}
+
+    p
+        a(href="/") Back to Home

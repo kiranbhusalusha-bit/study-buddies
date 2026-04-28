@@ -127,31 +127,19 @@ app.get("/db_test/:id", function(req, res) {
 });
 
 // Create a dynamic route for /student/<name>/<id>
-// This route outputs the name and ID in an HTML table
+// This sends the name and ID to a Pug template
 app.get("/student/:name/:id", function(req, res) {
     // req.params contains both dynamic values from the URL
     console.log(req.params);
 
-    // Store the name and id from the URL in variables
-    let studentName = req.params.name;
-    let studentId = req.params.id;
-
-    // Send an HTML table to the browser
-    res.send(`
-        <h1>Study Buddy Student Details</h1>
-
-        <table border="1">
-            <tr>
-                <th>Name</th>
-                <th>ID</th>
-            </tr>
-            <tr>
-                <td>${studentName}</td>
-                <td>${studentId}</td>
-            </tr>
-        </table>
-    `);
+    // Render the Pug template and pass name and id as variables
+    res.render("student-dynamic", {
+        title: "Dynamic Student Details",
+        studentName: req.params.name,
+        studentId: req.params.id
+    });
 });
+
 
 // Create a route for root
 // This sends variables and an array from Express into the Pug template
