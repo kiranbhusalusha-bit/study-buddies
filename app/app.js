@@ -149,14 +149,18 @@ app.get("/student/:name/:id", function(req, res) {
 });
 
 // Create a route for root
-// This sends variables from Express into the Pug template
+// This sends variables and an array from Express into the Pug template
 app.get("/", function(req, res) {
+    // Set up an array of Study Buddies subjects
+    var test_data = ["JavaScript", "Database Systems", "Node.js", "Web Development"];
+
+    // Send the array through to the template as a variable called data
     res.render("index", {
         title: "Study Buddies Home",
-        heading: "Welcome to Study Buddies"
+        heading: "Welcome to Study Buddies",
+        data: test_data
     });
 });
-
 // Start server on port 3000
 // This must stay at the bottom of the file
 app.listen(3000, function() {

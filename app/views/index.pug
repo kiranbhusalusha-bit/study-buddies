@@ -3,3 +3,7 @@ extends layout
 block content
     h1 #{heading}
     p Welcome to the Study Buddies app
+    p Available study subjects:
+
+    each item in data
+        p #{item}
