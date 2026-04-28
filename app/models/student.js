@@ -24,10 +24,22 @@ async getStudentName() {
 }
 
     // Get student subjects
-    async getStudentSubjects() {
+    // Get subjects linked to this student from the database
+async getStudentSubjects() {
+    if (this.subjects.length === 0) {
+        var sql = `
+            SELECT Subjects.id, Subjects.name
+            FROM Subjects
+            JOIN Student_Subject ON Subjects.id = Student_Subject.subject_id
+            WHERE Student_Subject.student_id = ?
+        `;
+
+        const results = await db.query(sql, [this.id]);
+        this.subjects = results;
     }
 }
 
+}
 module.exports = {
     Student
 };

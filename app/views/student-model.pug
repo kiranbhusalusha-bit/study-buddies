@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    h1 Student page for: #{student.name}
+
+    p Student ID: #{student.id}
+
+    h2 Subjects
+
+    if student.subjects.length
+        ul
+            each subject in student.subjects
+                li
+                    a(href="/subject/" + subject.id) #{subject.name}
+    else
+        p No subjects linked to this student yet.
+
+    p
+        a(href="/study-buddies") Back to Study Buddies

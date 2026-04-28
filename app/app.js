@@ -182,10 +182,13 @@ app.get("/student-single/:id", async function (req, res) {
 
     // Ask the model to get the student's name
     await student.getStudentName();
+    
+    // Ask the model to get the student's name
+    await student.getStudentSubjects();
 
     console.log(student);
 
-    res.send(student);
+    res.render("student-model", { student: student });
 });
 
 // Display one study request using a Pug template
