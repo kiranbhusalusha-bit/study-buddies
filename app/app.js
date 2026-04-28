@@ -6,6 +6,13 @@ const express = require("express");
 // Create express app
 const app = express();
 
+// Use the Pug templating engine
+// This tells Express to render .pug template files
+app.set("view engine", "pug");
+
+// This tells Express where the Pug view files are stored
+app.set("views", "./app/views");
+
 // Get the functions in the db.js file to use
 const db = require("./services/db");
 
@@ -139,6 +146,15 @@ app.get("/student/:name/:id", function(req, res) {
             </tr>
         </table>
     `);
+});
+
+// Create a route for root
+// This sends variables from Express into the Pug template
+app.get("/", function(req, res) {
+    res.render("index", {
+        title: "Study Buddies Home",
+        heading: "Welcome to Study Buddies"
+    });
 });
 
 // Start server on port 3000
