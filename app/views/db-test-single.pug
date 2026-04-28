@@ -1,0 +1,12 @@
+extends layout
+
+block content
+    h1 Database Test Student
+
+    if student
+        p Student name: #{student.name}
+
+        p
+            a(href="/all-students-formatted") Back to all students
+    else
+        p Student not found.

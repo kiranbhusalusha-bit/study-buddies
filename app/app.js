@@ -119,10 +119,10 @@ app.get("/db_test/:id", function(req, res) {
         console.log(results);
 
         // Output only the student's name with simple HTML formatting
-        res.send(`
-            <h1>Study Buddy Student</h1>
-            <p>Student name: ${results[0].name}</p>
-        `);
+        res.render("db-test-single", {
+    title: "Database Test Student",
+    student: results[0]
+});
     });
 });
 
