@@ -237,7 +237,8 @@ app.get("/study-requests", async function(req, res) {
             data: results,
             previousPage: page > 1 ? page - 1 : null,
             nextPage: results.length === limit ? page + 1 : null,
-            queryString: q ? "&q=" + q : ""
+            queryString: q ? "&q=" + q : "",
+            success: req.query.created ? "Study request created successfully." : null
         });
     } catch (err) {
         console.error("Error loading study requests:", err.message);
@@ -251,9 +252,14 @@ app.get("/study-request/:id", async function(req, res) {
     const sql = "SELECT * FROM Study_Requests WHERE id = ?";
     const results = await db.query(sql, [requestId]);
 
-    res.render("study-request-single", {
-        request: results[0]
-    });
+    res.render("study-requests", {
+    data: results,
+    previousPage: page > 1 ? page - 1 : null,
+    nextPage: results.length === limit ? page + 1 : null,
+    queryString: q ? "&q=" + q : "",
+    success: req.query.created ? "Study request created successfully." : null
+});
+
 });
 
 
@@ -322,17 +328,28 @@ app.post("/create-request", async function(req, res) {
     const description = req.body.description;
 
     if (!title || !subject || !description) {
-        return res.send("Invalid input. Please complete all fields.");
+        return res.render("create-request", {
+            title: title,
+            subject: subject,
+            description: description,
+            error: "Invalid input. Please complete all fields."
+        });
     }
 
     try {
         const sql = "INSERT INTO Study_Requests (title, subject, description) VALUES (?, ?, ?)";
         await db.query(sql, [title, subject, description]);
 
-        res.redirect("/study-requests");
+        res.redirect("/study-requests?created=1");
     } catch (err) {
         console.error("Error creating study request:", err.message);
-        res.send("Error creating study request. Check terminal.");
+
+        res.render("create-request", {
+            title: title,
+            subject: subject,
+            description: description,
+            error: "Error creating study request."
+        });
     }
 });
 
