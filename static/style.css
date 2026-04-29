@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: white;
+}
+
+.container {
+    width: 70%;
+    margin: 30px auto;
+}
+
+.box {
+    border: 1px solid black;
+    padding: 18px;
+    margin-bottom: 12px;
+}
+
+.button-group {
+    margin: 10px 0;
+}
+
+button {
+    padding: 15px 25px;
+    margin: 0 25px 12px 25px;
+    border: 1px solid black;
+    border-radius: 8px;
+    background: white;
+}
