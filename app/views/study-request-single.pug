@@ -20,6 +20,14 @@ block content
                     p #{request.description}
                 else
                     p No description added.
+
+            div.box
+                p Created By
+                if request.student_name
+                    p Student Name: #{request.student_name}
+                    p Course / Year: #{request.course}, Year #{request.study_year}
+                else
+                    p Creator details not available.
         else
             div.box
                 p Study request not found.

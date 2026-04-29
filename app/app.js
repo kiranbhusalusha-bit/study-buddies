@@ -249,14 +249,27 @@ app.get("/study-requests", async function(req, res) {
 app.get("/study-request/:id", async function(req, res) {
     const requestId = req.params.id;
 
-    const sql = "SELECT * FROM Study_Requests WHERE id = ?";
+    const sql = `
+        SELECT 
+            Study_Requests.id,
+            Study_Requests.title,
+            Study_Requests.subject,
+            Study_Requests.description,
+            Study_Requests.student_id,
+            Students.name AS student_name,
+            Students.course,
+            Students.study_year
+        FROM Study_Requests
+        LEFT JOIN Students ON Study_Requests.student_id = Students.id
+        WHERE Study_Requests.id = ?
+    `;
+
     const results = await db.query(sql, [requestId]);
 
     res.render("study-request-single", {
         request: results[0]
     });
 });
-
 
 // Display one subject and the students linked to it using the Subject model
 app.get("/subject/:id", async function(req, res) {
