@@ -2,9 +2,18 @@
 
 // Import express.js
 const express = require("express");
+const session = require("express-session");
+const { User } = require("./models/user");
 
 // Create express app
 const app = express();
+
+app.use(session({
+    secret: "study-buddies-secret-key",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}));
 
 // Use the Pug templating engine
 // This tells Express to render .pug template files
@@ -290,6 +299,79 @@ app.post('/allocate-programme', async function (req, res) {
 app.post('/student-select', function(req, res) {
     let id = req.body.studentParam;
     res.redirect('/single-student/' + id);
+});
+
+app.get('/register', function(req, res) {
+    res.render('register', {
+        title: 'Register'
+    });
+});
+
+app.get('/login', function(req, res) {
+    res.render('login', {
+        title: 'Login'
+    });
+});
+
+app.post('/set-password', async function(req, res) {
+    let params = req.body;
+    var user = new User(params.email);
+
+    try {
+        let uId = await user.getIdFromEmail();
+
+        if (uId) {
+            await user.setUserPassword(params.password);
+            res.send("Password set successfully. You can now login.");
+        } else {
+            await user.addUser(params.password);
+            res.send("New user created. You can now login.");
+        }
+
+    } catch (err) {
+        console.error("Error while setting password:", err.message);
+        res.send("Error setting password");
+    }
+});
+
+app.post('/authenticate', async function(req, res) {
+    let params = req.body;
+    var user = new User(params.email);
+
+    try {
+        let uId = await user.getIdFromEmail();
+
+        if (uId) {
+            let match = await user.authenticate(params.password);
+
+            if (match) {
+                req.session.uid = uId;
+                req.session.loggedIn = true;
+                res.redirect('/welcome');
+            } else {
+                res.send("Invalid password");
+            }
+        } else {
+            res.send("Invalid email");
+        }
+
+    } catch (err) {
+        console.error("Error while logging in:", err.message);
+        res.send("Error logging in");
+    }
+});
+
+app.get('/welcome', async function(req, res) {
+    if (req.session.loggedIn) {
+        res.send("Welcome back, student ID " + req.session.uid + "! <br><a href='/single-student/" + req.session.uid + "'>View your student page</a><br><a href='/logout'>Logout</a>");
+    } else {
+        res.redirect('/login');
+    }
+});
+
+app.get('/logout', function(req, res) {
+    req.session.destroy();
+    res.redirect('/login');
 });
 
 // Start server on port 3000
