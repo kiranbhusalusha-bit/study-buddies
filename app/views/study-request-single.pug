@@ -9,20 +9,17 @@ block content
         div.back-button
             a(href="/study-requests") < Back to Study Requests
 
-        div.box
-            p Request Title: #{request.title}
-            p Subject: #{request.subject}
+        if request
+            div.box
+                p Request Title: #{request.title}
+                p Subject: #{request.subject}
 
-        div.box
-            p Full Description
-            if request.description
-                p #{request.description}
-            else
-                p No description added.
-
-        div.box
-            p Created By
-            if request.student_name
-                p Student Name: #{request.student_name}
-            else
-                p Student information not available.
+            div.box
+                p Full Description
+                if request.description
+                    p #{request.description}
+                else
+                    p No description added.
+        else
+            div.box
+                p Study request not found.

@@ -252,14 +252,9 @@ app.get("/study-request/:id", async function(req, res) {
     const sql = "SELECT * FROM Study_Requests WHERE id = ?";
     const results = await db.query(sql, [requestId]);
 
-    res.render("study-requests", {
-    data: results,
-    previousPage: page > 1 ? page - 1 : null,
-    nextPage: results.length === limit ? page + 1 : null,
-    queryString: q ? "&q=" + q : "",
-    success: req.query.created ? "Study request created successfully." : null
-});
-
+    res.render("study-request-single", {
+        request: results[0]
+    });
 });
 
 
