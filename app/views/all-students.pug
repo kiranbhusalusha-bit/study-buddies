@@ -1,16 +1,38 @@
 extends layout
 
 block content
-    - console.log(data)
+    div.container
 
-    h1 All Study Buddies Students
+        div.box
+            h2 Find a Study Buddy (User List Page)
 
-    table(border=1)
-        tr
-            th ID
-            th Name
-        each item in data
-            tr
-                td #{item.id}
-                td
-                    a(href='/single-student/' + item.id) #{item.name}
+        div.box
+            form(action="/all-students" method="GET")
+                label Search: 
+                input(type="text" name="q" placeholder="Enter subject or keyword")
+                button(type="submit") Search
+
+        div.box
+            p Filters / Tags:
+            a(href="/all-students?tag=Maths") [Maths]
+            |  
+            a(href="/all-students?tag=Programming") [Programming]
+            |  
+            a(href="/all-students?tag=First Year") [First Year]
+            |  
+            a(href="/all-students?tag=Business") [Business]
+            |  
+            a(href="/all-students") [Clear]
+
+        div.box.student-list
+            each student in data
+                div.student-card
+                    p Student Name: #{student.name}
+                    p Student ID: #{student.id}
+                    if student.note
+                        p Note: #{student.note}
+                    p
+                        a(href="/student-single/" + student.id) [ View Profile ]
+
+            div.pagination
+                p [ Previous ] [ Next ]
