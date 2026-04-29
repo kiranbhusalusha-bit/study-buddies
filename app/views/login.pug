@@ -1,13 +1,27 @@
 extends layout
 
 block content
-    h1 Login here
+    div.container
 
-    form(action='/authenticate', method='POST')
-        label(for='email') Enter your email:
-        input(name='email')
-        br
-        label(for='password') Enter your password:
-        input(name='password', type='password')
-        br
-        input(type='submit', value='Login')
+        div.box
+            h1 Login here
+
+        div.box
+            form(action="/authenticate" method="POST")
+                label(for="email") Enter your email:
+                input(name="email")
+
+                br
+                br
+
+                label(for="password") Enter your password:
+                input(name="password" type="password")
+
+                br
+                br
+
+                input(type="submit" value="Login")
+
+        div.box
+            p New user?
+            a(href="/register") Register here
