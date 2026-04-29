@@ -281,6 +281,19 @@ app.get("/study-requests", async function(req, res) {
     });
 });
 
+
+app.get("/study-request/:id", async function(req, res) {
+    const requestId = req.params.id;
+
+    const sql = "SELECT * FROM Study_Requests WHERE id = ?";
+    const results = await db.query(sql, [requestId]);
+
+    res.render("study-request-single", {
+        request: results[0]
+    });
+});
+
+
 // Display one subject and the students linked to it using the Subject model
 app.get("/subject/:id", async function(req, res) {
     let subjectId = req.params.id;
