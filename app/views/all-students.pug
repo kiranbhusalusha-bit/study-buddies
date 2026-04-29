@@ -35,4 +35,14 @@ block content
                         a(href="/single-student/" + student.id) [ View Profile ]
 
             div.pagination
-                p [ Previous ] [ Next ]
+                if previousPage
+                    a(href="/study-buddies?page=" + previousPage + queryString) [ Previous ]
+                else
+                    span [ Previous ]
+
+                |  
+
+                if nextPage
+                    a(href="/study-buddies?page=" + nextPage + queryString) [ Next ]
+                else
+                    span [ Next ]

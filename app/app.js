@@ -44,29 +44,48 @@ app.get("/", function(req, res) {
 });
 
 // Display Study Buddies students using a Pug template
-app.get("/study-buddies", function(req, res) {
-    // Debugging: print the requested URL in the terminal
-    console.log(req.url);
+app.get("/study-buddies", async function(req, res) {
+    let q = req.query.q || "";
+    let tag = req.query.tag || "";
+    let page = parseInt(req.query.page) || 1;
+    let limit = 3;
+    let offset = (page - 1) * limit;
 
-    // Select all students from the database
-    var sql = "SELECT * FROM Students";
+    let sql;
+    let params = [];
 
-    // Query the database
-    db.query(sql).then(results => {
-        // Send the student rows to the all-students Pug template
-        res.render("all-students", {
-            title: "Study Buddies",
-            data: results
-        });
-    });
-});
+    if (q) {
+        sql = `
+            SELECT * FROM Students
+            WHERE name LIKE ? OR note LIKE ?
+            ORDER BY id ASC
+            LIMIT ${limit} OFFSET ${offset}
+        `;
+        params = ["%" + q + "%", "%" + q + "%"];
+    } else if (tag) {
+        sql = `
+            SELECT * FROM Students
+            WHERE name LIKE ? OR note LIKE ? OR study_year LIKE ?
+            ORDER BY id ASC
+            LIMIT ${limit} OFFSET ${offset}
+        `;
+        params = ["%" + tag + "%", "%" + tag + "%", "%" + tag + "%"];
+    } else {
+        sql = `
+            SELECT * FROM Students
+            ORDER BY id ASC
+            LIMIT ${limit} OFFSET ${offset}
+        `;
+    }
 
-// Student profile route
-// This renders a simple profile page using Pug
-app.get("/profile", function(req, res) {
-    res.render("profile", {
-        title: "Student Profile",
-        heading: "Student Profile Page"
+    const results = await db.query(sql, params);
+
+    res.render("all-students", {
+        title: "Study Buddies",
+        data: results,
+        previousPage: page > 1 ? page - 1 : null,
+        nextPage: results.length === limit ? page + 1 : null,
+        queryString: q ? "&q=" + q : tag ? "&tag=" + tag : ""
     });
 });
 
