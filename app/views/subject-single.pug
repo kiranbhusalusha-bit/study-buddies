@@ -19,15 +19,12 @@ block content
                 tr
                     th ID
                     th Name
-                    th Course
-                    th Year
                 each student in students
                     tr
                         td #{student.id}
                         td
-                            a(href="/student-single/" + student.id) #{student.name}
-                        td #{student.course}
-                        td #{student.study_year}
+                            a(href='/single-student/' + student.id) #{student.name}
+                        
         else
             p No students are linked to this subject yet.
 

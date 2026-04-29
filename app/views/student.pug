@@ -1,0 +1,37 @@
+extends layout
+
+block content
+    h1 Student Details
+
+    table(border=1)
+        tr
+            th ID
+            td #{student.id}
+        tr
+            th Name
+            td #{student.name}
+        tr
+            th Note
+            td #{student.note}
+
+    h2 Subjects
+
+    table(border=1)
+        tr
+            th ID
+            th Subject
+        each subject in student.subjects
+            tr
+                td #{subject.id}
+                td #{subject.name}
+
+    p
+        a(href="/all-students-formatted") Back to Students
+
+    h2 Add a note about this student
+
+    form(action='/add-note', method='POST')
+        input(type='hidden', name='id', value=student.id)
+        textarea(name='note', rows=6, cols=50)
+        div
+            input(type='submit', value='Submit')

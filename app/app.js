@@ -17,7 +17,7 @@ app.set("views", "./app/views");
 const db = require("./services/db");
 
 // Get the models
-const { Student } = require("./models/student");
+const { Student, getAllStudents } = require("./models/student");
 const { Subject } = require("./models/subject");
 const { StudyRequest } = require("./models/studyRequest");
 const { getAllProgrammes } = require("./models/programmes");
@@ -150,15 +150,13 @@ app.get("/student/:name/:id", function(req, res) {
 
 // Create a route for root
 // This sends variables and an array from Express into the Pug template
-app.get("/", function(req, res) {
-    // Set up an array of Study Buddies subjects
-    var test_data = ["JavaScript", "Database Systems", "Node.js", "Web Development"];
+app.get("/", async function(req, res) {
+    var students = await getAllStudents();
 
-    // Send the array through to the template as a variable called data
     res.render("index", {
         title: "Study Buddies Home",
         heading: "Welcome to Study Buddies",
-        data: test_data
+        students: students
     });
 });
 
@@ -180,13 +178,18 @@ app.get("/all-students-formatted", function(req, res) {
 
 app.get("/single-student/:id", async function (req, res) {
     var stId = req.params.id;
-    // Create a student class with the ID passed
+
     var student = new Student(stId);
+
     await student.getStudentDetails();
-    await student.getStudentModules();
-    resultProgs = await programmes.getAllProgrammes();
+    await student.getStudentSubjects();
+
+
     console.log(student);
-    res.render('student', {'student':student, 'programmes':resultProgs});
+
+    res.render("student", {
+        student: student,
+    });
 });
 
 
@@ -259,7 +262,8 @@ app.post('/add-note', async function (req, res) {
         await student.addStudentNote(params.note);
 
         // Redirect back to student page
-        res.redirect('/student-single/' + params.id);
+        res.redirect('/single-student/' + params.id);
+
 
     } catch (err) {
         console.error("Error adding note:", err.message);
@@ -275,7 +279,7 @@ app.post('/allocate-programme', async function (req, res) {
     try {
         await student.updateStudentProgramme(params.programme);
 
-        res.redirect('/student-single/' + params.id);
+        res.redirect('/single-student/' + params.id);
 
     } catch (err) {
         console.error("Error updating programme:", err.message);
@@ -283,6 +287,10 @@ app.post('/allocate-programme', async function (req, res) {
     }
 });
 
+app.post('/student-select', function(req, res) {
+    let id = req.body.studentParam;
+    res.redirect('/single-student/' + id);
+});
 
 // Start server on port 3000
 // This must stay at the bottom of the file
