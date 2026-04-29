@@ -352,6 +352,27 @@ app.post('/student-select', function(req, res) {
     res.redirect('/single-student/' + id);
 });
 
+// create reuqest
+app.post("/create-request", async function(req, res) {
+    const title = req.body.title;
+    const subject = req.body.subject;
+    const description = req.body.description;
+
+    if (!title || !subject || !description) {
+        return res.send("Invalid input. Please complete all fields.");
+    }
+
+    try {
+        const sql = "INSERT INTO Study_Requests (title, subject, description) VALUES (?, ?, ?)";
+        await db.query(sql, [title, subject, description]);
+
+        res.redirect("/study-requests");
+    } catch (err) {
+        console.error("Error creating study request:", err.message);
+        res.send("Error creating study request. Check terminal.");
+    }
+});
+
 app.get('/register', function(req, res) {
     res.render('register', {
         title: 'Register'

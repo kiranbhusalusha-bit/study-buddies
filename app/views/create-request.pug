@@ -1,22 +1,21 @@
 extends layout
 
 block content
-    h1 #{heading}
+    div.container
 
-    p This page will later allow a student to create a study request.
+        div.box
+            h2 Create Study Request
 
-    form
-        p
-            label(for="title") Request title:
-            input(type="text", name="title", id="title")
-        p
-            label(for="subject") Subject:
-            input(type="text", name="subject", id="subject")
-        p
-            label(for="description") Description:
-            textarea(name="description", id="description")
-        p
-            button(type="submit") Submit
+        div.box
+            form(action="/create-request" method="POST")
+                p Title:
+                input(type="text" name="title")
 
-    p
-        a(href="/study-requests") Back to Study Requests
+                p Subject:
+                input(type="text" name="subject")
+
+                p Description:
+                textarea(name="description")
+
+                br
+                button(type="submit") Submit
