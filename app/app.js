@@ -345,8 +345,10 @@ app.post("/create-request", async function(req, res) {
     }
 
     try {
-        const sql = "INSERT INTO Study_Requests (title, subject, description) VALUES (?, ?, ?)";
-        await db.query(sql, [title, subject, description]);
+        const studentId = req.session.uid || 1;
+
+        const sql = "INSERT INTO Study_Requests (title, subject, description, student_id) VALUES (?, ?, ?, ?)";
+        await db.query(sql, [title, subject, description, studentId]);
 
         res.redirect("/study-requests?created=1");
     } catch (err) {
