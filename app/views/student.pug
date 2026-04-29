@@ -6,8 +6,19 @@ block content
         div.box
             h2 Student Profile Page
 
+        div.box
+            a(href="/") Home
+            |  | 
+            a(href="/study-buddies") Study Buddies
+            |  | 
+            a(href="/study-requests") Study Requests
+            |  | 
+            a(href="/create-request") Create Study Request
+            |  | 
+            a(href="/logout") Logout
+
         div.back-button
-            a(href="/all-students") < Back to User List
+            a(href="/study-buddies") < Back to User List
 
         div.box
             p Student Name: #{student.name}
