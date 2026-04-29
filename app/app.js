@@ -38,6 +38,15 @@ app.use(express.urlencoded({ extended: true }));
 // Add static files location
 app.use(express.static("static"));
 
+//home
+app.get("/", function(req, res) {
+    res.render("home");
+});
+
+app.get("/study-buddies", function(req, res) {
+    res.render("study-buddies");
+});
+
 // Display Study Buddies students using a Pug template
 app.get("/study-buddies", function(req, res) {
     // Debugging: print the requested URL in the terminal
@@ -170,18 +179,28 @@ app.get("/", async function(req, res) {
 });
 
 // Display a formatted list of Study Buddies students using a Pug template
-app.get("/all-students-formatted", function(req, res) {
-    // Select all rows from the Students table
-    var sql = "SELECT * FROM Students";
+app.get("/all-students", async function(req, res) {
+    let q = req.query.q;
+    let tag = req.query.tag;
 
-    // Query the database
-    db.query(sql).then(results => {
-        // Send the database rows to the all-students Pug template
-        // The rows will be available in the template as a variable called data
-        res.render("all-students", {
-            title: "All Study Buddies Students",
-            data: results
-        });
+    let sql = "SELECT * FROM Students";
+    let params = [];
+
+    if (q) {
+        sql = "SELECT * FROM Students WHERE name LIKE ? OR note LIKE ?";
+        params = ["%" + q + "%", "%" + q + "%"];
+    }
+
+    if (tag) {
+        sql = "SELECT * FROM Students WHERE name LIKE ? OR note LIKE ? OR study_year LIKE ?";
+        params = ["%" + tag + "%", "%" + tag + "%", "%" + tag + "%"];
+    }
+
+    const results = await db.query(sql, params);
+
+    res.render("all-students", {
+        data: results,
+        title: "All Students"
     });
 });
 
@@ -226,20 +245,39 @@ app.get("/subjects", function(req, res) {
 
 
 // Display one study request using model
-app.get("/study-request/:id", async function(req, res) {
-    let requestId = req.params.id;
+app.get("/study-requests", async function(req, res) {
+    let q = req.query.q || "";
+    let page = parseInt(req.query.page) || 1;
+    let limit = 3;
+    let offset = (page - 1) * limit;
 
-    // Create object
-    var request = new StudyRequest(requestId);
+    let sql;
+    let params;
 
-    // Get data from DB
-    await request.getRequestDetails();
+    if (q) {
+        sql = `
+            SELECT * FROM Study_Requests
+            WHERE title LIKE ? OR subject LIKE ? OR description LIKE ?
+            ORDER BY id DESC
+            LIMIT ? OFFSET ?
+        `;
+        params = ["%" + q + "%", "%" + q + "%", "%" + q + "%", limit, offset];
+    } else {
+        sql = `
+            SELECT * FROM Study_Requests
+            ORDER BY id DESC
+            LIMIT ? OFFSET ?
+        `;
+        params = [limit, offset];
+    }
 
-    console.log(request);
+    const results = await db.query(sql, params);
 
-    res.render("study-request-single", {
-        title: "Study Request",
-        request: request
+    res.render("study-requests", {
+        data: results,
+        previousPage: page > 1 ? page - 1 : null,
+        nextPage: results.length === limit ? page + 1 : null,
+        queryString: q ? "&q=" + q : ""
     });
 });
 
@@ -373,6 +411,20 @@ app.get('/logout', function(req, res) {
     req.session.destroy();
     res.redirect('/login');
 });
+
+app.get("/my-profile", async function(req, res) {
+    if (!req.session.loggedIn || !req.session.uid) {
+        return res.redirect("/login");
+    }
+
+    res.redirect("/single-student/" + req.session.uid);
+});
+
+app.get("/logout", function(req, res) {
+    req.session.destroy();
+    res.redirect("/login");
+});
+
 
 // Start server on port 3000
 // This must stay at the bottom of the file
