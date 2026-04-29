@@ -43,10 +43,6 @@ app.get("/", function(req, res) {
     res.render("home");
 });
 
-app.get("/study-buddies", function(req, res) {
-    res.render("study-buddies");
-});
-
 // Display Study Buddies students using a Pug template
 app.get("/study-buddies", function(req, res) {
     // Debugging: print the requested URL in the terminal
@@ -71,31 +67,6 @@ app.get("/profile", function(req, res) {
     res.render("profile", {
         title: "Student Profile",
         heading: "Student Profile Page"
-    });
-});
-
-// Display all study requests using a Pug template
-app.get("/study-requests", function(req, res) {
-    // Debugging: print the requested URL in the terminal
-    console.log(req.url);
-
-   // Join Study_Requests with Subjects so we can display the subject name
-var sql = `
-    SELECT 
-        Study_Requests.id,
-        Study_Requests.title,
-        Study_Requests.description,
-        Subjects.name AS subject_name
-    FROM Study_Requests
-    JOIN Subjects ON Study_Requests.subject_id = Subjects.id
-`;
-    // Query the database
-    db.query(sql).then(results => {
-        // Send the database rows to the study-requests Pug template
-        res.render("study-requests", {
-            title: "Study Requests",
-            data: results
-        });
     });
 });
 
@@ -165,18 +136,6 @@ app.get("/student/:name/:id", function(req, res) {
     });
 });
 
-
-// Create a route for root
-// This sends variables and an array from Express into the Pug template
-app.get("/", async function(req, res) {
-    var students = await getAllStudents();
-
-    res.render("index", {
-        title: "Study Buddies Home",
-        heading: "Welcome to Study Buddies",
-        students: students
-    });
-});
 
 // Display a formatted list of Study Buddies students using a Pug template
 app.get("/all-students", async function(req, res) {
@@ -257,30 +216,34 @@ app.get("/study-requests", async function(req, res) {
     if (q) {
         sql = `
             SELECT * FROM Study_Requests
-            WHERE title LIKE ? OR subject LIKE ? OR description LIKE ?
+            WHERE title LIKE ? OR description LIKE ?
             ORDER BY id DESC
-            LIMIT ? OFFSET ?
+            LIMIT ${limit} OFFSET ${offset}
         `;
-        params = ["%" + q + "%", "%" + q + "%", "%" + q + "%", limit, offset];
+        params = ["%" + q + "%", "%" + q + "%"];
     } else {
         sql = `
             SELECT * FROM Study_Requests
             ORDER BY id DESC
-            LIMIT ? OFFSET ?
+            LIMIT ${limit} OFFSET ${offset}
         `;
-        params = [limit, offset];
+        params = [];
     }
 
-    const results = await db.query(sql, params);
+    try {
+        const results = await db.query(sql, params);
 
-    res.render("study-requests", {
-        data: results,
-        previousPage: page > 1 ? page - 1 : null,
-        nextPage: results.length === limit ? page + 1 : null,
-        queryString: q ? "&q=" + q : ""
-    });
+        res.render("study-requests", {
+            data: results,
+            previousPage: page > 1 ? page - 1 : null,
+            nextPage: results.length === limit ? page + 1 : null,
+            queryString: q ? "&q=" + q : ""
+        });
+    } catch (err) {
+        console.error("Error loading study requests:", err.message);
+        res.send("Error loading study requests. Check terminal.");
+    }
 });
-
 
 app.get("/study-request/:id", async function(req, res) {
     const requestId = req.params.id;
@@ -439,11 +402,6 @@ app.get('/welcome', async function(req, res) {
     } else {
         res.redirect('/login');
     }
-});
-
-app.get('/logout', function(req, res) {
-    req.session.destroy();
-    res.redirect('/login');
 });
 
 app.get("/my-profile", async function(req, res) {
