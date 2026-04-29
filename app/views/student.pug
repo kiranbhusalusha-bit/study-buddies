@@ -1,37 +1,40 @@
 extends layout
 
 block content
-    h1 Student Details
+    div.container
 
-    table(border=1)
-        tr
-            th ID
-            td #{student.id}
-        tr
-            th Name
-            td #{student.name}
-        tr
-            th Note
-            td #{student.note}
+        div.box
+            h2 Student Profile Page
 
-    h2 Subjects
+        div.back-button
+            a(href="/all-students") < Back to User List
 
-    table(border=1)
-        tr
-            th ID
-            th Subject
-        each subject in student.subjects
-            tr
-                td #{subject.id}
-                td #{subject.name}
+        div.box
+            p Student Name: #{student.name}
+            p Student ID: #{student.id}
 
-    p
-        a(href="/all-students-formatted") Back to Students
+        div.box
+            p Short Bio / Description
+            if student.note
+                p #{student.note}
+            else
+                p No description added yet.
 
-    h2 Add a note about this student
+        div.box
+            p Subjects They Can Help With
+            if student.subjects && student.subjects.length
+                each subject in student.subjects
+                    p • #{subject.name}
+            else
+                p No subjects listed.
 
-    form(action='/add-note', method='POST')
-        input(type='hidden', name='id', value=student.id)
-        textarea(name='note', rows=6, cols=50)
-        div
-            input(type='submit', value='Submit')
+        div.box
+            p Subjects They Need Help With
+            p • Not added yet
+
+        div.box
+            p Availability
+            p • Not added yet
+
+        div.message-button
+            button [Send Message] optional
