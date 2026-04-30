@@ -272,7 +272,6 @@ app.get("/study-request/:id", async function(req, res) {
         SELECT 
             Study_Requests.id,
             Study_Requests.title,
-            Study_Requests.subject,
             Study_Requests.description,
             Study_Requests.student_id,
             Students.name AS student_name,
