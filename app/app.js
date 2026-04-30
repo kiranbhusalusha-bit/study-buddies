@@ -58,12 +58,15 @@ app.get("/profile/:id", async function(req, res) {
 });
 
 // Update profile route
-app.post("/profile/update", async function(req, res) {
-    const studentId = req.session.userId || 1; // Assuming session has userId, default to 1 for now
+app.post("/profile/:id/update", async function(req, res) {
+    const studentId = req.params.id;
     const student = new Student(studentId);
+    const name = req.body.name;
     const bio = req.body.bio;
+    const availability = req.body.availability;
+    const needs = req.body.needs;
 
-    await student.updateProfile(null, bio);
+    await student.updateProfile(name, bio, availability, needs);
 
     res.redirect(`/profile/${studentId}`);
 });

@@ -20,8 +20,11 @@ block content
             form(action="/profile/" + student.id + "/delete", method="POST", style="display:inline;margin:0;")
                 button(type="submit", class="delete-account-inline") Delete Account
 
-        div.back-button
-            a(href="/study-buddies") < Back to User List
+        div.nav-row
+            div.back-button
+                a(href="/study-buddies") < Back to User List
+            div.edit-profile-link
+                a(href="/profile/" + student.id) Edit Profile
 
         div.box
             p Student Name: #{student.name}

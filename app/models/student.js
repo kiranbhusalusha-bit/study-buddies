@@ -8,6 +8,8 @@ class Student {
     subjects = [];
     picture;
     bio;
+    availability;
+    needs;
 
     constructor(id) {
         this.id = id;
@@ -26,6 +28,8 @@ class Student {
             this.note = results[0].note;
             this.picture = results[0].picture;
             this.bio = results[0].bio;
+            this.availability = results[0].availability;
+            this.needs = results[0].needs;
         }
     }
 
@@ -53,12 +57,14 @@ class Student {
         return result;
     }
 
-    async updateProfile(picture, bio) {
-        var sql = "UPDATE Students SET picture = ?, bio = ? WHERE id = ?";
-        const result = await db.query(sql, [picture, bio, this.id]);
+    async updateProfile(name, bio, availability, needs) {
+        var sql = "UPDATE Students SET name = ?, bio = ?, availability = ?, needs = ? WHERE id = ?";
+        const result = await db.query(sql, [name, bio, availability, needs, this.id]);
 
-        this.picture = picture;
+        this.name = name;
         this.bio = bio;
+        this.availability = availability;
+        this.needs = needs;
         return result;
     }
 

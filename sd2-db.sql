@@ -25,7 +25,9 @@ CREATE TABLE Students (
     course VARCHAR(100),
     study_year INT,
     picture VARCHAR(255),
-    bio TEXT
+    bio TEXT,
+    availability VARCHAR(255),
+    needs TEXT
 );
 
 INSERT INTO Students VALUES
