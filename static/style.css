@@ -26,6 +26,21 @@ button {
     border-radius: 8px;
     background: white;
 }
+
+.delete-account-inline {
+    padding: 8px 14px;
+    margin: 0;
+    border: 1px solid #c00;
+    background: #fdd;
+    color: #900;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.delete-account-inline:hover {
+    background: #fbb;
+}
+
 .logo-title {
     display: flex;
     align-items: center;

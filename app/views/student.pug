@@ -16,6 +16,9 @@ block content
             a(href="/create-request") Create Study Request
             |  | 
             a(href="/logout") Logout
+            |  | 
+            form(action="/profile/" + student.id + "/delete", method="POST", style="display:inline;margin:0;")
+                button(type="submit", class="delete-account-inline") Delete Account
 
         div.back-button
             a(href="/study-buddies") < Back to User List
