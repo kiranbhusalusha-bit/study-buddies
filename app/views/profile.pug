@@ -3,7 +3,47 @@ extends layout
 block content
     h1 #{heading}
 
-    p This page will show a student's Study Buddies profile.
+    if student
+        div.profile-container
+            div.profile-info
+                if student.picture
+                    img.profile-pic(src=student.picture, alt="Profile Picture")
+                else
+                    img.profile-pic(src="/images/default-avatar.svg", alt="Default Avatar")
+                h2= student.name
+                p= student.bio || "No bio yet."
+                p Subjects: #{student.subjects.map(s => s.name).join(', ')}
+
+            div.profile-edit
+                h3 Edit Profile
+                form(action="/profile/update", method="POST")
+                    div.form-group
+                        label(for="bio") Bio (max 50 words):
+                        textarea(name="bio", id="bio", rows="4", maxlength="500")= student.bio || ""
+                        span.word-count 0 / 50 words
+                    button(type="submit") Update Profile
+
+                form(action="/profile/" + student.id + "/delete", method="POST", onsubmit="return confirm('Are you sure you want to delete your account? This cannot be undone.');")
+                    button(type="submit", class="delete-account") Delete Account
+
+    script.
+        const bioTextarea = document.getElementById('bio');
+        const wordCount = document.querySelector('.word-count');
+
+        function updateWordCount() {
+            const words = bioTextarea.value.trim().split(/\s+/).filter(word => word.length > 0);
+            wordCount.textContent = words.length + ' / 50 words';
+            if (words.length > 50) {
+                wordCount.style.color = 'red';
+                bioTextarea.setCustomValidity('Bio must be 50 words or less');
+            } else {
+                wordCount.style.color = 'black';
+                bioTextarea.setCustomValidity('');
+            }
+        }
+
+        bioTextarea.addEventListener('input', updateWordCount);
+        updateWordCount();
 
     p
         a(href="/study-buddies") Back to Study Buddies

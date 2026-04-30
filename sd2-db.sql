@@ -23,7 +23,9 @@ CREATE TABLE Students (
     name VARCHAR(50) NOT NULL,
     note TEXT,
     course VARCHAR(100),
-    study_year INT
+    study_year INT,
+    picture VARCHAR(255),
+    bio TEXT
 );
 
 INSERT INTO Students VALUES

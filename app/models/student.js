@@ -6,6 +6,8 @@ class Student {
     note;
     name;
     subjects = [];
+    picture;
+    bio;
 
     constructor(id) {
         this.id = id;
@@ -22,6 +24,8 @@ class Student {
 
             this.name = results[0].name;
             this.note = results[0].note;
+            this.picture = results[0].picture;
+            this.bio = results[0].bio;
         }
     }
 
@@ -47,6 +51,22 @@ class Student {
 
         this.note = note;
         return result;
+    }
+
+    async updateProfile(picture, bio) {
+        var sql = "UPDATE Students SET picture = ?, bio = ? WHERE id = ?";
+        const result = await db.query(sql, [picture, bio, this.id]);
+
+        this.picture = picture;
+        this.bio = bio;
+        return result;
+    }
+
+    async deleteAccount() {
+        // Remove dependent data first to avoid foreign key constraint errors
+        await db.query("DELETE FROM Student_Subject WHERE student_id = ?", [this.id]);
+        await db.query("DELETE FROM Study_Requests WHERE student_id = ?", [this.id]);
+        return await db.query("DELETE FROM Students WHERE id = ?", [this.id]);
     }
 }
 

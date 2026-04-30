@@ -43,6 +43,48 @@ app.get("/", function(req, res) {
     res.render("home");
 });
 
+// Profile route
+app.get("/profile/:id", async function(req, res) {
+    const studentId = req.params.id;
+    const student = new Student(studentId);
+    await student.getStudentDetails();
+    await student.getStudentSubjects();
+
+    res.render("profile", {
+        title: "Student Profile",
+        heading: "Student Profile",
+        student: student
+    });
+});
+
+// Update profile route
+app.post("/profile/update", async function(req, res) {
+    const studentId = req.session.userId || 1; // Assuming session has userId, default to 1 for now
+    const student = new Student(studentId);
+    const bio = req.body.bio;
+
+    await student.updateProfile(null, bio);
+
+    res.redirect(`/profile/${studentId}`);
+});
+
+// Delete profile route
+app.post("/profile/:id/delete", async function(req, res) {
+    const studentId = req.params.id;
+    const student = new Student(studentId);
+
+    await student.deleteAccount();
+
+    if (req.session.userId && req.session.userId.toString() === studentId.toString()) {
+        req.session.destroy(() => {
+            res.redirect("/");
+        });
+        return;
+    }
+
+    res.redirect("/");
+});
+
 // Display Study Buddies students using a Pug template
 app.get("/study-buddies", async function(req, res) {
     let q = req.query.q || "";
