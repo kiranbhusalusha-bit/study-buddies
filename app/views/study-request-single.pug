@@ -6,26 +6,75 @@ block content
         div.box
             h2 Study Request Details
 
-        div.back-button
-            a(href="/study-requests") < Back to Study Requests
+        div.box.nav-row.request-detail-actions
+            a.button-link(href="/study-requests") < Back to Study Requests
 
         if request
             div.box
-                p Request Title: #{request.title}
+                p
+                    span.request-detail-label Request Title:
+                    |  #{request.title}
                 p Subject: #{request.subject}
 
             div.box
-                p Full Description
+                p.request-detail-label Full Description
                 if request.description
                     p #{request.description}
                 else
                     p No description added.
 
             div.box
-                p Created By
+                p.request-detail-label Created By
                 if request.student_name
                     p Student Name: #{request.student_name}
                     p Course / Year: #{request.course}, Year #{request.study_year}
+                else
+                    p Creator details not available.
+
+            div.box.request-accept-box
+                p Accept Study Request
+                if acceptSuccess
+                    p.request-message-success You accepted this study request.
+                if acceptedStudents && acceptedStudents.length
+                    p
+                        span.request-detail-label Accepted By:
+                        |  #{acceptedStudents.map(student => student.name).join(", ")}
+                if loggedIn && currentUserId && request.student_id && currentUserId != request.student_id
+                    if acceptedByCurrentUser
+                        p You have already accepted this study request.
+                    else
+                        form(action="/study-request/" + request.id + "/accept", method="POST")
+                            button(type="submit") Accept Study Request
+                else if loggedIn && currentUserId && request.student_id && currentUserId == request.student_id
+                    p You created this study request.
+                else
+                    p
+                        a(href="/login") Log in
+                        |  to accept this study request.
+
+            div.box.request-message-box
+                p Send a Message
+                if messageSent
+                    p.request-message-success Message sent successfully.
+                if messageError == "empty"
+                    p.request-message-error Message cannot be empty.
+                else if messageError == "blocked"
+                    p.request-message-error You cannot send a message to this user.
+                else if messageError == "limit"
+                    p.request-message-error You can only send 2 messages before the other user replies.
+                if loggedIn && currentUserId && request.student_id && currentUserId != request.student_id
+                    form(action="/messages/new/" + request.student_id, method="POST")
+                        input(type="hidden", name="returnTo", value="/study-request/" + request.id)
+                        div.form-group
+                            label(for="request-message") Message:
+                            textarea#request-message(name="body", rows="5", placeholder="Write your message about this study request", required=true)
+                        button(type="submit") Send Message
+                else if loggedIn && currentUserId && request.student_id && currentUserId == request.student_id
+                    p This is your study request.
+                else if request.student_id
+                    p
+                        a(href="/login") Log in
+                        |  to message this student.
                 else
                     p Creator details not available.
         else

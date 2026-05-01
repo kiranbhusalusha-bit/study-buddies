@@ -79,7 +79,27 @@ class Student {
 
     async deleteAccount() {
         // Remove dependent data first to avoid foreign key constraint errors
+        try {
+            await db.query(
+                `DELETE Study_Request_Accepts FROM Study_Request_Accepts
+                 JOIN Study_Requests ON Study_Request_Accepts.request_id = Study_Requests.id
+                 WHERE Study_Requests.student_id = ? OR Study_Request_Accepts.student_id = ?`,
+                [this.id, this.id]
+            );
+        } catch (err) {
+            if (err.code !== "ER_NO_SUCH_TABLE") {
+                throw err;
+            }
+        }
+
         await db.query("DELETE FROM Student_Subject WHERE student_id = ?", [this.id]);
+        try {
+            await db.query("DELETE FROM Student_Ratings WHERE rater_student_id = ? OR rated_student_id = ?", [this.id, this.id]);
+        } catch (err) {
+            if (err.code !== "ER_NO_SUCH_TABLE") {
+                throw err;
+            }
+        }
         await db.query("DELETE FROM Study_Requests WHERE student_id = ?", [this.id]);
         return await db.query("DELETE FROM Students WHERE id = ?", [this.id]);
     }

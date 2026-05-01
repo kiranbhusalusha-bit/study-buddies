@@ -1,5 +1,7 @@
 DROP TABLE IF EXISTS Student_Subject;
+DROP TABLE IF EXISTS Study_Request_Accepts;
 DROP TABLE IF EXISTS Study_Requests;
+DROP TABLE IF EXISTS Student_Ratings;
 DROP TABLE IF EXISTS Subjects;
 DROP TABLE IF EXISTS Student_Programme;
 DROP TABLE IF EXISTS Programme_Modules;
@@ -35,6 +37,19 @@ INSERT INTO Students VALUES
 (2, 'Maya Patel', NULL, 'Computer Science', 2),
 (3, 'Noah Williams', NULL, 'Web Development', 1),
 (4, 'Sophia Khan', NULL, 'Databases', 3);
+
+CREATE TABLE Student_Ratings (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    rater_student_id INT NOT NULL,
+    rated_student_id INT NOT NULL,
+    rating INT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    UNIQUE KEY rater_rated_student (rater_student_id, rated_student_id),
+    FOREIGN KEY (rater_student_id) REFERENCES Students(id),
+    FOREIGN KEY (rated_student_id) REFERENCES Students(id),
+    CHECK (rating BETWEEN 1 AND 5)
+);
 
 CREATE TABLE Subjects (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -98,6 +113,16 @@ INSERT INTO Study_Requests (title, description, subject_id, student_id) VALUES
 ('Need help with JavaScript loops', 'I need help understanding for loops and arrays.', 2, 1),
 ('Database revision partner wanted', 'Looking for someone to revise SQL joins with.', 3, 2),
 ('HTML form practice', 'I want to practise creating HTML forms.', 1, 3);
+
+CREATE TABLE Study_Request_Accepts (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    request_id INT NOT NULL,
+    student_id INT NOT NULL,
+    accepted_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY request_student_accept (request_id, student_id),
+    FOREIGN KEY (request_id) REFERENCES Study_Requests(id),
+    FOREIGN KEY (student_id) REFERENCES Students(id)
+);
 
 CREATE TABLE Modules (
     code VARCHAR(10) PRIMARY KEY,

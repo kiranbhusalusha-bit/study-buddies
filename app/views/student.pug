@@ -9,7 +9,7 @@ block content
         div.box
             a(href="/") Home
             |  | 
-            a(href="/study-buddies") Study Buddies
+            a(href="/students") All User List
             |  | 
             a(href="/study-requests") Study Requests
             |  | 
@@ -18,7 +18,7 @@ block content
             a(href="/logout") Logout
 
         div.nav-row
-            a.button-link(href="/study-buddies") < Back to User List
+            a.button-link(href="/students") < Back to User List
             - var isOwnProfile = loggedIn && currentUserId && (currentUserId === student.id)
             if isOwnProfile
                 a.button-link(href="/messages/inbox") View Messages
@@ -40,6 +40,11 @@ block content
         div.box
             p Student Name: #{student.name}
             p Student ID: #{student.id}
+            p
+                span.rating-label Average Rating:
+                |  #{avgRating}
+                if ratingCount
+                    |  (#{ratingCount} ratings)
 
         div.box
             p Short Bio / Description
@@ -63,6 +68,19 @@ block content
         div.box
             p Availability
             p • Not added yet
+
+        if loggedIn && currentUserId && currentUserId != student.id
+            div.box.rating-box
+                p Rate This Student
+                if ratingSaved
+                    p.rating-success Rating saved.
+                form(action="/single-student/" + student.id + "/rating", method="POST")
+                    label(for="rating") Your rating:
+                    select#rating(name="rating", required=true)
+                        option(value="") Choose rating
+                        each score in [1, 2, 3, 4, 5]
+                            option(value=score, selected=(currentUserRating == score)) #{score}
+                    button(type="submit") Save Rating
 
         if loggedIn && currentUserId && currentUserId != student.id
             div.send-message-section

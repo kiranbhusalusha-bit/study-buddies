@@ -5,36 +5,48 @@ block content
         section.welcome-banner
             img.welcome-logo(src="/images/logo.svg", alt="Study Buddies logo")
             div.welcome-copy
-                h2 Welcome back, student ID #{studentId}!
+                h2 Welcome back, #{firstName}!
                 p Ready to learn, collaborate, and achieve together.
 
         main.welcome-grid
+            a.welcome-card(href="/")
+                span.welcome-card-icon Home
+                strong Home
+                span Go to the home page.
+                span.welcome-arrow &rarr;
+
             a.welcome-card(href="/single-student/" + studentId)
-                span.welcome-card-icon profile
+                span.welcome-card-icon Profile
                 strong View your student page
                 span See your profile and your details.
                 span.welcome-arrow &rarr;
 
-            a.welcome-card(href="/study-buddies")
-                span.welcome-card-icon buddies
-                strong Study Buddies
-                span Find and connect with study buddies.
+            a.welcome-card(href="/students")
+                span.welcome-card-icon Users
+                strong All User List
+                span View all student users in this app.
                 span.welcome-arrow &rarr;
 
             a.welcome-card(href="/study-requests")
-                span.welcome-card-icon requests
+                span.welcome-card-icon Requests
                 strong Study Requests
                 span View and manage study requests.
                 span.welcome-arrow &rarr;
 
+            a.welcome-card(href="/messages/inbox")
+                span.welcome-card-icon Messages
+                strong View Messages
+                span Read messages from other students.
+                span.welcome-arrow &rarr;
+
             a.welcome-card(href="/create-request")
-                span.welcome-card-icon create
+                span.welcome-card-icon Create
                 strong Create Study Request
                 span Create a new study request.
                 span.welcome-arrow &rarr;
 
             a.welcome-card(href="/logout")
-                span.welcome-card-icon logout
+                span.welcome-card-icon Logout
                 strong Logout
                 span Sign out from your account.
                 span.welcome-arrow &rarr;

@@ -10,8 +10,8 @@ block content
                     span.heading-mark
 
             form.user-search(action="/students" method="GET")
-                label.sr-only(for="buddy-search") Search
-                input#buddy-search(type="text" name="q" placeholder="Enter subject or keyword..." value=(typeof q !== "undefined" ? q : ""))
+                label.sr-only(for="user-search") Search
+                input#user-search(type="text" name="q" placeholder="Enter subject or keyword..." value=(typeof q !== "undefined" ? q : ""))
                 button(type="submit") Search
 
             div.filter-card
@@ -53,8 +53,18 @@ block content
                                     p.meta-line
                                         span.book-icon
                                         | Subjects: Not added
+                                p.meta-line
+                                    span.rating-icon
+                                    | Average Rating: #{student.avg_rating ? Number(student.avg_rating).toFixed(1) : "0.0"} (#{student.rating_count || 0})
+                                p.meta-line
+                                    span.score-icon
+                                    | Match Score: #{student.match_score ? Number(student.match_score).toFixed(1) : "0.0"} 
+                                    |  = #{student.subject_match_count || 0} subject matches + #{student.avg_rating ? Number(student.avg_rating).toFixed(1) : "0.0"} rating
 
-                            a.profile-button(href="/single-student/" + student.id) View Profile
+                            if currentUserId && currentUserId == student.id
+                                a.profile-button(href="/single-student/" + student.id) View Your Page
+                            else
+                                a.profile-button(href="/single-student/" + student.id) View Profile
                 else if !dbError
                     p.empty-list No students found.
 

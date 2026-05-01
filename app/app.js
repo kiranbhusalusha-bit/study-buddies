@@ -103,59 +103,76 @@ app.post("/profile/:id/delete", async function(req, res) {
     res.redirect("/");
 });
 
-// Display Study Buddies students using a Pug template
-app.get("/study-buddies", async function(req, res) {
+// Keep old links working, but use All User List as the only user-list feature.
+app.get("/study-buddies", function(req, res) {
+    const queryString = new URLSearchParams(req.query).toString();
+    res.redirect("/students" + (queryString ? "?" + queryString : ""));
+});
+
+app.get("/students", async function(req, res) {
+    if (!req.session.loggedIn || !req.session.uid) {
+        return res.redirect("/login");
+    }
+
+    await ensureStudentRatingsTable();
+
+    const currentUserId = parseInt(req.session.uid, 10);
     let q = req.query.q || "";
     let tag = req.query.tag || "";
     let page = parseInt(req.query.page) || 1;
     let limit = 3;
     let offset = (page - 1) * limit;
 
-    let sql;
-    let params = [];
+    const selectSql = `
+            SELECT
+                Students.*,
+                GROUP_CONCAT(DISTINCT Subjects.name SEPARATOR ', ') AS subjects,
+                COALESCE(ratings.avg_rating, 0) AS avg_rating,
+                COALESCE(ratings.rating_count, 0) AS rating_count,
+                COUNT(DISTINCT matched_subjects.subject_id) AS subject_match_count,
+                (COUNT(DISTINCT matched_subjects.subject_id) + COALESCE(ratings.avg_rating, 0)) AS match_score
+            FROM Students
+            LEFT JOIN Student_Subject ON Students.id = Student_Subject.student_id
+            LEFT JOIN Subjects ON Student_Subject.subject_id = Subjects.id
+            LEFT JOIN Student_Subject AS matched_subjects
+                ON matched_subjects.student_id = ?
+                AND matched_subjects.subject_id = Student_Subject.subject_id
+            LEFT JOIN (
+                SELECT rated_student_id, AVG(rating) AS avg_rating, COUNT(*) AS rating_count
+                FROM Student_Ratings
+                GROUP BY rated_student_id
+            ) AS ratings ON ratings.rated_student_id = Students.id
+    `;
+    const groupOrderSql = `
+            GROUP BY Students.id, Students.name, Students.note, Students.course, Students.study_year, Students.picture, Students.bio, Students.availability, Students.needs, ratings.avg_rating, ratings.rating_count
+            ORDER BY match_score DESC, subject_match_count DESC, avg_rating DESC, Students.id ASC
+            LIMIT ${limit} OFFSET ${offset}
+    `;
+
+    let sql = selectSql;
+    let params = [currentUserId];
 
     if (q) {
-        sql = `
-            SELECT Students.*, GROUP_CONCAT(Subjects.name SEPARATOR ', ') AS subjects
-            FROM Students
-            LEFT JOIN Student_Subject ON Students.id = Student_Subject.student_id
-            LEFT JOIN Subjects ON Student_Subject.subject_id = Subjects.id
+        sql += `
             WHERE Students.name LIKE ? OR Students.note LIKE ? OR Subjects.name LIKE ?
-            GROUP BY Students.id, Students.name, Students.note, Students.course, Students.study_year, Students.picture, Students.bio, Students.availability, Students.needs
-            ORDER BY Students.id ASC
-            LIMIT ${limit} OFFSET ${offset}
-        `;
-        params = ["%" + q + "%", "%" + q + "%", "%" + q + "%"];
+        ` + groupOrderSql;
+        params.push("%" + q + "%", "%" + q + "%", "%" + q + "%");
     } else if (tag) {
-        sql = `
-            SELECT Students.*, GROUP_CONCAT(Subjects.name SEPARATOR ', ') AS subjects
-            FROM Students
-            LEFT JOIN Student_Subject ON Students.id = Student_Subject.student_id
-            LEFT JOIN Subjects ON Student_Subject.subject_id = Subjects.id
+        sql += `
             WHERE Students.name LIKE ? OR Students.note LIKE ? OR Students.study_year LIKE ? OR Students.course LIKE ? OR Subjects.name LIKE ?
-            GROUP BY Students.id, Students.name, Students.note, Students.course, Students.study_year, Students.picture, Students.bio, Students.availability, Students.needs
-            ORDER BY Students.id ASC
-            LIMIT ${limit} OFFSET ${offset}
-        `;
-        params = ["%" + tag + "%", "%" + tag + "%", "%" + tag + "%", "%" + tag + "%", "%" + tag + "%"];
+        ` + groupOrderSql;
+        params.push("%" + tag + "%", "%" + tag + "%", "%" + tag + "%", "%" + tag + "%", "%" + tag + "%");
     } else {
-        sql = `
-            SELECT Students.*, GROUP_CONCAT(Subjects.name SEPARATOR ', ') AS subjects
-            FROM Students
-            LEFT JOIN Student_Subject ON Students.id = Student_Subject.student_id
-            LEFT JOIN Subjects ON Student_Subject.subject_id = Subjects.id
-            GROUP BY Students.id, Students.name, Students.note, Students.course, Students.study_year, Students.picture, Students.bio, Students.availability, Students.needs
-            ORDER BY Students.id ASC
-            LIMIT ${limit} OFFSET ${offset}
-        `;
+        sql += groupOrderSql;
     }
 
     try {
         const results = await db.query(sql, params);
 
-        res.render("all-students", {
-            title: "Study Buddies",
+        res.render("students", {
+            title: "All User List",
             data: results,
+            currentUserId: currentUserId,
             previousPage: page > 1 ? page - 1 : null,
             nextPage: results.length === limit ? page + 1 : null,
             queryString: q ? "&q=" + q : tag ? "&tag=" + tag : "",
@@ -163,16 +180,17 @@ app.get("/study-buddies", async function(req, res) {
             dbError: null
         });
     } catch (err) {
-        console.error("Error loading study buddies:", err.message);
+        console.error("Error loading student accounts:", err.message);
 
-        res.render("all-students", {
-            title: "Study Buddies",
+        res.render("students", {
+            title: "All User List",
             data: [],
+            currentUserId: currentUserId,
             previousPage: null,
             nextPage: null,
             queryString: "",
             q: q,
-            dbError: "Unable to load students. Please check the database connection."
+            dbError: "Unable to load student accounts. Please check the database connection."
         });
     }
 });
@@ -190,8 +208,8 @@ app.get("/create-request", function(req, res) {
 // This renders a simple search page using Pug
 app.get("/search", function(req, res) {
     res.render("search", {
-        title: "Search Study Buddies",
-        heading: "Search Study Buddies by Subject"
+        title: "Search All User List",
+        heading: "Search All User List by Subject"
     });
 });
 
@@ -273,16 +291,65 @@ app.get("/all-students", async function(req, res) {
 app.get("/single-student/:id", async function (req, res) {
     var stId = parseInt(req.params.id, 10);
 
+    await ensureStudentRatingsTable();
+
     var student = new Student(stId);
 
     await student.getStudentDetails();
     await student.getStudentSubjects();
 
+    const ratingRows = await db.query(
+        "SELECT AVG(rating) AS avg_rating, COUNT(*) AS rating_count FROM Student_Ratings WHERE rated_student_id = ?",
+        [stId]
+    );
+    const currentUserId = req.session.uid ? parseInt(req.session.uid, 10) : null;
+    let currentUserRating = null;
+
+    if (currentUserId && currentUserId !== stId) {
+        const userRatingRows = await db.query(
+            "SELECT rating FROM Student_Ratings WHERE rater_student_id = ? AND rated_student_id = ?",
+            [currentUserId, stId]
+        );
+        currentUserRating = userRatingRows.length ? userRatingRows[0].rating : null;
+    }
+
     res.render("student", {
         student: student,
-        currentUserId: req.session.uid ? parseInt(req.session.uid, 10) : null,
-        loggedIn: req.session.loggedIn || false
+        currentUserId: currentUserId,
+        loggedIn: req.session.loggedIn || false,
+        avgRating: ratingRows[0] && ratingRows[0].avg_rating ? Number(ratingRows[0].avg_rating).toFixed(1) : "Not rated yet",
+        ratingCount: ratingRows[0] ? ratingRows[0].rating_count : 0,
+        currentUserRating: currentUserRating,
+        ratingSaved: req.query.ratingSaved
     });
+});
+
+app.post("/single-student/:id/rating", async function(req, res) {
+    if (!req.session.loggedIn || !req.session.uid) {
+        return res.redirect("/login");
+    }
+
+    const ratedStudentId = parseInt(req.params.id, 10);
+    const raterStudentId = parseInt(req.session.uid, 10);
+    const rating = parseInt(req.body.rating, 10);
+
+    if (isNaN(ratedStudentId) || isNaN(rating) || rating < 1 || rating > 5) {
+        return res.redirect("/single-student/" + req.params.id);
+    }
+
+    if (ratedStudentId === raterStudentId) {
+        return res.redirect("/single-student/" + ratedStudentId);
+    }
+
+    await ensureStudentRatingsTable();
+    await db.query(
+        `INSERT INTO Student_Ratings (rater_student_id, rated_student_id, rating)
+         VALUES (?, ?, ?)
+         ON DUPLICATE KEY UPDATE rating = VALUES(rating)`,
+        [raterStudentId, ratedStudentId, rating]
+    );
+
+    res.redirect("/single-student/" + ratedStudentId + "?ratingSaved=1");
 });
 
 app.post("/single-student/:id/picture", async function(req, res) {
@@ -317,6 +384,54 @@ function countConsecutiveMessages(senderId, recipientId) {
         }
         return count;
     });
+}
+
+function formatMessageTime(value) {
+    let dateTime;
+
+    if (value instanceof Date) {
+        dateTime = DateTime.fromJSDate(value);
+    } else {
+        dateTime = DateTime.fromSQL(String(value));
+        if (!dateTime.isValid) {
+            dateTime = DateTime.fromJSDate(new Date(value));
+        }
+    }
+
+    return dateTime.isValid
+        ? dateTime.setZone("Europe/London").toFormat("dd LLL yyyy, HH:mm")
+        : String(value);
+}
+
+async function ensureStudyRequestAcceptsTable() {
+    await db.query(`
+        CREATE TABLE IF NOT EXISTS Study_Request_Accepts (
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            request_id INT NOT NULL,
+            student_id INT NOT NULL,
+            accepted_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            UNIQUE KEY request_student_accept (request_id, student_id),
+            FOREIGN KEY (request_id) REFERENCES Study_Requests(id),
+            FOREIGN KEY (student_id) REFERENCES Students(id)
+        )
+    `);
+}
+
+async function ensureStudentRatingsTable() {
+    await db.query(`
+        CREATE TABLE IF NOT EXISTS Student_Ratings (
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            rater_student_id INT NOT NULL,
+            rated_student_id INT NOT NULL,
+            rating INT NOT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+            UNIQUE KEY rater_rated_student (rater_student_id, rated_student_id),
+            FOREIGN KEY (rater_student_id) REFERENCES Students(id),
+            FOREIGN KEY (rated_student_id) REFERENCES Students(id),
+            CHECK (rating BETWEEN 1 AND 5)
+        )
+    `);
 }
 
 app.get('/messages/new/:recipientId', async function(req, res) {
@@ -368,12 +483,18 @@ app.post('/messages/new/:recipientId', async function(req, res) {
         const senderId = parseInt(req.session.uid, 10);
         const recipientId = parseInt(req.params.recipientId, 10);
         const body = (req.body.body || '').trim();
+        const returnTo = req.body.returnTo || '';
+        const canReturnToStudyRequest = /^\/study-request\/\d+$/.test(returnTo);
 
         if (isNaN(recipientId)) {
             return res.status(400).send('Invalid recipient ID.');
         }
 
         if (!body) {
+            if (canReturnToStudyRequest) {
+                return res.redirect(returnTo + '?messageError=empty');
+            }
+
             return res.render('messages-new', {
                 title: 'Send Message',
                 recipientId,
@@ -390,11 +511,19 @@ app.post('/messages/new/:recipientId', async function(req, res) {
         );
 
         if (blockCheck.length > 0) {
+            if (canReturnToStudyRequest) {
+                return res.redirect(returnTo + '?messageError=blocked');
+            }
+
             return res.send('You cannot send messages to this user because they have blocked you.');
         }
 
         const consecutiveCount = await countConsecutiveMessages(senderId, recipientId);
         if (consecutiveCount >= 2) {
+            if (canReturnToStudyRequest) {
+                return res.redirect(returnTo + '?messageError=limit');
+            }
+
             return res.send('You can only send 2 messages before the other user replies.');
         }
 
@@ -402,6 +531,10 @@ app.post('/messages/new/:recipientId', async function(req, res) {
             'INSERT INTO Messages (sender_id, recipient_id, body) VALUES (?, ?, ?)',
             [senderId, recipientId, body]
         );
+
+        if (canReturnToStudyRequest) {
+            return res.redirect(returnTo + '?messageSent=1');
+        }
 
         res.redirect('/single-student/' + recipientId);
     } catch (err) {
@@ -425,9 +558,40 @@ app.get('/messages/inbox', async function(req, res) {
         [recipientId]
     );
 
+    const messageGroups = [];
+    const groupsBySender = new Map();
+
+    for (const message of messages) {
+        const senderId = parseInt(message.sender_id, 10);
+
+        if (!groupsBySender.has(senderId)) {
+            const group = {
+                sender_id: senderId,
+                sender_name: message.sender_name,
+                latest_body: message.body,
+                latest_time: formatMessageTime(message.created_at),
+                messages: []
+            };
+            groupsBySender.set(senderId, group);
+            messageGroups.push(group);
+        }
+
+        groupsBySender.get(senderId).messages.push({
+            id: message.id,
+            body: message.body,
+            created_at: message.created_at,
+            formatted_created_at: formatMessageTime(message.created_at)
+        });
+    }
+
+    const requestedSenderId = parseInt(req.query.sender, 10);
+    const selectedGroup = messageGroups.find(group => group.sender_id === requestedSenderId) || messageGroups[0] || null;
+
     res.render('messages-inbox', {
         title: 'View Messages',
         messages,
+        messageGroups,
+        selectedGroup,
         currentUserId: recipientId
     });
 });
@@ -534,11 +698,64 @@ app.get("/study-request/:id", async function(req, res) {
         WHERE Study_Requests.id = ?
     `;
 
+    await ensureStudyRequestAcceptsTable();
+
     const results = await db.query(sql, [requestId]);
+    const acceptedRows = await db.query(
+        `SELECT Students.id, Students.name
+         FROM Study_Request_Accepts
+         JOIN Students ON Study_Request_Accepts.student_id = Students.id
+         WHERE Study_Request_Accepts.request_id = ?
+         ORDER BY Study_Request_Accepts.accepted_at DESC`,
+        [requestId]
+    );
+
+    const currentUserId = req.session.uid ? parseInt(req.session.uid, 10) : null;
 
     res.render("study-request-single", {
-        request: results[0]
+        request: results[0],
+        loggedIn: req.session.loggedIn,
+        currentUserId: currentUserId,
+        acceptedStudents: acceptedRows,
+        acceptedByCurrentUser: acceptedRows.some(row => parseInt(row.id, 10) === currentUserId),
+        acceptSuccess: req.query.accepted,
+        messageSent: req.query.messageSent,
+        messageError: req.query.messageError
     });
+});
+
+app.post("/study-request/:id/accept", async function(req, res) {
+    if (!req.session.loggedIn || !req.session.uid) {
+        return res.redirect("/login");
+    }
+
+    const requestId = parseInt(req.params.id, 10);
+    const currentUserId = parseInt(req.session.uid, 10);
+
+    if (isNaN(requestId)) {
+        return res.status(400).send("Invalid study request ID.");
+    }
+
+    const requestRows = await db.query(
+        "SELECT id, student_id FROM Study_Requests WHERE id = ?",
+        [requestId]
+    );
+
+    if (!requestRows.length) {
+        return res.redirect("/study-requests");
+    }
+
+    if (parseInt(requestRows[0].student_id, 10) === currentUserId) {
+        return res.redirect("/study-request/" + requestId);
+    }
+
+    await ensureStudyRequestAcceptsTable();
+    await db.query(
+        "INSERT IGNORE INTO Study_Request_Accepts (request_id, student_id) VALUES (?, ?)",
+        [requestId, currentUserId]
+    );
+
+    res.redirect("/study-request/" + requestId + "?accepted=1");
 });
 
 // Display one subject and the students linked to it using the Subject model
@@ -695,10 +912,24 @@ app.post('/authenticate', async function(req, res) {
 
 app.get('/welcome', async function(req, res) {
     if (req.session.loggedIn) {
-        res.render("welcome", {
-            title: "Welcome",
-            studentId: req.session.uid
-        });
+        try {
+            const results = await db.query("SELECT name FROM Students WHERE id = ?", [req.session.uid]);
+            const fullName = results[0] && results[0].name ? results[0].name.trim() : "";
+            const firstName = fullName ? fullName.split(/\s+/)[0] : "student " + req.session.uid;
+
+            res.render("welcome", {
+                title: "Welcome",
+                studentId: req.session.uid,
+                firstName: firstName
+            });
+        } catch (err) {
+            console.error("Error loading welcome page:", err.message);
+            res.render("welcome", {
+                title: "Welcome",
+                studentId: req.session.uid,
+                firstName: "student " + req.session.uid
+            });
+        }
     } else {
         res.redirect('/login');
     }
