@@ -22,7 +22,7 @@ block content
 
         div.nav-row
             a.button-link(href="/study-buddies") < Back to User List
-            if loggedIn && currentUserId == student.id
+            if loggedIn && currentUserId && currentUserId == student.id
                 a.button-link(href="/messages/inbox") View Messages
 
         div.box

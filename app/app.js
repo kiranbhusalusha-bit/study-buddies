@@ -237,7 +237,7 @@ app.get("/single-student/:id", async function (req, res) {
 
     res.render("student", {
         student: student,
-        currentUserId: req.session.uid || null,
+        currentUserId: req.session.uid ? parseInt(req.session.uid, 10) : null,
         loggedIn: req.session.loggedIn || false
     });
 });
