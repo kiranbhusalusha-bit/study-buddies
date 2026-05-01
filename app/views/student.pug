@@ -21,13 +21,13 @@ block content
                 button(type="submit", class="delete-account-inline") Delete Account
 
         div.nav-row
-            div.back-button
-                a.button-link(href="/study-buddies") < Back to User List
-            if loggedIn && currentUserId == student.id
-                a.button-link(href="/messages/inbox") View Messages
-                a.button-link(href="/profile/" + student.id) Edit Profile
-            else if loggedIn && currentUserId != student.id
-                a.button-link(href="/messages/block/" + student.id) Block User
+            a.button-link(href="/study-buddies") < Back to User List
+            div.nav-actions
+                if loggedIn && currentUserId == student.id
+                    a.button-link(href="/messages/inbox") View Messages
+                    a.button-link(href="/profile/" + student.id) Edit Profile
+                else if loggedIn && currentUserId != student.id
+                    a.button-link(href="/messages/block/" + student.id) Block User
 
         div.box
             p Student Name: #{student.name}
@@ -57,5 +57,5 @@ block content
             p • Not added yet
 
         if loggedIn && currentUserId && currentUserId != student.id
-            div.message-button
-                a.button-link(href="/messages/new/" + student.id) Send Message
+            div.send-message-section
+                a.send-message-button(href="/messages/new/" + student.id) Send Message

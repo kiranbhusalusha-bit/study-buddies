@@ -85,12 +85,20 @@ button {
     gap: 20px;
 }
 
-.back-button {
-    margin-bottom: 0;
+.nav-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 700px;
+    margin: 0 auto 12px auto;
+    gap: 20px;
 }
 
-.nav-row a,
-.edit-profile-link a,
+.nav-actions {
+    display: flex;
+    gap: 10px;
+}
+
 .button-link {
     display: inline-block;
     padding: 10px 14px;
@@ -99,7 +107,31 @@ button {
     background: white;
     text-decoration: none;
     color: black;
-    margin-right: 10px;
+}
+
+.button-link:hover {
+    background: #f5f5f5;
+}
+
+.send-message-section {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.send-message-button {
+    display: inline-block;
+    padding: 12px 25px;
+    border: 1px solid black;
+    border-radius: 8px;
+    background: white;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
+
+.send-message-button:hover {
+    background: #f5f5f5;
 }
 
 .edit-profile-link a:hover,
