@@ -22,15 +22,12 @@ block content
 
         div.nav-row
             div.back-button
-                a(href="/study-buddies") < Back to User List
+                a.button-link(href="/study-buddies") < Back to User List
             if loggedIn && currentUserId == student.id
-                div.view-messages-link
-                    a(href="/messages/inbox") View Messages
-                div.edit-profile-link
-                    a(href="/profile/" + student.id) Edit Profile
+                a.button-link(href="/messages/inbox") View Messages
+                a.button-link(href="/profile/" + student.id) Edit Profile
             else if loggedIn && currentUserId != student.id
-                div.edit-profile-link
-                    a(href="/messages/block/" + student.id) Block User
+                a.button-link(href="/messages/block/" + student.id) Block User
 
         div.box
             p Student Name: #{student.name}
@@ -59,5 +56,6 @@ block content
             p Availability
             p • Not added yet
 
-        div.message-button
-            button [Send Message] optional
+        if loggedIn && currentUserId && currentUserId != student.id
+            div.message-button
+                a.button-link(href="/messages/new/" + student.id) Send Message

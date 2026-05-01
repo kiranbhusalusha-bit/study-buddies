@@ -86,14 +86,12 @@ button {
 }
 
 .back-button {
-    border: 1px solid black;
-    padding: 10px 15px;
     margin-bottom: 0;
-    background: white;
 }
 
-.back-button a,
-.edit-profile-link a {
+.nav-row a,
+.edit-profile-link a,
+.button-link {
     display: inline-block;
     padding: 10px 14px;
     border: 1px solid black;
@@ -101,6 +99,7 @@ button {
     background: white;
     text-decoration: none;
     color: black;
+    margin-right: 10px;
 }
 
 .edit-profile-link a:hover,
