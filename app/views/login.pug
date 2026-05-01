@@ -1,27 +1,22 @@
 extends layout
 
 block content
-    div.container
-
-        div.box
-            h1 Login here
-
-        div.box
-            form(action="/authenticate" method="POST")
-                label(for="email") Enter your email:
-                input(name="email")
-
-                br
-                br
-
-                label(for="password") Enter your password:
-                input(name="password" type="password")
-
-                br
-                br
-
-                input(type="submit" value="Login")
-
-        div.box
-            p New user?
-            a(href="/register") Register here
+    div.auth-page
+        div.auth-card
+            div.auth-left
+                img.auth-logo(src="/images/logo.svg" alt="Study Buddies logo")
+                h2 Study Buddies
+                p Learn together. Grow together.
+            div.auth-right
+                h2.auth-heading Sign In
+                form.auth-form(action="/authenticate" method="POST")
+                    div.form-group
+                        label(for="email") Email
+                        input.auth-input(type="email" name="email" placeholder="Enter your email" required)
+                    div.form-group
+                        label(for="password") Password
+                        input.auth-input(type="password" name="password" placeholder="Enter your password" required)
+                    button.auth-submit(type="submit") Sign In
+                p.auth-footer
+                    | New user? 
+                    a.auth-link(href="/register") Register here
