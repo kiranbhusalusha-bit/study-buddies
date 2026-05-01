@@ -22,7 +22,8 @@ block content
 
         div.nav-row
             a.button-link(href="/study-buddies") < Back to User List
-            if loggedIn && currentUserId && currentUserId == student.id
+            - var isOwnProfile = loggedIn && currentUserId && (currentUserId === student.id)
+            if isOwnProfile
                 a.button-link(href="/messages/inbox") View Messages
 
         div.box
