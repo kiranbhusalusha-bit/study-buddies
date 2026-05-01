@@ -1,48 +1,70 @@
 extends layout
 
 block content
-    div.container
+    div.user-list-shell
+        div.user-list-panel
+            div.user-list-heading
+                span.sparkle *
+                div
+                    h2 Find a Study Buddy (User List Page)
+                    span.heading-mark
 
-        div.box
-            h2 Find a Study Buddy (User List Page)
-
-        div.box
-            form(action="/all-students" method="GET")
-                label Search: 
-                input(type="text" name="q" placeholder="Enter subject or keyword")
+            form.user-search(action="/study-buddies" method="GET")
+                label.sr-only(for="buddy-search") Search
+                input#buddy-search(type="text" name="q" placeholder="Enter subject or keyword..." value=(typeof q !== "undefined" ? q : ""))
                 button(type="submit") Search
 
-        div.box
-            p Filters / Tags:
-            a(href="/all-students?tag=Maths") [Maths]
-            |  
-            a(href="/all-students?tag=Programming") [Programming]
-            |  
-            a(href="/all-students?tag=First Year") [First Year]
-            |  
-            a(href="/all-students?tag=Business") [Business]
-            |  
-            a(href="/all-students") [Clear]
+            div.filter-card
+                span.filter-title Filters / Tags
+                a.filter-pill.maths(href="/study-buddies?tag=Maths") Maths
+                a.filter-pill.programming(href="/study-buddies?tag=Programming") Programming
+                a.filter-pill.year(href="/study-buddies?tag=First Year") First Year
+                a.filter-pill.business(href="/study-buddies?tag=Business") Business
+                a.filter-pill.more(href="/study-buddies") More...
 
-        div.box.student-list
-            each student in data
-                div.student-card
-                    p Student Name: #{student.name}
-                    p Student ID: #{student.id}
-                    if student.note
-                        p Note: #{student.note}
-                    p
-                        a(href="/single-student/" + student.id) [ View Profile ]
+            div.study-buddy-list
+                if dbError
+                    p.empty-list #{dbError}
+                if data && data.length
+                    each student in data
+                        div.buddy-card(data-student-id=student.id)
+                            div.avatar-picker
+                                img.buddy-avatar(src=(student.picture || "/images/default-avatar.svg") alt=student.name + " profile picture")
 
-            div.pagination
+                            div.buddy-info
+                                h3 Student Name: #{student.name}
+                                if student.course || student.study_year
+                                    p.meta-line
+                                        span.icon-circle
+                                        | Course / Year: #{student.course || "Not added"}, Year #{student.study_year || "Not added"}
+                                else
+                                    p.meta-line
+                                        span.icon-circle
+                                        | Course / Year: Not added
+                                if student.subjects
+                                    p.meta-line
+                                        span.book-icon
+                                        | Subjects: #{student.subjects}
+                                else if student.note
+                                    p.meta-line
+                                        span.book-icon
+                                        | Subjects: #{student.note}
+                                else
+                                    p.meta-line
+                                        span.book-icon
+                                        | Subjects: Not added
+
+                            a.profile-button(href="/single-student/" + student.id) View Profile
+                else if !dbError
+                    p.empty-list No students found.
+
+            div.user-pagination
                 if previousPage
-                    a(href="/study-buddies?page=" + previousPage + queryString) [ Previous ]
+                    a.page-button(href="/study-buddies?page=" + previousPage + queryString) Previous
                 else
-                    span [ Previous ]
-
-                |  
+                    span.page-button.disabled Previous
 
                 if nextPage
-                    a(href="/study-buddies?page=" + nextPage + queryString) [ Next ]
+                    a.page-button.primary(href="/study-buddies?page=" + nextPage + queryString) Next
                 else
-                    span [ Next ]
+                    span.page-button.primary.disabled Next

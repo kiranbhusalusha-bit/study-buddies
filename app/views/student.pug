@@ -16,15 +16,26 @@ block content
             a(href="/create-request") Create Study Request
             |  | 
             a(href="/logout") Logout
-            |  | 
-            form(action="/profile/" + student.id + "/delete", method="POST", style="display:inline;margin:0;")
-                button(type="submit", class="delete-account-inline") Delete Account
 
         div.nav-row
             a.button-link(href="/study-buddies") < Back to User List
             - var isOwnProfile = loggedIn && currentUserId && (currentUserId === student.id)
             if isOwnProfile
                 a.button-link(href="/messages/inbox") View Messages
+                a.button-link(href="/profile/" + student.id) Edit Profile
+
+        div.box
+            if student.picture
+                img.profile-pic(src=student.picture, alt=student.name + " profile picture")
+            else
+                img.profile-pic(src="/images/default-avatar.svg", alt="Default profile picture")
+
+            if isOwnProfile
+                form.picture-form(action="/single-student/" + student.id + "/picture", method="POST")
+                    div.form-group
+                        label(for="picture") Add / Change Profile Picture URL:
+                        input(type="url", id="picture", name="picture", value=student.picture || "", placeholder="https://example.com/my-photo.jpg")
+                    button(type="submit") Save Picture
 
         div.box
             p Student Name: #{student.name}

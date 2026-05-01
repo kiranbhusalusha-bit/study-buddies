@@ -46,6 +46,11 @@ app.get("/", function(req, res) {
 // Profile route
 app.get("/profile/:id", async function(req, res) {
     const studentId = req.params.id;
+
+    if (!req.session.loggedIn || !req.session.uid || req.session.uid.toString() !== studentId.toString()) {
+        return res.redirect("/single-student/" + studentId);
+    }
+
     const student = new Student(studentId);
     await student.getStudentDetails();
     await student.getStudentSubjects();
@@ -65,15 +70,25 @@ app.post("/profile/:id/update", async function(req, res) {
     const bio = req.body.bio;
     const availability = req.body.availability;
     const needs = req.body.needs;
+    const picture = req.body.picture;
 
-    await student.updateProfile(name, bio, availability, needs);
+    if (!req.session.loggedIn || !req.session.uid || req.session.uid.toString() !== studentId.toString()) {
+        return res.redirect("/single-student/" + studentId);
+    }
 
-    res.redirect(`/profile/${studentId}`);
+    await student.updateProfile(name, bio, availability, needs, picture);
+
+    res.redirect(`/single-student/${studentId}`);
 });
 
 // Delete profile route
 app.post("/profile/:id/delete", async function(req, res) {
     const studentId = req.params.id;
+
+    if (!req.session.loggedIn || !req.session.uid || req.session.uid.toString() !== studentId.toString()) {
+        return res.redirect("/single-student/" + studentId);
+    }
+
     const student = new Student(studentId);
 
     await student.deleteAccount();
@@ -101,37 +116,65 @@ app.get("/study-buddies", async function(req, res) {
 
     if (q) {
         sql = `
-            SELECT * FROM Students
-            WHERE name LIKE ? OR note LIKE ?
-            ORDER BY id ASC
+            SELECT Students.*, GROUP_CONCAT(Subjects.name SEPARATOR ', ') AS subjects
+            FROM Students
+            LEFT JOIN Student_Subject ON Students.id = Student_Subject.student_id
+            LEFT JOIN Subjects ON Student_Subject.subject_id = Subjects.id
+            WHERE Students.name LIKE ? OR Students.note LIKE ? OR Subjects.name LIKE ?
+            GROUP BY Students.id, Students.name, Students.note, Students.course, Students.study_year, Students.picture, Students.bio, Students.availability, Students.needs
+            ORDER BY Students.id ASC
             LIMIT ${limit} OFFSET ${offset}
         `;
-        params = ["%" + q + "%", "%" + q + "%"];
+        params = ["%" + q + "%", "%" + q + "%", "%" + q + "%"];
     } else if (tag) {
         sql = `
-            SELECT * FROM Students
-            WHERE name LIKE ? OR note LIKE ? OR study_year LIKE ?
-            ORDER BY id ASC
+            SELECT Students.*, GROUP_CONCAT(Subjects.name SEPARATOR ', ') AS subjects
+            FROM Students
+            LEFT JOIN Student_Subject ON Students.id = Student_Subject.student_id
+            LEFT JOIN Subjects ON Student_Subject.subject_id = Subjects.id
+            WHERE Students.name LIKE ? OR Students.note LIKE ? OR Students.study_year LIKE ? OR Students.course LIKE ? OR Subjects.name LIKE ?
+            GROUP BY Students.id, Students.name, Students.note, Students.course, Students.study_year, Students.picture, Students.bio, Students.availability, Students.needs
+            ORDER BY Students.id ASC
             LIMIT ${limit} OFFSET ${offset}
         `;
-        params = ["%" + tag + "%", "%" + tag + "%", "%" + tag + "%"];
+        params = ["%" + tag + "%", "%" + tag + "%", "%" + tag + "%", "%" + tag + "%", "%" + tag + "%"];
     } else {
         sql = `
-            SELECT * FROM Students
-            ORDER BY id ASC
+            SELECT Students.*, GROUP_CONCAT(Subjects.name SEPARATOR ', ') AS subjects
+            FROM Students
+            LEFT JOIN Student_Subject ON Students.id = Student_Subject.student_id
+            LEFT JOIN Subjects ON Student_Subject.subject_id = Subjects.id
+            GROUP BY Students.id, Students.name, Students.note, Students.course, Students.study_year, Students.picture, Students.bio, Students.availability, Students.needs
+            ORDER BY Students.id ASC
             LIMIT ${limit} OFFSET ${offset}
         `;
     }
 
-    const results = await db.query(sql, params);
+    try {
+        const results = await db.query(sql, params);
 
-    res.render("all-students", {
-        title: "Study Buddies",
-        data: results,
-        previousPage: page > 1 ? page - 1 : null,
-        nextPage: results.length === limit ? page + 1 : null,
-        queryString: q ? "&q=" + q : tag ? "&tag=" + tag : ""
-    });
+        res.render("all-students", {
+            title: "Study Buddies",
+            data: results,
+            previousPage: page > 1 ? page - 1 : null,
+            nextPage: results.length === limit ? page + 1 : null,
+            queryString: q ? "&q=" + q : tag ? "&tag=" + tag : "",
+            q: q,
+            dbError: null
+        });
+    } catch (err) {
+        console.error("Error loading study buddies:", err.message);
+
+        res.render("all-students", {
+            title: "Study Buddies",
+            data: [],
+            previousPage: null,
+            nextPage: null,
+            queryString: "",
+            q: q,
+            dbError: "Unable to load students. Please check the database connection."
+        });
+    }
 });
 
 // Create study request route
@@ -240,6 +283,20 @@ app.get("/single-student/:id", async function (req, res) {
         currentUserId: req.session.uid ? parseInt(req.session.uid, 10) : null,
         loggedIn: req.session.loggedIn || false
     });
+});
+
+app.post("/single-student/:id/picture", async function(req, res) {
+    const studentId = req.params.id;
+
+    if (!req.session.loggedIn || !req.session.uid || req.session.uid.toString() !== studentId.toString()) {
+        return res.redirect("/single-student/" + studentId);
+    }
+
+    const picture = (req.body.picture || "").trim();
+    const student = new Student(studentId);
+
+    await student.updateStudentPicture(picture);
+    res.redirect("/single-student/" + studentId);
 });
 
 function countConsecutiveMessages(senderId, recipientId) {
@@ -664,8 +721,9 @@ app.get("/logout", function(req, res) {
 });
 
 
-// Start server on port 3000
+// Start server on port 3000 unless another port is provided
 // This must stay at the bottom of the file
-app.listen(3000, function() {
-    console.log("Server running at http://127.0.0.1:3000/");
+const port = process.env.PORT || 3000;
+app.listen(port, function() {
+    console.log("Server running at http://127.0.0.1:" + port + "/");
 });

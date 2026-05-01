@@ -57,14 +57,23 @@ class Student {
         return result;
     }
 
-    async updateProfile(name, bio, availability, needs) {
-        var sql = "UPDATE Students SET name = ?, bio = ?, availability = ?, needs = ? WHERE id = ?";
-        const result = await db.query(sql, [name, bio, availability, needs, this.id]);
+    async updateProfile(name, bio, availability, needs, picture) {
+        var sql = "UPDATE Students SET name = ?, bio = ?, availability = ?, needs = ?, picture = ? WHERE id = ?";
+        const result = await db.query(sql, [name, bio, availability, needs, picture, this.id]);
 
         this.name = name;
         this.bio = bio;
         this.availability = availability;
         this.needs = needs;
+        this.picture = picture;
+        return result;
+    }
+
+    async updateStudentPicture(picture) {
+        var sql = "UPDATE Students SET picture = ? WHERE id = ?";
+        const result = await db.query(sql, [picture, this.id]);
+
+        this.picture = picture;
         return result;
     }
 

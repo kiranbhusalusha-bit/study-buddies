@@ -23,6 +23,9 @@ block content
                         label(for="name") Name:
                         input(type="text", name="name", id="name", value=student.name || "", required=true)
                     div.form-group
+                        label(for="picture") Profile picture URL:
+                        input(type="url", name="picture", id="picture", value=student.picture || "", placeholder="https://example.com/my-photo.jpg")
+                    div.form-group
                         label(for="bio") Bio (max 100 words):
                         textarea(name="bio", id="bio", rows="4", maxlength="1000")= student.bio || ""
                         span.word-count 0 / 100 words
