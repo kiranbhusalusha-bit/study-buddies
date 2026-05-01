@@ -508,6 +508,7 @@ app.get("/study-requests", async function(req, res) {
             previousPage: page > 1 ? page - 1 : null,
             nextPage: results.length === limit ? page + 1 : null,
             queryString: q ? "&q=" + q : "",
+            q: q,
             success: req.query.created ? "Study request created successfully." : null
         });
     } catch (err) {

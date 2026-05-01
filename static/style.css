@@ -238,8 +238,8 @@ button:hover {
 }
 
 .home-button.secondary {
-    background: white;
-    color: #0e64df;
+    background: #0e64df;
+    color: white;
 }
 
 .home-button:hover {
@@ -672,6 +672,156 @@ button:hover {
     color: black;
 }
 
+.request-page-shell {
+    width: min(760px, calc(100% - 24px));
+    margin: 18px auto;
+    padding: 14px;
+    border: 2px solid #8dbdff;
+    border-radius: 14px;
+    background:
+        radial-gradient(circle at bottom right, rgba(30, 144, 255, 0.12), transparent 145px),
+        radial-gradient(circle at top left, rgba(30, 144, 255, 0.08), transparent 110px),
+        linear-gradient(135deg, rgba(30, 117, 229, 0.16) 0 3px, transparent 3px 10px),
+        #f8fbff;
+    color: #123f8a;
+    box-shadow: 0 18px 42px rgba(24, 76, 143, 0.12);
+}
+
+.request-page-panel {
+    padding: 22px 28px;
+}
+
+.request-page-title {
+    padding: 24px 18px;
+    border: 2px solid #b8d7ff;
+    border-radius: 10px;
+    background: white;
+}
+
+.request-page-title h2 {
+    margin: 0;
+    color: #12489b;
+    font-size: 24px;
+    letter-spacing: 0;
+}
+
+.request-success {
+    width: min(420px, 100%);
+    margin: 14px auto 0;
+    padding: 10px 14px;
+    border: 2px solid #b8d7ff;
+    border-radius: 8px;
+    background: white;
+    color: #12489b;
+    font-weight: bold;
+}
+
+.request-success p {
+    margin: 0;
+}
+
+.request-create-link {
+    width: min(320px, 100%);
+    margin: 16px auto 12px;
+    padding: 10px 14px;
+    border: 2px solid #b8d7ff;
+    border-radius: 10px;
+    background: white;
+    font-weight: bold;
+}
+
+.request-create-link a {
+    color: #4430a6;
+}
+
+.request-filter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 12px 0 18px;
+    padding: 16px;
+    border: 2px solid #b8d7ff;
+    border-radius: 10px;
+    background: white;
+    color: #12489b;
+    font-weight: bold;
+}
+
+.request-filter input {
+    min-width: min(230px, 100%);
+    padding: 8px 10px;
+    border: 2px solid #cfe2ff;
+    border-radius: 6px;
+    color: #123f8a;
+}
+
+.request-filter button {
+    min-width: 92px;
+    margin: 0 14px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    background: #0e64df;
+    color: white;
+}
+
+.request-filter a {
+    color: #4430a6;
+}
+
+.request-list-panel {
+    display: grid;
+    gap: 14px;
+    padding: 16px;
+    border: 2px solid #b8d7ff;
+    border-radius: 12px;
+    background: white;
+}
+
+.study-request-card {
+    padding: 20px 18px;
+    border: 2px solid #b8d7ff;
+    border-radius: 10px;
+    background: white;
+    color: #1d2d4f;
+    font-weight: normal;
+}
+
+.study-request-card p {
+    margin: 5px 0;
+}
+
+.study-request-card strong {
+    font-weight: normal;
+}
+
+.study-request-card a {
+    color: #4430a6;
+    font-weight: bold;
+}
+
+.request-empty {
+    margin: 12px 0;
+    color: #12489b;
+    font-weight: bold;
+}
+
+.request-pagination {
+    width: min(320px, 100%);
+    margin: 16px auto 0;
+    padding: 8px 14px;
+    border: 2px solid #b8d7ff;
+    border-radius: 10px;
+    background: white;
+    color: #123f8a;
+    font-weight: bold;
+}
+
+.request-pagination a {
+    color: #4430a6;
+}
+
 .profile-container {
     display: flex;
     flex-direction: column;
@@ -909,6 +1059,23 @@ button:hover {
         width: 24px;
         margin-left: 8px;
         margin-right: 8px;
+    }
+
+    .request-page-panel {
+        padding: 18px 10px;
+    }
+
+    .request-page-title {
+        padding: 20px 12px;
+    }
+
+    .request-filter button {
+        width: 100%;
+        margin: 4px 0;
+    }
+
+    .request-list-panel {
+        padding: 10px;
     }
 
     .auth-card {
