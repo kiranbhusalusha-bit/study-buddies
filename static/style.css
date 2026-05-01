@@ -672,6 +672,59 @@ button:hover {
     color: black;
 }
 
+.create-request-panel {
+    text-align: left;
+}
+
+.create-request-form {
+    width: min(520px, 100%);
+    margin: 0 auto;
+}
+
+.create-request-form label {
+    display: block;
+    margin: 0 0 8px;
+    color: #2f4f75;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.create-request-form input,
+.create-request-form textarea {
+    width: 100%;
+    margin: 0 0 16px;
+    padding: 10px;
+    border: 2px solid #1E90FF;
+    border-radius: 12px;
+    background: white;
+    color: black;
+    font: inherit;
+    box-sizing: border-box;
+}
+
+.create-request-form textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.create-request-form button {
+    min-width: 92px;
+    margin: 2px 0 0;
+}
+
+.create-request-form button:hover {
+    background: #1873CC;
+}
+
+.create-request-message {
+    font-weight: bold;
+    text-align: center;
+}
+
+.create-request-message p {
+    margin: 0;
+}
+
 .request-page-shell {
     width: min(760px, calc(100% - 24px));
     margin: 18px auto;
@@ -793,7 +846,8 @@ button:hover {
 }
 
 .study-request-card strong {
-    font-weight: normal;
+    color: #0f3f8b;
+    font-weight: bold;
 }
 
 .study-request-card a {
@@ -1059,6 +1113,10 @@ button:hover {
         width: 24px;
         margin-left: 8px;
         margin-right: 8px;
+    }
+
+    .create-request-form {
+        width: 100%;
     }
 
     .request-page-panel {

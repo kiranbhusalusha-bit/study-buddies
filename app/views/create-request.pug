@@ -2,31 +2,38 @@ extends layout
 
 block content
     div.container
-
         div.box
             h2 Create Study Request
 
+        div.box
+            a(href="/") Home
+            |  | 
+            a(href="/study-buddies") Study Buddies
+            |  | 
+            a(href="/study-requests") Study Requests
+            |  | 
+            a(href="/logout") Logout
+
         if error
-            div.box
+            div.box.create-request-message
                 p #{error}
 
         if success
-            div.box
+            div.box.create-request-message
                 p #{success}
 
-        div.box
-            form(action="/create-request" method="POST")
-                p Title:
-                input(type="text" name="title" value=title)
+        div.box.create-request-panel
+            form.create-request-form(action="/create-request" method="POST")
+                label(for="request-title") Title:
+                input#request-title(type="text" name="title" value=title)
 
-                p Subject:
-                input(type="text" name="subject" value=subject)
+                label(for="request-subject") Subject:
+                input#request-subject(type="text" name="subject" value=subject)
 
-                p Description:
-                textarea(name="description") #{description}
+                label(for="request-description") Description:
+                textarea#request-description(name="description") #{description}
 
-                br
                 button(type="submit") Submit
 
-        p
-            a(href="/study-requests") Back to Study Requests
+        div.nav-row
+            a.button-link(href="/study-requests") < Back to Study Requests
