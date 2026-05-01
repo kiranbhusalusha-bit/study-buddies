@@ -22,12 +22,8 @@ block content
 
         div.nav-row
             a.button-link(href="/study-buddies") < Back to User List
-            div.nav-actions
-                if loggedIn && currentUserId == student.id
-                    a.button-link(href="/messages/inbox") View Messages
-                    a.button-link(href="/profile/" + student.id) Edit Profile
-                else if loggedIn && currentUserId != student.id
-                    a.button-link(href="/messages/block/" + student.id) Block User
+            if loggedIn && currentUserId == student.id
+                a.button-link(href="/messages/inbox") View Messages
 
         div.box
             p Student Name: #{student.name}
