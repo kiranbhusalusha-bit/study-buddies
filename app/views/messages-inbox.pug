@@ -4,17 +4,21 @@ block content
     h1 View Messages
 
     if messages.length
-        table(border=1)
-            tr
-                th From
-                th Message
-                th Received
-            each msg in messages
-                tr
-                    td
-                        a(href="/single-student/" + msg.sender_id)= msg.sender_name
-                    td= msg.body
-                    td= msg.created_at
+        each msg in messages
+            div.message-card
+                p
+                    strong From:
+                    a(href="/single-student/" + msg.sender_id)= msg.sender_name
+                p
+                    strong Message:
+                    |  #{msg.body}
+                p
+                    strong Received:
+                    |  #{msg.created_at}
+                form.reply-form(action="/messages/new/" + msg.sender_id, method="POST")
+                    textarea(name="body", placeholder="Reply to " + msg.sender_name + "...", rows="3")
+                    br
+                    button.reply-button(type="submit") Reply
     else
         p You have no new messages.
 
