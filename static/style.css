@@ -11,7 +11,7 @@ body {
 }
 
 .box {
-    border: 2px solid #00008B;
+    border: 2px solid #1E90FF;
     padding: 18px;
     margin-bottom: 12px;
     border-radius: 12px;
@@ -28,21 +28,21 @@ button {
     margin: 0 25px 12px 25px;
     border: none;
     border-radius: 12px;
-    background: #00008B;
+    background: #1E90FF;
     color: black;
     cursor: pointer;
     font-weight: bold;
 }
 
 button:hover {
-    background: #000056;
+    background: #1873CC;
 }
 
 .delete-account-inline {
     padding: 8px 14px;
     margin: 0;
     border: none;
-    background: #00008B;
+    background: #1E90FF;
     color: black;
     border-radius: 12px;
     cursor: pointer;
@@ -50,7 +50,7 @@ button:hover {
 }
 
 .delete-account-inline:hover {
-    background: #000056;
+    background: #1873CC;
 }
 
 .logo-title {
@@ -72,7 +72,7 @@ button:hover {
 }
 
 .student-card {
-    border: 2px solid #00008B;
+    border: 2px solid #1E90FF;
     width: 75%;
     margin: 12px auto;
     padding: 10px;
@@ -87,7 +87,7 @@ button:hover {
 }
 
 .pagination {
-    border: 2px solid #00008B;
+    border: 2px solid #1E90FF;
     width: 35%;
     margin: 10px auto -28px auto;
     background: white;
@@ -108,7 +108,7 @@ button:hover {
     padding: 10px 14px;
     border: none;
     border-radius: 12px;
-    background: #00008B;
+    background: #1E90FF;
     text-decoration: none;
     color: black;
     white-space: nowrap;
@@ -117,7 +117,7 @@ button:hover {
 }
 
 .button-link:hover {
-    background: #000056;
+    background: #1873CC;
 }
 
 .send-message-section {
@@ -131,7 +131,7 @@ button:hover {
     padding: 12px 25px;
     border: none;
     border-radius: 12px;
-    background: #00008B;
+    background: #1E90FF;
     text-decoration: none;
     color: black;
     font-size: 14px;
@@ -140,21 +140,21 @@ button:hover {
 }
 
 .send-message-button:hover {
-    background: #000056;
+    background: #1873CC;
 }
 
 .message-button button {
     border: none;
     border-radius: 12px;
     padding: 12px 25px;
-    background: #00008B;
+    background: #1E90FF;
     color: black;
     font-weight: bold;
     cursor: pointer;
 }
 
 .request-button {
-    border: 2px solid #00008B;
+    border: 2px solid #1E90FF;
     width: 35%;
     padding: 12px;
     margin: 10px auto;
@@ -170,7 +170,7 @@ button:hover {
 }
 
 .request-card {
-    border: 2px solid #00008B;
+    border: 2px solid #1E90FF;
     width: 85%;
     margin: 12px auto;
     padding: 20px;
@@ -224,7 +224,7 @@ button:hover {
 .form-group textarea {
     width: 100%;
     padding: 8px;
-    border: 2px solid #00008B;
+    border: 2px solid #1E90FF;
     border-radius: 12px;
     resize: vertical;
     color: black;
@@ -233,7 +233,7 @@ button:hover {
 .form-group input {
     width: 100%;
     padding: 8px;
-    border: 2px solid #00008B;
+    border: 2px solid #1E90FF;
     border-radius: 12px;
     color: black;
 }
@@ -247,7 +247,7 @@ button:hover {
     margin-top: 12px;
     padding: 12px 18px;
     border: none;
-    background: #00008B;
+    background: #1E90FF;
     color: black;
     border-radius: 12px;
     cursor: pointer;
