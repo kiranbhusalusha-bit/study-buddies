@@ -228,7 +228,7 @@ app.get("/all-students", async function(req, res) {
 });
 
 app.get("/single-student/:id", async function (req, res) {
-    var stId = req.params.id;
+    var stId = parseInt(req.params.id, 10);
 
     var student = new Student(stId);
 
