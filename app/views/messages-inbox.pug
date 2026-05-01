@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    h1 View Messages
+
+    if messages.length
+        table(border=1)
+            tr
+                th From
+                th Message
+                th Received
+            each msg in messages
+                tr
+                    td
+                        a(href="/single-student/" + msg.sender_id)= msg.sender_name
+                    td= msg.body
+                    td= msg.created_at
+    else
+        p You have no new messages.
+
+    p
+        a(href="/single-student/" + currentUserId) Back to your profile

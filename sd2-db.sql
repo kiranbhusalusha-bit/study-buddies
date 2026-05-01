@@ -64,6 +64,26 @@ INSERT INTO Student_Subject VALUES
 (3, 4),
 (4, 3);
 
+CREATE TABLE Messages (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    sender_id INT NOT NULL,
+    recipient_id INT NOT NULL,
+    body TEXT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (sender_id) REFERENCES Students(id),
+    FOREIGN KEY (recipient_id) REFERENCES Students(id)
+);
+
+CREATE TABLE MessageBlocks (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    blocker_id INT NOT NULL,
+    blocked_id INT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (blocker_id) REFERENCES Students(id),
+    FOREIGN KEY (blocked_id) REFERENCES Students(id),
+    UNIQUE KEY blocker_blocked (blocker_id, blocked_id)
+);
+
 CREATE TABLE Study_Requests (
     id INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(100) NOT NULL,

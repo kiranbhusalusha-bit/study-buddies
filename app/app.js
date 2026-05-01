@@ -235,14 +235,144 @@ app.get("/single-student/:id", async function (req, res) {
     await student.getStudentDetails();
     await student.getStudentSubjects();
 
-
-    console.log(student);
-
     res.render("student", {
         student: student,
+        currentUserId: req.session.uid || null,
+        loggedIn: req.session.loggedIn || false
     });
 });
 
+function countConsecutiveMessages(senderId, recipientId) {
+    return db.query(
+        `SELECT sender_id FROM Messages
+         WHERE (sender_id = ? AND recipient_id = ?) OR (sender_id = ? AND recipient_id = ?)
+         ORDER BY created_at DESC`,
+        [senderId, recipientId, recipientId, senderId]
+    ).then(results => {
+        let count = 0;
+        for (let row of results) {
+            if (row.sender_id === senderId) {
+                count++;
+            } else {
+                break;
+            }
+        }
+        return count;
+    });
+}
+
+app.get('/messages/new/:recipientId', async function(req, res) {
+    if (!req.session.loggedIn || !req.session.uid) {
+        return res.redirect('/login');
+    }
+
+    const senderId = parseInt(req.session.uid, 10);
+    const recipientId = parseInt(req.params.recipientId, 10);
+
+    if (senderId === recipientId) {
+        return res.redirect('/single-student/' + recipientId);
+    }
+
+    const blockCheck = await db.query(
+        'SELECT id FROM MessageBlocks WHERE blocker_id = ? AND blocked_id = ?',
+        [recipientId, senderId]
+    );
+
+    const blocked = blockCheck.length > 0;
+    const consecutiveCount = await countConsecutiveMessages(senderId, recipientId);
+    const canSend = !blocked && consecutiveCount < 2;
+
+    res.render('messages-new', {
+        title: 'Send Message',
+        recipientId,
+        blocked,
+        consecutiveCount,
+        canSend,
+        messageError: null
+    });
+});
+
+app.post('/messages/new/:recipientId', async function(req, res) {
+    if (!req.session.loggedIn || !req.session.uid) {
+        return res.redirect('/login');
+    }
+
+    const senderId = parseInt(req.session.uid, 10);
+    const recipientId = parseInt(req.params.recipientId, 10);
+    const body = (req.body.body || '').trim();
+
+    if (!body) {
+        return res.render('messages-new', {
+            title: 'Send Message',
+            recipientId,
+            blocked: false,
+            consecutiveCount: await countConsecutiveMessages(senderId, recipientId),
+            canSend: false,
+            messageError: 'Message cannot be empty.'
+        });
+    }
+
+    const blockCheck = await db.query(
+        'SELECT id FROM MessageBlocks WHERE blocker_id = ? AND blocked_id = ?',
+        [recipientId, senderId]
+    );
+
+    if (blockCheck.length > 0) {
+        return res.send('You cannot send messages to this user because they have blocked you.');
+    }
+
+    const consecutiveCount = await countConsecutiveMessages(senderId, recipientId);
+    if (consecutiveCount >= 2) {
+        return res.send('You can only send 2 messages before the other user replies.');
+    }
+
+    await db.query(
+        'INSERT INTO Messages (sender_id, recipient_id, body) VALUES (?, ?, ?)',
+        [senderId, recipientId, body]
+    );
+
+    res.redirect('/single-student/' + recipientId);
+});
+
+app.get('/messages/inbox', async function(req, res) {
+    if (!req.session.loggedIn || !req.session.uid) {
+        return res.redirect('/login');
+    }
+
+    const recipientId = parseInt(req.session.uid, 10);
+    const messages = await db.query(
+        `SELECT Messages.id, Messages.body, Messages.created_at, Students.name AS sender_name, Students.id AS sender_id
+         FROM Messages
+         JOIN Students ON Messages.sender_id = Students.id
+         WHERE Messages.recipient_id = ?
+         ORDER BY Messages.created_at DESC`,
+        [recipientId]
+    );
+
+    res.render('messages-inbox', {
+        title: 'View Messages',
+        messages,
+        currentUserId: recipientId
+    });
+});
+
+app.post('/messages/block/:targetId', async function(req, res) {
+    if (!req.session.loggedIn || !req.session.uid) {
+        return res.redirect('/login');
+    }
+
+    const blockerId = parseInt(req.session.uid, 10);
+    const blockedId = parseInt(req.params.targetId, 10);
+
+    if (blockerId !== blockedId) {
+        await db.query(
+            'INSERT IGNORE INTO MessageBlocks (blocker_id, blocked_id) VALUES (?, ?)',
+            [blockerId, blockedId]
+        );
+    }
+
+    res.redirect('/single-student/' + blockedId);
+});
 
 // Static Pug page for About / Contact details
 app.get("/about", function(req, res) {

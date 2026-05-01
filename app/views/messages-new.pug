@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    h1 Send Message
+
+    if blocked
+        p(style="color: red;") You cannot send a message because this user has blocked you.
+    else
+        if !canSend
+            p(style="color: red;") You may only send up to 2 messages before the other user replies.
+
+    form(action="/messages/new/" + recipientId, method="POST")
+        div.form-group
+            label(for="body") Message:
+            textarea(name="body", id="body", rows="5")
+            if messageError
+                p(style="color: red; margin: 8px 0 0;") #{messageError}
+        button(type="submit") Send Message
+
+    p
+        a(href="/single-student/" + recipientId) Back to student profile

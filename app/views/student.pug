@@ -23,8 +23,14 @@ block content
         div.nav-row
             div.back-button
                 a(href="/study-buddies") < Back to User List
-            div.edit-profile-link
-                a(href="/profile/" + student.id) Edit Profile
+            if loggedIn && currentUserId == student.id
+                div.view-messages-link
+                    a(href="/messages/inbox") View Messages
+                div.edit-profile-link
+                    a(href="/profile/" + student.id) Edit Profile
+            else if loggedIn && currentUserId != student.id
+                div.edit-profile-link
+                    a(href="/messages/block/" + student.id) Block User
 
         div.box
             p Student Name: #{student.name}
