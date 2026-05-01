@@ -695,14 +695,10 @@ app.post('/authenticate', async function(req, res) {
 
 app.get('/welcome', async function(req, res) {
     if (req.session.loggedIn) {
-        res.send(
-            "Welcome back, student ID " + req.session.uid + "!" +
-            "<br><a href='/single-student/" + req.session.uid + "'>View your student page</a>" +
-            "<br><a href='/study-buddies'>Study Buddies</a>" +
-            "<br><a href='/study-requests'>Study Requests</a>" +
-            "<br><a href='/create-request'>Create Study Request</a>" +
-            "<br><a href='/logout'>Logout</a>"
-        );
+        res.render("welcome", {
+            title: "Welcome",
+            studentId: req.session.uid
+        });
     } else {
         res.redirect('/login');
     }

@@ -1,0 +1,44 @@
+extends layout
+
+block content
+    div.welcome-shell
+        section.welcome-banner
+            img.welcome-logo(src="/images/logo.svg", alt="Study Buddies logo")
+            div.welcome-copy
+                h2 Welcome back, student ID #{studentId}!
+                p Ready to learn, collaborate, and achieve together.
+
+        main.welcome-grid
+            a.welcome-card(href="/single-student/" + studentId)
+                span.welcome-card-icon profile
+                strong View your student page
+                span See your profile and your details.
+                span.welcome-arrow &rarr;
+
+            a.welcome-card(href="/study-buddies")
+                span.welcome-card-icon buddies
+                strong Study Buddies
+                span Find and connect with study buddies.
+                span.welcome-arrow &rarr;
+
+            a.welcome-card(href="/study-requests")
+                span.welcome-card-icon requests
+                strong Study Requests
+                span View and manage study requests.
+                span.welcome-arrow &rarr;
+
+            a.welcome-card(href="/create-request")
+                span.welcome-card-icon create
+                strong Create Study Request
+                span Create a new study request.
+                span.welcome-arrow &rarr;
+
+            a.welcome-card(href="/logout")
+                span.welcome-card-icon logout
+                strong Logout
+                span Sign out from your account.
+                span.welcome-arrow &rarr;
+
+        footer.welcome-footer
+            strong Study Buddies
+            span Connect. Learn. Grow Together.

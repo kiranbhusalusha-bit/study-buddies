@@ -672,6 +672,145 @@ button:hover {
     color: black;
 }
 
+.welcome-shell {
+    position: relative;
+    width: min(780px, calc(100% - 24px));
+    min-height: 560px;
+    margin: 14px auto;
+    padding: 24px;
+    overflow: hidden;
+    border: 2px solid #d7e8ff;
+    border-radius: 10px;
+    background:
+        radial-gradient(circle at 95% 86%, rgba(30, 144, 255, 0.12) 0 54px, transparent 55px),
+        radial-gradient(circle at 86% 96%, rgba(30, 144, 255, 0.1) 0 70px, transparent 71px),
+        radial-gradient(circle at 0% 92%, rgba(30, 144, 255, 0.1) 0 52px, transparent 53px),
+        linear-gradient(180deg, #f8fbff 0%, #eef7ff 100%);
+    box-sizing: border-box;
+    color: #0f3f8b;
+}
+
+.welcome-banner {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    min-height: 88px;
+    padding: 0 34px;
+    border: 2px solid #d7e8ff;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.76);
+    text-align: left;
+}
+
+.welcome-logo {
+    width: 64px;
+    height: 64px;
+    flex: 0 0 auto;
+}
+
+.welcome-copy h2 {
+    margin: 0 0 6px;
+    color: #0f3f8b;
+    font-size: 20px;
+    letter-spacing: 0;
+}
+
+.welcome-copy p {
+    margin: 0;
+    color: #314c7c;
+    font-size: 14px;
+}
+
+.welcome-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin: 22px 8px 12px;
+}
+
+.welcome-card {
+    display: flex;
+    min-height: 166px;
+    padding: 16px 12px 14px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 2px solid #d7e8ff;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 10px 24px rgba(24, 76, 143, 0.08);
+    color: #0f3f8b;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.welcome-card:hover {
+    border-color: #9cc8ff;
+    transform: translateY(-2px);
+}
+
+.welcome-card-icon {
+    display: flex;
+    width: 56px;
+    height: 56px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #edf5ff;
+    color: #2c7be5;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.welcome-card strong {
+    color: #0f3f8b;
+    font-size: 14px;
+}
+
+.welcome-card span {
+    max-width: 130px;
+    color: #314c7c;
+    font-size: 12px;
+    line-height: 1.35;
+}
+
+.welcome-card .welcome-arrow {
+    display: flex;
+    width: 28px;
+    height: 28px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4px;
+    border-radius: 50%;
+    background: #edf5ff;
+    color: #2c7be5;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.welcome-footer {
+    position: absolute;
+    left: 24px;
+    right: 24px;
+    bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-height: 36px;
+    padding: 0 14px;
+    border: 2px solid #d7e8ff;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.88);
+    color: #314c7c;
+    font-size: 12px;
+    box-sizing: border-box;
+}
+
+.welcome-footer strong {
+    color: #0f3f8b;
+}
+
 .create-request-panel {
     text-align: left;
 }
@@ -1113,6 +1252,32 @@ button:hover {
         width: 24px;
         margin-left: 8px;
         margin-right: 8px;
+    }
+
+    .welcome-shell {
+        min-height: auto;
+        padding: 16px;
+    }
+
+    .welcome-banner {
+        padding: 18px;
+        align-items: flex-start;
+    }
+
+    .welcome-grid {
+        grid-template-columns: 1fr;
+        margin: 16px 0 76px;
+    }
+
+    .welcome-card {
+        min-height: 148px;
+    }
+
+    .welcome-footer {
+        left: 16px;
+        right: 16px;
+        flex-wrap: wrap;
+        padding: 8px 12px;
     }
 
     .create-request-form {
