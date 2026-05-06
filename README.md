@@ -574,6 +574,7 @@ https://pugjs.org/api/getting-started.html
 Available: https://github.com/kiranbhusalusha-bit/study-buddies
 
 ---
+
 # Sprint2
 
 # Study Buddies Project 
@@ -1071,3 +1072,464 @@ Available: https://dev.mysql.com/doc/refman/8.0/en/
 https://pugjs.org/api/getting-started.html 
 [11] U. Bhusal, “Study Buddies – GitHub Repository,” GitHub, 2026. [Online]. 
 Available: https://github.com/kiranbhusalusha-bit/study-buddies 
+
+
+---
+
+# Study-Buddies – Sprint 3 Documentation
+
+ 
+## Project Idea 
+Our Project idea is: Study-Buddies -  a platform that enables students to locate 
+and establish connections with other students for group study sessions, 
+academic support, and cooperative learning. 
+ 
+### Definition of a User 
+A user in our system is: 
+A student who registers on Study-Buddies to interact with peers, participate in 
+study sessions, or offer or request academic support. 
+
+### Definition of a Listing 
+A listing in our system is: 
+A user-generated study session, help request, or academic support offer. 
+Tutoring offers, invitations to study in groups, requests for subject-specific 
+assistance, and revision meetings are a few examples of this. 
+
+#### Why is this step required? 
+This step is essential because Sprint 3 requires the following dynamic, database
+driven pages: 
+- User list page 
+- User profile page 
+- Listing page 
+- Listing detail page 
+- Tags/categories page
+  
+To build these correctly, we must first define: 
+- What a “user” means in our project 
+- What a “listing” means 
+- What type of content our system manages
+  
+These definitions form the foundation for: 
+- Database design 
+- ERD diagram 
+- User stories 
+- Express routes 
+- Pug templates 
+- Sprint 3 Documentation
+  
+Without this step, the rest of sprint 3 cannot be completed correctly. 
+
+## Database Design 
+We created a relational MySQL database that holds user data, study session listings, 
+and subject tags in order to support the StudyBuddies platform. The dynamic pages 
+needed for Sprint 3, such as the user list, user profile, listing page, listing detail page, and tags/categories page, are made possible by this database structure. 
+To prevent duplication and guarantee effective data retrieval, the database adheres to 
+a normalized structure. 
+
+### I. Database tables 
+
+#### User table 
+
+| Field Name | Type | Description |
+|---|---|---|
+| Id | INT(PK, AUTO_INCREMENT) | Unique ID for each user |
+| Name | VARCHAR(100) | Student’s name |
+| Email | VARCHAR(150) | Student’s email |
+| bio | TEXT | Short description about the student |
+ 
+#### Listings Table 
+
+| Field Name | Type | Description |
+|---|---|---|
+| Id | INT(PK, AUTO_INCREMENT) | Unique for each listing |
+| Title | VARCHAR(150) | Title of the study session or help request |
+| Description | TEXT | Details about the session |
+| User_id | INT(FK → Users.id) | The user who created the listing |
+
+#### Tags Table 
+
+| Field Name | Type | Description |
+|---|---|---|
+| Id | INT(PK, AUTO_INCREMENT) | Unique ID for each tag |
+| name | VARCHAR(100) | Subject or category (e.g., “Math”, “Programming”, “Biology”) |
+ 
+#### Listing_Tags Table 
+
+(Joining Table for many to many relationships 
+
+| Field Name | Type | Description |
+|---|---|---|
+| Listing_id | INT(FK → listings.id) | The listing |
+| Tag_id | INT(FK → Tags.id) | The tag |
+
+II. 
+Entity Relationship Diagram(ERD) 
+a. User(1) → (Many) Listing 
+Multiple listings can be created by a single user, but each listing is 
+unique to that user. 
+b. Listings(Many) → (Many) Tags 
+A tag may be connected to more than one listing, and a listing may 
+have more than one tag. 
+The Listing_Tags join table is used to do this. 
+Why is this step required? 
+A functional MySQL database that supports the following is necessary for 
+Sprint 3: 
+• User list page 
+• User profile page 
+• Listing page 
+• Listing detail page 
+• Tags/categories page 
+This database architecture serves as the basis for: 
+• Backend routes 
+• Pug templates 
+• Dynamic content 
+• Data relationships 
+• Future Sprint 4 features 
+The program cannot be properly implemented without a clear database 
+structure. 
+1. User Stories Implemented in Sprint 3 
+The Study-Buddies platform's initial key functionalities were implemented by the 
+development team during Sprint 3. These features, which represent the minimal 
+4 
+functionality needed to show a viable dynamic web application using MySQL, 
+Express, Pug, and Docker, were chosen from the Sprint 2 backlog. 
+In Sprint 3, the following user stories were put into practice: 
+User Story 1 – View Study Buddies List 
+As a student looking for academic assistance, I would want to see a list of potential 
+study partners so that I can locate someone who can assist me right now. 
+Acceptance Standards: 
+• Every user in the database is shown on a page. 
+• Each user card displays their name and other basic information. 
+• Every user has a link to "View Profile." 
+• MySQL is used to dynamically retrieve data. 
+User Story 2 – View Student Profile 
+As a student assessing possible study partners, I would like to see a student's whole 
+profile in order for me to determine if they are a good fit. 
+Acceptance Standards: 
+• Name, bio, subjects, and details are displayed on the profile page. 
+• Data for the chosen user ID is loaded on the page. 
+• There is a "Back to List" link. 
+• MySQL is used to dynamically retrieve data. 
+User Story 3 – View Study Request Listings 
+As a student seeking assistance, I wish to check at study request advertisements in 
+order for me to locate sessions or assistance requests that are pertinent to my needs. 
+Acceptance Standards: 
+• Every listing from the database is shown on a page. 
+• Each listing displays the creator, subject, and title. 
+• There is a "View Details" link for every listing. 
+• MySQL is used to dynamically retrieve data. 
+User Story 4 – View Study Request Details 
+As a student I would like to view the complete information of a study request who 
+wishes to help in order for me to comprehend what assistance is required. 
+Acceptance Standards: 
+• The page displays the subject, tags, and full description. 
+• The student who made the request is displayed on the page. 
+• There is a "Back to Listings" link. 
+• MySQL is used to dynamically retrieve data. 
+User story 5 – Browse by Tags/ Categories 
+As a student considering possibilities, I wish to go through listings by tags and study 
+partners so that even if I don't have a specific person in mind, I may locate pertinent 
+sessions. 
+Acceptance Requirements: 
+5 
+• Every tag from the database is shown on a page. 
+• When a tag is clicked, related listings appear. 
+• Listing_Tags is used to implement many-to-many relationships. 
+• MySQL is used to retrieve data dynamically. 
+Importance 
+Sprint 3 calls for the first dynamic features to be implemented utilizing: 
+• MySQL 
+• Express.js 
+• Pug templates 
+• Docker 
+The necessary Sprint 3 pages are directly mapped to these user stories: 
+• User list page 
+• User profile page 
+• Listing page 
+• Listing detail page 
+• Tags/categories page 
+This guarantees that the functional requirements specified in Sprint 2 are met by the 
+Sprint 3 deliverables. 
+Task breakdown and Developer Allocation 
+Using Node.js, Express, MySQL, Pug templates, and Docker, the team concentrated 
+on developing the StudyBuddies platform's fundamental dynamic capabilities during 
+Sprint 3. Tasks were assigned according to the roles and strengths of each team 
+member as determined in Sprint 2. 
+The tasks finished and the team member in charge of each are listed in the following 
+table: 
+i. 
+Task breakdown Table 
+Task 
+Description 
+Database Setup 
+Assigned 
+To 
+Creating MySQL schema, 
+tables(Users, Listings, Tags, 
+Listing_Tags) 
+Niraj  
+Database 
+Connection 
+Implementing MySQL connection in 
+Node.js using mysql2 
+User List Page 
+Niraj 
+Route + SQL query + Pug template to 
+display all users 
+Usha 
+User Profile Page 
+Route + SQL query + Pug template 
+for individual user profile 
+Usha 
+6 
+Listing Page 
+Listing Detail Page 
+Route + SQL query + Pug template to 
+display all study requests 
+Prasansa 
+Route + SQL query + Pug template 
+for full listing details 
+Tags Page 
+Prasansa 
+Route + SQL query + Pug template to 
+display all tags 
+Prasansa 
+Tag Filter 
+Functionality 
+Showing listing filtered by tag 
+Niraj 
+Docker Setup 
+Dockerfile + docker-compose 
+configuration 
+Niraj 
+Styling and Layout 
+Basic CSS and layout consistency 
+across Pug templates 
+GitHub 
+Management 
+Prasansa 
+Usha 
+Branch creation, commits, pull 
+requests, merging 
+Documentation 
+Sprint 3 PDF, user stories, task 
+breakdown, meeting notes 
+ii. 
+Summary of team Contribution 
+Usha 
+• User-related routes and pug templates were implemented. 
+• Oversaw branches and repositories on GitHub 
+• Oversaw Sprint 3's documentation  
+• Maintained adherence to Sprint 2 specifications 
+Niraj 
+• Configure the MySQL schema and database. 
+• Added backend logic for filtering and tags 
+• Set up the Docker environment  
+• Backend debugging was supported. 
+Prasansa 
+• Created listing -based pages (list + detail). 
+•  UI layout and Pug template styling. 
+Usha 
+•  Wireframe confirmation between established pages and implemented 
+pages. 
+Importance of this step 
+Sprint 3 demands clear proof of: 
+• Collaboration 
+• Task distribution 
+• Individual contributions 
+• Agile workflow 
+This section shows how the team assigned tasks and finished the necessary 
+dynamic features for Sprint 3. 
+7 
+GitHub Repository Link 
+Version control, teamwork, and Sprint 3 development task management are all done 
+using GitHub. 
+Topic included in the repository are: 
+• Backend implementation (Node.js + Express) 
+• MySQL database schema 
+• Pug templates for dynamic pages 
+• Docker configuration 
+• Every commit and branch from Sprint 3 
+• Revised diagrams and documentation 
+GitHub Repository Link:  https://kiranbhusalusha-bit.github.io/study-buddies/ 
+i. 
+ii. 
+GitHub Project (Kanban Board) Link 
+Sprint 3 tasks were managed utilizing an Agile workflow on the GitHub 
+Project board. 
+The following columns are present on the board: 
+• Backlog 
+• Ready  
+• In Progress 
+• In Review 
+• Done 
+GitHub Project Board Link: 
+Importance of this step 
+Sprint 3 needs proof of: 
+• Version control 
+• Collaboration 
+• Task tracking 
+• Agile workflow 
+Giving GitHub links shows that the team managed work and tracked progress 
+during the sprint using industry-standard tools. 
+GitHub Metrics  
+GitHub metrics were taken from the repository during Sprint 3 to show active 
+participation and version control. These metrics display the team's efforts throughout 
+the course of the sprint, including commits, branches, pull requests, and code updates. 
+The analytics from GitHub show that: 
+• Constant addition of more features 
+8 
+• Consistent dedication from every team member 
+• Activity related to branching and merging 
+• Workflow for collaborative development 
+• Progress in line with tasks for Sprint 3 
+GitHub Repository Link : https://github.com/kiranbhusalusha-bit/study
+buddies 
+Screenshot of GitHub Metrics 
+This screenshot confirms to the team's adherence to Agile development principles and 
+efficient use of GitHub for Sprint 3 implementation. 
+Kanban Board Screenshot 
+In respect for Agile principles, the team managed Sprint 3 work using the GitHub 
+Project Kanban board. The board promoted openness and cooperation throughout the 
+sprint and assisted in monitoring progress from backlog to completion. 
+GitHub Kanban Board Link: https://github.com/users/kiranbhusalusha
+bit/projects/5/views/1 
+The following columns are part of the Kanban board: 
+• Backlog – Identified but unfinished tasks 
+• Ready – Tasks ready for development 
+9 
+• In progress -  Task being worked on at the moment 
+• In Review – Task that needs to be reviewed or tested 
+• Done – Task completed 
+Throughout Sprint 3, this board was updated often to show team activities and real
+time progress. 
+Screenshot of Kanban Board 
+This screenshot shows proof of: 
+• Task allocation 
+• Workflow progression 
+• Team collaboration 
+• Completion of Sprint 3 deliverables 
+Sprint 3 Conclusion 
+All of the expected dynamic features for the StudyBuddies platform were successfully 
+delivered in Sprint 3. The group created completely working pages that were linked to 
+a MySQL database and included user lists, user profiles, listings, listing details, and 
+tags and categories. Each page shows proper backend integration and template 
+rendering by retrieving actual data. 
+10 
+Using GitHub Projects, branches, contributions, and pull requests, the team worked 
+well together. Transparency and adherence to Agile principles were guaranteed by 
+frequent updates to the Kanban board. The GitHub metrics verify that every team 
+member consistently contributes, demonstrating shared accountability and steady 
+development over the course of the sprint. 
+To support the final submission, all supporting documentation, ERD diagrams, 
+screenshots, and meeting records were finished. A reliable, database-driven prototype 
+that satisfies the project's functional requirements and equips the team for further 
+improvements marks the end of Sprint 3. 
+Meeting Records 
+Meeting Record 1 – Sprint 3 Planning 
+Date and Time : 6 March 2026, 18:00 
+Project Name : Study Buddies 
+Meeting Goal : Assign roles and plan the development tasks for Sprint 3 
+Facilitator: Usha 
+Note taker: Niraj 
+Attendees: Usha, Niraj, Prasansa 
+Roundtable Updates: 
+• Usha : Reviewed the results of Sprint 2 and determined the features needed for 
+Sprint 3. 
+• Niraj : MySQL schema and backend routes are prepared. 
+• Prasansa : Ready to work on UI layout and Pug templates. 
+Discussion points: 
+• Verified deliverables for Sprint 3. 
+➢ User list page 
+➢ User profile page 
+➢ Listing page 
+➢ Listing detail page 
+➢ Tags/categories page 
+• The database structure was confirmed to match the Sprint 2 ERD. 
+• Assigned front-end and back-end tasks. 
+• Agreed to manage branches and monitor tasks with GitHub Projects. 
+Actions: 
+• Usha : Manage the GitHub workflow and implement user routes and 
+templates. 
+• Niraj : Create SQL queries, tag filtering, and database schemas. 
+11 
+• Prasansa : Make layouts for listings and use UI styling. 
+• All : Regularly commit and update the Kanban board. 
+Meeting Record 2 – Mid-Sprint Review 
+Date and Time : 14 March 2026, 13:30 
+Project Name : Study Buddies 
+Meeting Goal : Examine Sprint 3's progress and address any obstacles. 
+Facilitator: Usha 
+Note taker: Niraj 
+Attendees: Usha, Niraj, Prasansa 
+Roundtable Updates: 
+• Usha : Refined templates; finished user list and profile routes. 
+• Niraj : Tag filtering is implemented and database tables are built. 
+• Prasansa : Completed listing and detail templates; ongoing stylistic 
+enhancements. 
+Discussion points: 
+• Confirmed that every dynamic page accurately retrieves data from MySQL. 
+• Detected little problems with layout spacing and tag filtering. 
+• Docker setup has been verified to function for local development. 
+• Sprint 3 documentation has started. 
+Actions: 
+• Usha : Complete the documents and profile template. 
+• Niraj : Support integration testing and address the tag filtering bug. 
+• Prasansa : Ensure wireframe uniformity and enhance UI layout. 
+• All : Get Kanban images and GitHub metrics ready. 
+Meeting Record 3 – Sprint 3 Wrap-Up 
+Date and Time : 22 March 2026, 16:00 
+Project Name : Study Buddies 
+Meeting Goal : Complete the deliverables for Sprint 3 and get them ready for 
+submission. 
+Facilitator: Usha 
+Note taker: Niraj 
+Attendees: Usha, Niraj, Prasansa 
+Roundtable Updates: 
+• Usha : Verified all routes and templates and finished the documentation. 
+• Niraj : Verified Docker functionality and database integration. 
+• Prasansa : templates are in line with wireframes; final UI checks are finished. 
+Discussion points: 
+• Reviewed every feature of Sprint 3: 
+12 
+➢ User list 
+➢ User profile 
+➢ Listing 
+➢ Listing detail 
+➢ Tags/categories  
+• Made sure every page is database-driven and dynamic. 
+• Verified updates to the project board, branches, and commits on GitHub. 
+• Created screenshots for the Kanban board and stats. 
+Actions: 
+• Usha : Complete and submit in the Sprint 3 PDF. 
+• Niraj : Verify repository structure and push final backend updates. 
+• Prasansa : Verify template coherence and upload finished user interface 
+materials. 
+• All : Give your final approval. 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
