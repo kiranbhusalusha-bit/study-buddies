@@ -1463,10 +1463,10 @@ improvements marks the end of Sprint 3.
 - Docker setup has been verified to function for local development. 
 - Sprint 3 documentation has started. 
 ##### Actions: 
-• Usha : Complete the documents and profile template. 
-• Niraj : Support integration testing and address the tag filtering bug. 
-• Prasansa : Ensure wireframe uniformity and enhance UI layout. 
-• All : Get Kanban images and GitHub metrics ready. 
+- Usha : Complete the documents and profile template. 
+- Niraj : Support integration testing and address the tag filtering bug. 
+- Prasansa : Ensure wireframe uniformity and enhance UI layout. 
+- All : Get Kanban images and GitHub metrics ready. 
 
 
 ### Meeting Record 3 – Sprint 3 Wrap-Up 
