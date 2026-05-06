@@ -1172,7 +1172,7 @@ A tag may be connected to more than one listing, and a listing may
 have more than one tag. 
 The Listing_Tags join table is used to do this. 
 
-!(images/ListingsManytoManytags.png)
+![images/ListingsManytoManytags.png]([images/ListingsManytoManytags.png](https://github.com/kiranbhusalusha-bit/study-buddies/blob/29f6dbbe298c9aba584effb82a13d8b3a3841e90/images/ListingsManytoManytags.png)
 
 Why is this step required? 
 A functional MySQL database that supports the following is necessary for 
