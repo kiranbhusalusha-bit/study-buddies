@@ -1326,7 +1326,7 @@ Topic included in the repository are:
 - Every commit and branch from Sprint 3 
 - Revised diagrams and documentation
   
-GitHub Repository Link:  https://kiranbhusalusha-bit.github.io/study-buddies/ 
+GitHub Repository Link:  [](https://kiranbhusalusha-bit.github.io/study-buddies/)
 
 ### i.  GitHub Project (Kanban Board) Link 
 Sprint 3 tasks were managed utilizing an Agile workflow on the GitHub 
@@ -1338,7 +1338,7 @@ The following columns are present on the board:
 - In Review 
 - Done
   
-GitHub Project Board Link: https://github.com/users/kiranbhusalusha-bit/projects/5
+GitHub Project Board Link: [](https://github.com/users/kiranbhusalusha-bit/projects/5)
 
 ### ii.Importance of this step 
 
@@ -1362,9 +1362,8 @@ The analytics from GitHub show that:
 - Activity related to branching and merging 
 - Workflow for collaborative development 
 - Progress in line with tasks for Sprint 3
-- 
-GitHub Repository Link : https://github.com/kiranbhusalusha-bit/study
-buddies
+
+GitHub Repository Link : [](https://github.com/kiranbhusalusha-bit/study-buddies)
 
 ### Screenshot of GitHub Metrics 
 ![images/Screenshotofgithubmetrics.png](https://github.com/kiranbhusalusha-bit/study-buddies/blob/6a1d80f45d8517eef3aa7b3aa6b54ab143d8b0e9/images/Screenshotofgithubmetrics.png)
@@ -1401,6 +1400,7 @@ This screenshot shows proof of:
 
 
 ## Sprint 3 Conclusion 
+
 All of the expected dynamic features for the StudyBuddies platform were successfully 
 delivered in Sprint 3. The group created completely working pages that were linked to 
 a MySQL database and included user lists, user profiles, listings, listing details, and 
@@ -1510,16 +1510,4 @@ materials.
  
  
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
