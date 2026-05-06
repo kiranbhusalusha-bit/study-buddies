@@ -1162,15 +1162,18 @@ a normalized structure.
 | Listing_id | INT(FK → listings.id) | The listing |
 | Tag_id | INT(FK → Tags.id) | The tag |
 
-II. 
-Entity Relationship Diagram(ERD) 
-a. User(1) → (Many) Listing 
+### II. Entity Relationship Diagram(ERD) 
+
+#### a. User(1) → (Many) Listing 
 Multiple listings can be created by a single user, but each listing is 
 unique to that user. 
-b. Listings(Many) → (Many) Tags 
+#### b. Listings(Many) → (Many) Tags 
 A tag may be connected to more than one listing, and a listing may 
 have more than one tag. 
 The Listing_Tags join table is used to do this. 
+
+!(images/ListingsManytoManytags.png)
+
 Why is this step required? 
 A functional MySQL database that supports the following is necessary for 
 Sprint 3: 
