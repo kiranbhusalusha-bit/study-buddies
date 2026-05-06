@@ -575,38 +575,10 @@ Available: https://github.com/kiranbhusalusha-bit/study-buddies
 
 ---
 
-# Sprint2
+# Sprint2 - Requirements and Specifications Document 
 
-# Study Buddies Project 
-## Sprint 2 – Requirements and Specifications Document 
-## CMP-N204-0: Software Engineering 
 
-## Submitted by: 
-• **Usha (A00027156)** 
-• **Niraj Kumar Sah (A00023606)** 
-• **Prasansa Senchuri (A00026066)** 
-
-**Module Leader:** Lisa Haskel 
-**University:** University of Roehampton, London
-**Submission:** Sprint 2- Lab Week 6 
-**Project Title:** Study Buddies 
-
-## Document Contents: 
-**This document includes:** 
-• Project overview 
-• User stories 
-• Use case diagram 
-• Wireframes 
-• Activity diagrams 
-• Optional artefacts( ERD, sequence 
-Diagrams) 
-• Kanban Board Screenshot 
-• GitHub Repository link 
-• Task Board Link 
-• Meeting records 
-• References(IEEE style) 
-
-# 1. Project Overview 
+## 1. Project Overview 
 A web-based tool called Study Buddies was created to assist college students in locat
 ing compatible classmates for group projects. Students can explore available study re
 quests, post their own requests for academic support, build personalized profiles, and 
@@ -621,91 +593,92 @@ centred design, iterative development, and ongoing improvement based on feedback
 System requirements are analysed and system behaviour is defined using UML 
 modelling approaches. 
 
-# 2. User Stories 
+## 2. User Stories 
 The needs of the students using the Study Buddies platform are discussed in user 
 stories. 
 Every story belongs to the format suggested by GOV.UK: As a... I must/wish to Thus, 
 that  
 The story's completion is determined by acceptance criteria. 
 
-**i. User Story 1: Establish a Profile**
+### i. User Story 1: Establish a Profile
 I must set up a Study Buddies profile with my topics and personal information 
 as a university student so that other students can get to know me and 
 determine whether I'd be a good study partner. 
 It's completed when 
-▪ When I can enter my name, course, and year, it's finished. 
-▪ When I can add subjects that I can assist with, it's finished. 
-▪ When I can add subjects that I require assistance with, it's finished. 
+- When I can enter my name, course, and year, it's finished. 
+- When I can add subjects that I can assist with, it's finished. 
+- When I can add subjects that I require assistance with, it's finished. 
 When my profile is saved and accessible in the system, it's finished.
 
-**ii. User Story 2: Study Buddy List View** 
+### ii. User Story 2: Study Buddy List View
 I need to see a list of other students who are willing to study because I am a 
 student seeking assistance. 
 that I can locate possible study partners as soon as possible. 
 It’s completed when 
-▪ When I see a list of students together with their names and subjects, it's 
+- When I see a list of students together with their names and subjects, it's 
 finished. 
-▪ When I can click on a student to see their entire profile, it's finished.
+- When I can click on a student to see their entire profile, it's finished.
 
-**iii. User Story 3: Viewing a Student's Profile**  
+### iii. User Story 3: Viewing a Student's Profile  
 Selecting a study companion as a student to determine whether a student is a 
 suitable fit for my needs, I must look at their profile. 
 It’s completed when 
-▪ When I can view their subjects, availability, and bio, it's finished. 
-▪ When I can go back to the list after looking at a profile, it's finished.
+- When I can view their subjects, availability, and bio, it's finished. 
+- When I can go back to the list after looking at a profile, it's finished.
 
-**iv. User Story 4- Search by Subject** 
+### iv. User Story 4- Search by Subject
 As a student in need of assistance in a particular subject 
 I have to look for study partners by subject. 
 in order to locate someone who can assist me with that subject. 
 It’s completed when 
-▪ When I can type or choose a subject, it's finished. 
-▪ When the results only display pupils who fit that subject, it is 
+- When I can type or choose a subject, it's finished. 
+- When the results only display pupils who fit that subject, it is 
 completed. 
 
-**v. User Story 5 – Create a Study Request Listing** 
+### v. User Story 5 – Create a Study Request Listing
 As student in need of assistance 
 I have to make a list of research requests. 
 so hat other students can offer to learn with me after noticing my areas of 
 need. 
 It’s completed when 
-▪ When I am able to enter a title, subject, and description, it is finished. 
-▪ When my listing shows up in the list of research requests, it's finished. 
+- When I am able to enter a title, subject, and description, it is finished. 
+- When my listing shows up in the list of research requests, it's finished. 
 
-**vi. View Study Request Details**
+### vi. View Study Request Details
 As students who want to assist 
 I must see a study request's specifics. 
 so that I can determine if I can provide assistance 
 It’s completed when 
-▪ When I see the complete description, the subject, and the person who 
+- When I see the complete description, the subject, and the person who 
 posted it 
 
-**vii. User Story 7 – Browse by Category/Tags**
+### vii. User Story 7 – Browse by Category/Tags
 As the student looking into possibilities 
 I have to look through study requests and study companions by tags or 
 categories. 
 so that even if I don't have a certain person in mind, I can find sessions and 
 people who are relevant. 
 It’s completed when 
-▪ When I can click on a category or tag, it's finished. 
-▪ When I come across matching profiles or listings, I take action.
+- When I can click on a category or tag, it's finished. 
+- When I come across matching profiles or listings, I take action.
 
-**viii. User Story 8 – Send a message** 
+### viii. User Story 8 – Send a message
 Setting up a study session as a student, I have to message a different student so 
 that we may coordinate when and how to learn together and communicate. 
 It’s completed when 
-▪ When I am able to access a message interface from a student's profile 
+- When I am able to access a message interface from a student's profile 
 or study request, it is finished. 
-▪ When I can type and send a message, it's finished. 
-▪ When the other student receives and can see the message, it is 
+- When I can type and send a message, it's finished. 
+- When the other student receives and can see the message, it is 
 completed. 
-▪ When I can see the messages I've already sent, it's finished.
+- When I can see the messages I've already sent, it's finished.
 
-# 3. Use Case Diagram 
+
+## 3. Use Case Diagram 
 Based on the user stories established in part 2, this part outlines the primary players 
 and use cases for the Study Buddies system. A high-level overview of how a student 
 uses the system and what features it needs to have is given by the use case diagram. 
-## i. Actors 
+### i. Actors 
 Student: A college student who makes use of the Study Buddies system in 
 order to: 
 a. Establish and maintain their profile  
