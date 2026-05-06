@@ -1326,7 +1326,7 @@ Topic included in the repository are:
 - Every commit and branch from Sprint 3 
 - Revised diagrams and documentation
   
-GitHub Repository Link:  [](https://kiranbhusalusha-bit.github.io/study-buddies/)
+[GitHub Repository Link](https://kiranbhusalusha-bit.github.io/study-buddies/)
 
 ### i.  GitHub Project (Kanban Board) Link 
 Sprint 3 tasks were managed utilizing an Agile workflow on the GitHub 
@@ -1338,7 +1338,7 @@ The following columns are present on the board:
 - In Review 
 - Done
   
-GitHub Project Board Link: [](https://github.com/users/kiranbhusalusha-bit/projects/5)
+[GitHub Project Board Link](https://github.com/users/kiranbhusalusha-bit/projects/5)
 
 ### ii.Importance of this step 
 
@@ -1362,8 +1362,8 @@ The analytics from GitHub show that:
 - Activity related to branching and merging 
 - Workflow for collaborative development 
 - Progress in line with tasks for Sprint 3
-
-GitHub Repository Link : [](https://github.com/kiranbhusalusha-bit/study-buddies)
+  
+[GitHub Repository Link](https://github.com/kiranbhusalusha-bit/study-buddies)
 
 ### Screenshot of GitHub Metrics 
 ![images/Screenshotofgithubmetrics.png](https://github.com/kiranbhusalusha-bit/study-buddies/blob/6a1d80f45d8517eef3aa7b3aa6b54ab143d8b0e9/images/Screenshotofgithubmetrics.png)
@@ -1377,7 +1377,7 @@ In respect for Agile principles, the team managed Sprint 3 work using the GitHub
 Project Kanban board. The board promoted openness and cooperation throughout the 
 sprint and assisted in monitoring progress from backlog to completion. 
 
-GitHub Kanban Board Link:[](https://github.com/users/kiranbhusalusha-bit/projects/5/views/1) 
+[GitHub Kanban Board Link:](https://github.com/users/kiranbhusalusha-bit/projects/5/views/1) 
 
 The following columns are part of the Kanban board: 
 - Backlog – Identified but unfinished tasks 
