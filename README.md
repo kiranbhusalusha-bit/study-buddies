@@ -1492,7 +1492,7 @@ improvements marks the end of Sprint 3.
 - Made sure every page is database-driven and dynamic. 
 - Verified updates to the project board, branches, and commits on GitHub. 
 - Created screenshots for the Kanban board and stats. 
-#####Actions: 
+##### Actions: 
 - Usha : Complete and submit in the Sprint 3 PDF. 
 - Niraj : Verify repository structure and push final backend updates. 
 - Prasansa : Verify template coherence and upload finished user interface 
