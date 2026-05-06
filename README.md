@@ -878,8 +878,10 @@ The board includes the following columns:
 • In Review - Completed tasks are awaiting review. 
 • Done - Completed and approved task 
 Task Board Link: https://github.com/users/kiranbhusalusha-bit/pro
-jects/4 
-Screenshot of Kanboard Board 
+jects/4
+
+**Screenshot of Kanboard Board** 
+
 
 
 ## 6. GitHub Repository Link
