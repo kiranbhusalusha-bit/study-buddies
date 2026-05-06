@@ -1377,7 +1377,7 @@ In respect for Agile principles, the team managed Sprint 3 work using the GitHub
 Project Kanban board. The board promoted openness and cooperation throughout the 
 sprint and assisted in monitoring progress from backlog to completion. 
 
-##### GitHub Kanban Board Link: https://github.com/users/kiranbhusalusha-bit/projects/5/views/1 
+GitHub Kanban Board Link: [](https://github.com/users/kiranbhusalusha-bit/projects/5/views/1) 
 
 The following columns are part of the Kanban board: 
 - Backlog – Identified but unfinished tasks 
@@ -1406,11 +1406,13 @@ delivered in Sprint 3. The group created completely working pages that were link
 a MySQL database and included user lists, user profiles, listings, listing details, and 
 tags and categories. Each page shows proper backend integration and template 
 rendering by retrieving actual data. 
+
 Using GitHub Projects, branches, contributions, and pull requests, the team worked 
 well together. Transparency and adherence to Agile principles were guaranteed by 
 frequent updates to the Kanban board. The GitHub metrics verify that every team 
 member consistently contributes, demonstrating shared accountability and steady 
 development over the course of the sprint. 
+
 To support the final submission, all supporting documentation, ERD diagrams, 
 screenshots, and meeting records were finished. A reliable, database-driven prototype 
 that satisfies the project's functional requirements and equips the team for further 
