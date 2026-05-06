@@ -136,22 +136,8 @@ At the conclusion of the first sprint, the project has succeeded in:
 - Ability to go on to Sprint 2
 
 ---
-
-# Study Buddies Project  
-## Sprint 2 – Requirements and Specifications Document  
-### CMP-N204-0: Software Engineering  
-
----
-
-## Submitted by
-- **Usha (A00027156)**
-- **Niraj Kumar Sah (A00023606)**
-- **Prasansa Senchuri (A00026066)**
-
-**Module Leader:** Lisa Haskel  
-**University:** University of Roehampton, London  
-**Submission:** Sprint 2 – Lab Week 6  
-**Project Title:** Study Buddies  
+ 
+# Sprint 2 – Requirements and Specifications Document  
 
 ---
 
@@ -363,7 +349,7 @@ Steps:
 - Load profile page  
 
 **Figure:** Activity Diagram – Search
-![Alt text]https://github.com/kiranbhusalusha-bit/study-buddies/blob/00d9a98f94836c0ffcf0992546e63bf3e45bd6dc/images/Activity1.drawio.png
+![Alt text](https://github.com/kiranbhusalusha-bit/study-buddies/blob/00d9a98f94836c0ffcf0992546e63bf3e45bd6dc/images/Activity1.drawio.png)
 
 ### Create Study Request  
 Steps:
