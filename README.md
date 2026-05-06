@@ -1376,7 +1376,8 @@ efficient use of GitHub for Sprint 3 implementation.
 In respect for Agile principles, the team managed Sprint 3 work using the GitHub 
 Project Kanban board. The board promoted openness and cooperation throughout the 
 sprint and assisted in monitoring progress from backlog to completion. 
-GitHub Kanban Board Link: [](https://github.com/users/kiranbhusalusha-bit/projects/5/views/1) 
+
+GitHub Kanban Board Link:[](https://github.com/users/kiranbhusalusha-bit/projects/5/views/1) 
 
 The following columns are part of the Kanban board: 
 - Backlog – Identified but unfinished tasks 
