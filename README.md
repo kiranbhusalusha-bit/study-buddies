@@ -566,17 +566,16 @@ The following key pages are represented:
 
 **• Users List Page (Study Buddies List)** 
 This page shows a list of students who are available to study or offer help. 
-
 Key elements:
 - Page title (e.g. “Find a Study Buddy”)
 - Search bar to search by subject or keyword
 - Filter options or tags (e.g. subject, year, course)  
 -  List of student cards, each showing:
-  - Student name  
-  -  Course / year
-  -  Key subjects
-  -  “View Profile” button or link
-  -   Pagination or “Load more” if needed
+  -- Student name  
+  --  Course / year
+  --  Key subjects
+  --  “View Profile” button or link
+  --   Pagination or “Load more” if needed
 
 **Figure: Wireframe - User List Page**
 
@@ -590,18 +589,23 @@ Key elements:
 - Short bio or description
 - Subjects they can help with
 - Subjects they need help with
-- Availability information (e.g. evenings, weekends)  - Button or link to “Send Message” (optional, for future sprint)  - Back link to return to the       Users List page
+- Availability information (e.g. evenings, weekends)  - Button or link to “Send Message” (optional, for future sprint)
+- Back link to return to the Users List page
  
 **Figure : Wireframe – Student profile page**
 ![images/Wireframe3.png](https://github.com/kiranbhusalusha-bit/study-buddies/blob/9fe71d439b687efb873f3df1ed57d0e50c95d3f7/images/Wireframe3.png)
 
 **• Study Request List Page**  
 This page shows a list of study requests created by students.  
-Key elements: - Page title (e.g. “Study Requests”)  - Button to “Create Study Request”  - Filter or tag options (e.g. subject, level)  - List of request cards, each showing:  
-- Request title 
-- Subject - Short description or snippet  
-- Name of the student who created it  
-- “View Details” button or link
+Key elements:   
+- Page title (e.g. “Study Requests”)  
+- Button to “Create Study Request”  
+- Filter or tag options (e.g. subject, level)  
+- List of request cards, each showing:  
+ - Request title  
+ - Subject - Short description or snippet    
+ - Name of the student who created it  
+ - “View Details” button or link  
 
   **Figure : Wireframe – Study request list page**
 ![images/Wireframe4.png](https://github.com/kiranbhusalusha-bit/study-buddies/blob/9fe71d439b687efb873f3df1ed57d0e50c95d3f7/images/Wireframe4.png)
@@ -620,11 +624,10 @@ Key elements:
 ![images/Wireframe5.png](https://github.com/kiranbhusalusha-bit/study-buddies/blob/9fe71d439b687efb873f3df1ed57d0e50c95d3f7/images/Wireframe5.png)
 
 ##  4.4  Activity Diagrams 
-Activity diagrams show how important user interactions proceed. These schematics 
-aid in describing system behaviour and directing Sprint 3 implementation.
+Activity diagrams show how important user interactions proceed. These schematics aid in describing system behaviour and directing Sprint 3 implementation.
 
-**• Activity Diagram – Search for Study Buddies**
-Steps:  
+**• Activity Diagram – Search for Study Buddies**  
+Steps:    
 - Student opens the Study Buddies List page
 - Student enters a subject or selects a tag
 - System retrieves matching profiles
@@ -637,7 +640,7 @@ Steps:
  
  ![images/Activity1.drawio.png](https://github.com/kiranbhusalusha-bit/study-buddies/blob/9fe71d439b687efb873f3df1ed57d0e50c95d3f7/images/Activity1.drawio.png)
 
-**• Activity Diagram – Create Study Request**
+**• Activity Diagram – Create Study Request**  
 Steps: 
 - Student opens the Create Study Request page 
 - Student enters title, subject, and description 
@@ -652,7 +655,7 @@ Steps:
 **Figure : Activity Diagram – Create Study Request**
 ![images/activity2.drawio.png](https://github.com/kiranbhusalusha-bit/study-buddies/blob/9fe71d439b687efb873f3df1ed57d0e50c95d3f7/images/activity2.drawio.png)
   
-**• Activity Diagram – View Study Request Details**
+**• Activity Diagram – View Study Request Details**  
 Steps: 
 - Student opens Study Request list page 
 - Student selects a request 
@@ -665,8 +668,8 @@ Steps:
 
 ### 4.5 Optional Artefacts 
 The Sprint 3 definition is strengthened and deeper planning is demonstrated by op
-tional artefacts. 
-**• Entity Relationships Diagram (ERD)** 
+tional artefacts.  
+**• Entity Relationships Diagram (ERD)**   
 Entities: 
 - Student : represents every system user. 
 - Subject : Classes like programming, math, etc. 
@@ -675,14 +678,14 @@ Entities:
 - Message (future sprint) : Student to student communication (future sprint).
   
 **• Relationships:** 
-- Student ↔ Subject = Many-to-Many 
-Implemented using Student_Subject - - - 
-- Student → Study_Request = One-to-Many 
-A student can create many study requests. 
-- Student ↔ Student (via message) = Many-to-Many 
+- Student ↔ Subject = Many-to-Many   
+Implemented using Student_Subject  
+- Student → Study_Request = One-to-Many     
+A student can create many study requests.  
+- Student ↔ Student (via message) = Many-to-Many   
 Implemented using Message table( sender_id, receiver_id) 
-- Student → Study_Request = Optional 
-Stored as text .
+- Student → Study_Request = Optional   
+Stored as text .  
 
 
 **ERD diagram**
