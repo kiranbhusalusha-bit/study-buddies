@@ -715,13 +715,12 @@ Flow:
 5. Kanban Board Screenshot 
 Tasks for Sprints 2 is managed using the GitHub Project Kanban board. 
 The board includes the following columns: 
-• Backlog – all tasks not yet started 
-• Ready – Tasks chosen for Sprint 2 are prepared and ready to start. 
-• In progress - things that are being worked on right now 
-• In Review - Completed tasks are awaiting review. 
-• Done - Completed and approved task 
-Task Board Link: https://github.com/users/kiranbhusalusha-bit/pro
-jects/4
+- Backlog – all tasks not yet started 
+- Ready – Tasks chosen for Sprint 2 are prepared and ready to start. 
+- In progress - things that are being worked on right now 
+- In Review - Completed tasks are awaiting review. 
+- Done - Completed and approved task 
+[Task Board Link:](https://github.com/users/kiranbhusalusha-bit/projects/4)
 
 **Screenshot of Kanboard Board** 
 
@@ -730,7 +729,8 @@ jects/4
 ## 6. GitHub Repository Link
 GitHub is used by the Study Buddies project for project management, version control,
 and teamwork.
-GitHub Repository link here: https://github.com/kiranbhusalusha-bit/study-buddies
+
+[GitHub Repository link:](https://github.com/kiranbhusalusha-bit/study-buddies)
 The repository includes:
 - Scaffolding files
 - README customised for the project
