@@ -219,163 +219,165 @@ Responsibilities:
 
 Note: Roles are assigned for Sprint 1, which may change in next sprints.
 
-Personas
-Persona 1: Alex Johnson
-Age: 19
-Course: BSc Computer Science (Year 1)
-Background
-Alex is a first-year university student who just started college and is still getting
-used to studying on his own and living on campus.
-Goals
-- Look for other friends to learn together.
-- Enhance knowledge of the course content.
-- Feel less alone when studying.
-Problems / Needs
-- Has trouble approaching classmates.
-- Lots of the time, he studies alone
+## Personas
+**Persona 1: Alex Johnson**  
+Age: 19  
+Course: BSc Computer Science (Year 1)  
+Background  
+Alex is a first-year university student who just started college and is still getting used to studying on his own and living on campus.  
+Goals  
+- Look for other friends to learn together.  
+- Enhance knowledge of the course content.  
+- Feel less alone when studying.  
+  
+Problems / Needs  
+- Has trouble approaching classmates.  
+- Lots of the time, he studies alone  
 - Lacks the courage to ask questions
-How the Study Buddies App Helps
-Alex can locate students who are studying similar topics and set up study
-sessions in a friendly setting by using the Study Buddies app.
-Persona 2: Sam Patel
-Age:23
-Course: BA Business Management (Final Year)
-Background
-Sam, a final-year student, has to manage part-time employment and schoolwork
-while studying for finals.
-Goals
-- Plan productive group revision sessions
-- Exchange notes and study advice
-- Effectively manage limited study time
-Problems / Needs
-- Difficult to coordinate study times
-- Limited availability due to work commitments
-- Needs motivated study partners
-How the Study Buddies App Helps
-Sam can easily locate students who share their academic objectives and plan
-study sessions that work with their schedules thanks to the Study Buddies app.
+  
+How the Study Buddies App Helps    
+Alex can locate students who are studying similar topics and set up study sessions in a friendly setting by using the Study Buddies app.  
 
-Persona 3: Mei Lin
-Age: 21
-Course: MSc Data Science
-Background
-Mei is adjusting to a new study environment and style as an overseas student.
-Goals
-- Develop confidence when studying in groups
-- Enhance knowledge through group discussion
-- Make connections with encouraging classmates
 
-Problems / Needs
-- Barriers caused by language and culture
-- Lack of confidence to speak out during lectures
-- Small academic network
-How the Study Buddies App Helps
-The Study Buddies app enables Mei to connect with supportive peers studying
-similar subjects and participate in inclusive study groups.
-Ethical Issues
+**Persona 2: Sam Patel**   
+Age:23  
+Course: BA Business Management (Final Year)  
+Background  
+Sam, a final-year student, has to manage part-time employment and schoolwork while studying for finals.  
+Goals  
+- Plan productive group revision sessions  
+- Exchange notes and study advice  
+- Effectively manage limited study time  
+Problems / Needs  
+- Difficult to coordinate study times  
+- Limited availability due to work commitments  
+- Needs motivated study partners  
+How the Study Buddies App Helps  
+Sam can easily locate students who share their academic objectives and planstudy sessions that work with their schedules thanks to the Study Buddies app.  
+
+**Persona 3: Mei Lin**
+Age: 21  
+Course: MSc Data Science  
+Background  
+Mei is adjusting to a new study environment and style as an overseas student.  
+Goals  
+- Develop confidence when studying in groups  
+- Enhance knowledge through group discussion  
+- Make connections with encouraging classmates  
+
+Problems / Needs  
+- Barriers caused by language and culture  
+- Lack of confidence to speak out during lectures  
+- Small academic network  
+How the Study Buddies App Helps  
+The Study Buddies app enables Mei to connect with supportive peers studying similar subjects and participate in inclusive study groups.
+
+
+## Ethical Issues
 The main ethical issues surrounding the creation and usage of the Study Buddies
 app are described in this section.
-1. Privacy and Data Protection
-Personal information including names, classes, and study interests may be
-gathered by the application. It is the duty to safeguard this information and make
-sure it is managed sensibly and securely.
+### 1. Privacy and Data Protection
+Personal information including names, classes, and study interests may be gathered by the application. It is the duty to safeguard this information and make sure it is managed sensibly and securely.  
 
-Considerations:
-- Gather only essential user data
-- Prevent unauthorized access to data
+Considerations:  
+- Gather only essential user data  
+- Prevent unauthorized access to data  
 - Be transparent about how user data is used
-2. User Safety and Misuse
-The platform faces the risk of being used for inappropriate behaviour, spam, or
-harassment.
-Considerations:
-- Define acceptable behaviour clearly
-- Provide ways for users to report misuse
-- Take reasonable steps to discourage harmful behaviour
-3. Inclusivity and Accessibility
-The application should be accessible and beneficial by students from a variety of
-backgrounds.
-Considerations:
-- Avoid any form of discrimination
-- Make use of simple and polite language.
+  
+### 2. User Safety and Misuse
+The platform faces the risk of being used for inappropriate behaviour, spam, or harassment.
+Considerations:  
+- Define acceptable behaviour clearly  
+- Provide ways for users to report misuse  
+- Take reasonable steps to discourage harmful behaviour  
+  
+### 3. Inclusivity and Accessibility  
+The application should be accessible and beneficial by students from a variety of backgrounds.  
+Considerations:  
+- Avoid any form of discrimination  
+- Make use of simple and polite language.  
 - Create features that are usable by everyone.
-4. Responsibility as Developers
-Throughout the project, it is our duty as student developers to conduct ourselves
-in a professional and moral manner.
-Considerations:
-- Follow the agreed Code of Conduct
-- Respect users and team members
-- Prioritise user wellbeing in design decisions
-Meeting Notes
-Meeting 1 – Project Setup
+  
+### 4. Responsibility as Developers
+Throughout the project, it is our duty as student developers to conduct ourselves in a professional and moral manner.  
+Considerations:  
+- Follow the agreed Code of Conduct  
+- Respect users and team members  
+- Prioritise user wellbeing in design decisions  
+
+  
+## Meeting Notes
+
+**Meeting 1 – Project Setup**
 - Date: 30/01/2026
 - Time: 11 am
 - Mode: WhatsApp
 - Sprint: Sprint 1 (Project Setup and Planning)
 - Attendees: All group members(Usha, Niraj, Prasansa)
-Agenda
-1. Determine the members and their responsibility.
-2. Examine requirements for the Sprint 1 assessment.
-3. Decide tools and repository setup
-4. Explain about the tools(Kanban board, Docker, GitHub)
-5. Assign tasks for Sprint 1.
-Discussion
-The team talked about the necessary deliverables and went over the Sprint 1
-evaluation brief.
-After discussing several project ideas, the group decided on Study Buddies, a
-website that connects students with study partners.
-The group talked about using Docker for a consistent development environment,
-GitHub Projects for job management, and GitHub for version control.
-Decisions
+**Agenda**
+- Determine the members and their responsibility.
+- Examine requirements for the Sprint 1 assessment.
+- Decide tools and repository setup
+- Explain about the tools(Kanban board, Docker, GitHub)
+- Assign tasks for Sprint 1.
+  
+**Discussion**
+The team talked about the necessary deliverables and went over the Sprint 1 evaluation brief.
+After discussing several project ideas, the group decided on Study Buddies, a website that connects students with study partners.  
+The group talked about using Docker for a consistent development environment, GitHub Projects for job management, and GitHub for version control.  
+
+**Decisions**
 - Confirmed project idea: Study Buddies
 - GitHub repository was made and sent to every member
 - The application will be run using Docker
 - Planning and documentation will be the main priorities of Sprint 1
-Actions
+  
+**Actions**
 - Usha: Manage the repository and set up the Kanban board
 - Prasansa: Document meeting minutes and help with personas
 - Niraj: Help with documentation ethics concerns
-- All members: Every participant should make sure Docker is installed on their
-computer and submit at least one GitHub commit.
-Next Meeting
+- All members: Every participant should make sure Docker is installed on their computer and submit at least one GitHub commit.
+  
+**Next Meeting**
 - Date: 06/02/2026
 - Time: 10 am
 - Agenda: Review Sprint 1 documents and compile the single PDF
-Meeting 2 - Sprint 1 Review and Final PDF Compilation
-Meeting Details
-- Project Name: Study Buddies
-- Date:06/02/2026
-- Time:10 am
-- Mode: Online(WhatsApp)
-- Sprint: Sprint 1 (Proposal and Setup)
-- Meeting Goal: Review all Sprint 1 work and prepare the final single PDF for
-submission
+
+  
+**Meeting 2 - Sprint 1 Review and Final PDF Compilation**
+
+**Meeting Details**
+- Project Name: Study Buddies  
+- Date:06/02/2026  
+- Time:10 am  
+- Mode: Online(WhatsApp)  
+- Sprint: Sprint 1 (Proposal and Setup)  
+- Meeting Goal: Review all Sprint 1 work and prepare the final single PDF for submission  
 - Attendees: Usha Kiran Bhusal, Niraj Kumar Sah, Prasansa Senchuri
-Agenda
-1. Examine the requirements checklist for Sprint 1.
-2. Verify the each and every Sprint 1 paperwork have been completed.
-3. Examine the status of the Kanban board and the GitHub repository.
-4. Assemble the contents for the last PDF.
-5. Verify that we are prepared to submit for Sprint 1.
-Discussion
-The team verified that the necessary documentation had been finished and went
-over the Sprint 1 evaluation requirements. To make sure the README, Code of
-Conduct, Roles, Personas, Ethical Issues, and Meeting Notes were all current,
-the team looked over the GitHub repository.
-After reviewing the Kanban board, all of the items from Sprint 1 were verified as
-finished. The group decided on the sequence of sections to be included and
-talked about the final single PDF's structure.
+  
+**Agenda**  
+- Examine the requirements checklist for Sprint 1.  
+- Verify the each and every Sprint 1 paperwork have been completed.  
+- Examine the status of the Kanban board and the GitHub repository.  
+- Assemble the contents for the last PDF.  
+- Verify that we are prepared to submit for Sprint 1.
+  
+**Discussion**
+
+The team verified that the necessary documentation had been finished and went over the Sprint 1 evaluation requirements. To make sure the README, Code of Conduct, Roles, Personas, Ethical Issues, and Meeting Notes were all current, the team looked over the GitHub repository.  
+After reviewing the Kanban board, all of the items from Sprint 1 were verified as finished. The group decided on the sequence of sections to be included and talked about the final single PDF's structure.
 To make sure it was clear, consistent, and in line with the evaluation brief, each
 section of the paperwork was quickly examined.
-Decisions Made
-- Every condition for Sprint 1 has been fulfilled.
-- Submission of the GitHub repository is now possible.
-- The progress of Sprint 1 is correctly reflected on the Kanban board.
-- All necessary Sprint 1 portions will be included in the final single PDF.
+
+**Decisions Made**  
+- Every condition for Sprint 1 has been fulfilled.  
+- Submission of the GitHub repository is now possible.  
+- The progress of Sprint 1 is correctly reflected on the Kanban board.  
+- All necessary Sprint 1 portions will be included in the final single PDF.  
 - The group is ready to submit Sprint 1.
-Planned Work for Sprint 2
-Requirements analysis, database design, user stories, and a initial installation of
-essential features like study group management and user profiles will be the
-main topics of Sprint 2.
+  
+**Planned Work for Sprint 2**
+Requirements analysis, database design, user stories, and a initial installation of essential features like study group management and user profiles will be the main topics of Sprint 2.
 
 
 ---
