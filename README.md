@@ -712,14 +712,13 @@ Flow:
 **Sequence diagram – Create Study Request**
 
 
-5. Kanban Board Screenshot 
-Tasks for Sprints 2 is managed using the GitHub Project Kanban board. 
-The board includes the following columns: 
+## 5. Kanban Board Screenshot   
+Tasks for Sprints 2 is managed using the GitHub Project Kanban board. The board includes the following columns: 
 - Backlog – all tasks not yet started 
 - Ready – Tasks chosen for Sprint 2 are prepared and ready to start. 
 - In progress - things that are being worked on right now 
 - In Review - Completed tasks are awaiting review. 
-- Done - Completed and approved task 
+- Done - Completed and approved task   
 [Task Board Link:](https://github.com/users/kiranbhusalusha-bit/projects/4)
 
 **Screenshot of Kanboard Board** 
@@ -727,10 +726,9 @@ The board includes the following columns:
 
 
 ## 6. GitHub Repository Link
-GitHub is used by the Study Buddies project for project management, version control,
-and teamwork.
+GitHub is used by the Study Buddies project for project management, version control, and teamwork.
 
-[GitHub Repository link:](https://github.com/kiranbhusalusha-bit/study-buddies)
+[GitHub Repository link:](https://github.com/kiranbhusalusha-bit/study-buddies)  
 The repository includes:
 - Scaffolding files
 - README customised for the project
@@ -738,7 +736,7 @@ The repository includes:
 - Link to the GitHub Project Kanban board used to manage Sprint 2 tasks
 - Upload diagrams(wireframes, activity diagrams, sequence diagrams, ERD)
 
-[Repository](https://github.com/kiranbhusalusha-bit/study-buddies) 
+[Repository Link](https://github.com/kiranbhusalusha-bit/study-buddies) 
 
 
 
@@ -748,8 +746,8 @@ Meeting records document team collaboration and progress throughout the sprint.
 
 ### Meeting 1 – Sprint 2 Planning  
 **Date:** 12 Feb 2026  
-**Project Name:** Study Buddies 
-**Meeting Goal:** Plan Sprint 2 and allocate documentation tasks   
+**Project Name:** Study Buddies   
+**Meeting Goal:** Plan Sprint 2 and allocate documentation tasks     
 **Facilitator:** Usha  
 **Note taker:** Prasansa  
 **Attendees:** Usha, Niraj, Prasansa  
@@ -773,33 +771,28 @@ Meeting records document team collaboration and progress throughout the sprint.
 - All: Update Kanban board with assigned tasks.
 
 ### Meeting 2 – Mid Sprint Review  
-**Date:** 19 Feb 2026
-**Project Name:** Study Buddies
-**Meeting Goal:**  Examine the status and make sure the Sprint 2 artifacts are on schedule. 
+**Date:** 19 Feb 2026  
+**Project Name:** Study Buddies  
+**Meeting Goal:**  Examine the status and make sure the Sprint 2 artifacts are on schedule.   
 **Facilitator:** Usha  
-**Note taker:** Niraj  
-**Attendees:** Usha, Niraj  
+**Note taker:** Niraj    
+**Attendees:** Usha, Niraj    
 
 #### Roundtable Updates
-- Usha: User stories and acceptance criteria have been finished, and 
-activity and sequence diagrams are being worked on.   
+- Usha: User stories and acceptance criteria have been finished, and activity and sequence diagrams are being worked on.   
 - Niraj: ERD draft finished; entities and relationships verified.   
 
 #### Discussion
-- Examine Sprint 1 professor input to make sure the necessary adjustments were 
-made. 
-- Figure numbering, captions, and document formatting were determined to 
-constitute extra responsibilities. 
+- Examine Sprint 1 professor input to make sure the necessary adjustments were made. 
+- Figure numbering, captions, and document formatting were determined to constitute extra responsibilities. 
 - The features (messaging, search, and profile editing) that will be prioritized . 
 - assigned accountability for the leftover artifacts from Sprint 2. 
-- The group decided how and when to review the diagrams before submitting 
-them. 
+- The group decided how and when to review the diagrams before submitting them. 
 
 #### Actions
 - Usha: Complete the sequence and activity diagrams. 
 - Niraj: Complete the ERD and verify the schema.
-- Prasansa(absent but assigned): Verify UI consistency and enhance 
-wireframes.  
+- Prasansa(absent but assigned): Verify UI consistency and enhance wireframes.  
 - All : Examine GitHub artifacts prior to final submission.
 
 ### Meeting 3 – Sprint 2 Wrap-Up  
@@ -810,10 +803,8 @@ wireframes.
 **Note taker:** Prasansa  
 **Attendees:** Usha.Niraj,Prasansa 
 #### Roundtable Updates
-- Usha: Diagrams and documentation are finished, and the final report may 
-be assembled.  
-- Niraj: Backend planning tasks have been added to the backlog after ERD 
-validation.
+- Usha: Diagrams and documentation are finished, and the final report may be assembled.  
+- Niraj: Backend planning tasks have been added to the backlog after ERD validation.
 - Prasansa: Wireframes were enhanced and matched user stories. 
 
 #### Discussion
