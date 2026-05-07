@@ -188,11 +188,11 @@ unresolved.
   
 ### Agreement
 We declare to follow along by this Code of Conduct by participating in this
-project.
-Signed:
--Usha Kiran Bhusal
--Niraj Kumar Sah
--Prasansa Senchuri
+project.  
+Signed:  
+-Usha Kiran Bhusal  
+-Niraj Kumar Sah  
+-Prasansa Senchuri  
 
 Date:26/01/2026
 
