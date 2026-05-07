@@ -32,9 +32,9 @@ The Software Engineering module's Sprint 1 (Proposal and Setup) work is containe
 **StudyBuddiesTeam**
 
 ## Group Members
-- Usha
-- Niraj
-- Prasansa
+- Usha Kiran Bhusal (A00027156)
+- Niraj Kumar Sah (A00023606)
+- Prasansa Senchuri (A00026066)
 
 ---
 
