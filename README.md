@@ -63,23 +63,24 @@ Instead of developing features, Sprint 1 prioritizes on planning,setup and docum
 
 ## Project Structure
 
-```text
-study-buddies/
-├── app/
-│   ├── app.js
-│   ├── package.json
-│   └── package-lock.json
-├── static/
-│   └── test.html
-├── db.js
-├── index.js
-├── Dockerfile
-├── docker-compose.yml
-├── .env
-├── README.md
-└── docs/
+# Project Structure
 
-```
+- study-buddies
+  - app
+    - routes
+    - views
+    - public
+  - docs
+    - code-of-conduct.md
+    - roles.md
+    - personas.md
+    - ethics.md
+    - meeting-notes-sprint1.md
+  - Dockerfile
+  - docker-compose.yml
+  - package.json
+  - README.md
+  - .gitignore
 
 ## Running the Project Using Docker
 
