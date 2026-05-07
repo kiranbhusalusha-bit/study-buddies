@@ -1532,27 +1532,29 @@ Tasks were updated regularly to:
 
 I. Home Page  
 
-![]()
+![images/home_page.png](https://github.com/kiranbhusalusha-bit/study-buddies/blob/3a8a3c6b96a964b9c81611390f575adb2e698f80/images/home_page.png)
 II. Register Page 
-![]()
+![images/register_page.png](https://github.com/kiranbhusalusha-bit/study-buddies/blob/3a8a3c6b96a964b9c81611390f575adb2e698f80/images/register_page.png)
 III. Login Page  
-![]()
+![images/login_page.png](https://github.com/kiranbhusalusha-bit/study-buddies/blob/3a8a3c6b96a964b9c81611390f575adb2e698f80/images/login_page.png)
 IV. User List / Study Buddies Page  
-![]()
+![images/userlist.png](https://github.com/kiranbhusalusha-bit/study-buddies/blob/3a8a3c6b96a964b9c81611390f575adb2e698f80/images/userlist.png)
 V. User Profile Page
-![]()
+![images/user_profile_page.png](https://github.com/kiranbhusalusha-bit/study-buddies/blob/3a8a3c6b96a964b9c81611390f575adb2e698f80/images/user_profile_page.png)
 VI. Study Requests / Listing Page 
-![]()
+![images/study_request_listing_page.png](https://github.com/kiranbhusalusha-bit/study-buddies/blob/3a8a3c6b96a964b9c81611390f575adb2e698f80/images/study_request_listing_page.png)
 7. Create Study Request Page  
-![]()
+![images/create_study_request.png](https://github.com/kiranbhusalusha-bit/study-buddies/blob/3a8a3c6b96a964b9c81611390f575adb2e698f80/images/create_study_request.png)
 8. Messaging Page  
-![]()
+![images/send_message.png](https://github.com/kiranbhusalusha-bit/study-buddies/blob/3a8a3c6b96a964b9c81611390f575adb2e698f80/images/send_message.png)
 9. View Messages  
-![]()
+![images/view_messages.png](https://github.com/kiranbhusalusha-bit/study-buddies/blob/3a8a3c6b96a964b9c81611390f575adb2e698f80/images/view_messages.png)
 10. Give Rating to Another User  
-![]()
+![images/rating.png](https://github.com/kiranbhusalusha-bit/study-buddies/blob/3a8a3c6b96a964b9c81611390f575adb2e698f80/images/rating.png)
 11. View and Edit Own Profile Page  
-![]()
+![images/profile_page .png](https://github.com/kiranbhusalusha-bit/study-buddies/blob/3a8a3c6b96a964b9c81611390f575adb2e698f80/images/profile_page%20.png)
+
+![images/student_profile.png](https://github.com/kiranbhusalusha-bit/study-buddies/blob/3a8a3c6b96a964b9c81611390f575adb2e698f80/images/student_profile.png)
 
 The following screenshots are organized to show the application's main
 features and user journey.
