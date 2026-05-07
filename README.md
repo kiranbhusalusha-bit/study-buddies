@@ -727,7 +727,6 @@ Tasks for Sprints 2 is managed using the GitHub Project Kanban board. The board 
 [Task Board Link:](https://github.com/users/kiranbhusalusha-bit/projects/4)
 
 **Screenshot of Kanboard Board** 
-![images/kanbanboard_sprint2.png](https://github.com/kiranbhusalusha-bit/study-buddies/blob/400d0d470b3b6ce122c9f74756be187aa877bd8a/images/kanbanboard_sprint2.png)
 
 
 
@@ -1311,7 +1310,10 @@ materials.
 
 ---
 
-# 1. Application Idea Summary
+
+# Sprint 4- Final Submission Document
+
+**1. Application Idea Summary** 
 
 ## Project Title: Study Buddies
 
@@ -1334,14 +1336,12 @@ The objectives of Sprint 4 were to produce a Minimum Viable Product (MVP) by:
 
 # 3. Features Implemented in Sprint 4
 
-## I. User Authentication (Login System)
+## I. User Authentication (Login System)  
+- Users can register and log in  
+- Session-based authentication is used  
+- Logout feature implemented  
 
-### Features
-- Users can register and log in
-- Session-based authentication is used
-- Logout feature implemented
-
-### User Story Link
+### User Story Link  
 > "I want to create and access my profile as a student so that I can communicate with other users."
 
 ### Importance
@@ -1350,11 +1350,10 @@ Secure access and a customized user experience are made possible by this feature
 ---
 
 ## II. Create Study Request
+- New study requests can be made by users.
+- Include a description and title.
+- MySQL stores the data, which is dynamically displayed.
 
-### Features
-- Users can create new study requests
-- Requests include title and description
-- Data is stored dynamically in MySQL
 
 ### User Story Link
 > "I want to make a study request as a student so that others can assist me."
@@ -1364,24 +1363,20 @@ Enables students to actively seek academic assistance.
 
 ---
 
-## III. Messaging System
-
-### Features
-- Messages can be sent between users
-- Messages are stored in the database
-- Supports communication between study partners
+## III. Messaging System  
+- Messages can be sent between users  
+- Messages are stored in the database  
+- Supports communication between study partners  
 
 ### User Story Link
 > "I want to send messages as a student in order to communicate and set up study sessions."
 
-### Importance
-Facilitates user connection and collaboration.
+### Importance: Facilitates user connection and collaboration.
 
 ---
 
 ## IV. Matching and Filtering System
 
-### Features
 - Listings can be filtered by tags and categories
 - Helps users locate suitable study partners
 
@@ -1389,13 +1384,11 @@ Facilitates user connection and collaboration.
 > "As a student, I want to search for relevant study sessions by browsing tags."
 
 ### Importance
-Improves usability and helps users efficiently find appropriate matches.
+Enhances usability and facilitates consumers' efficient search for appropriate matches.  
 
 ---
 
 ## V. User Interface Enhancements
-
-### Features
 - Navigation bar implemented
 - Improved layout and consistency
 - Better user experience across pages
@@ -1404,10 +1397,15 @@ Improves usability and helps users efficiently find appropriate matches.
 
 ## VI. User Ratings System
 
-### Features
-- Users can rate study partners from 1–5
-- Ratings are stored in the database
-- Average ratings displayed on profiles
+After connecting with other study partners, users can score them on a
+scale of 1 to 5. The average rating is shown on the user profile page, and
+the ratings are kept in the database. This aids users in selecting study
+partners with knowledge. The recommendation algorithm matches users
+based on their average rating and common subjects using a
+straightforward grading method. The relevancy of recommended study
+partners is increased by giving priority to users with more subject
+matches and higher ratings.
+
 
 ### User Story Link
 > "As a student, I want to rate other users so that I can provide feedback on their collaboration."
@@ -1415,22 +1413,13 @@ Improves usability and helps users efficiently find appropriate matches.
 ### Importance
 Enhances trust and assists users in finding reliable study companions.
 
-### Recommendation Logic
-The recommendation algorithm prioritizes:
-- Users with higher average ratings
-- Users with matching study subjects
-
-This increases the relevance of suggested study partners.
-
 ---
 
 ## VII. Advanced Matching / Recommendation System
 
-### Features
-- Suggests study partners based on:
-  - Shared subjects
-  - User ratings
-- Prioritizes users with stronger compatibility
+Based on user evaluations and shared subjects, the algorithm suggests study
+partners. Users with comparable subjects and higher ratings are prioritized and
+shown first using a straightforward matching mechanism.
 
 ### User Story Link
 > "As a student, I want to find the best study partners based on my interests and ratings."
@@ -1442,14 +1431,13 @@ Improves user experience by helping users quickly find high-quality matches.
 
 # 4. System Architecture and Technical Overview
 
-The application follows an MVC-based full-stack architecture.
+The program uses an MVC-based full-stack architecture:
 
-| Layer | Technology Used |
-|---|---|
-| Frontend | Pug Templates |
-| Backend | Node.js + Express.js |
-| Database | MySQL |
-| Authentication | Express-session |
+- Frontend: Dynamic rendering with pug templates
+- Backend: Node.js with Express.js managing logic and routes
+- Database: MySOL storing Users, listings, tags, and messages
+- Session Management: Express-session for authentication
+
 
 ## System Workflow
 
@@ -1457,52 +1445,48 @@ The application follows an MVC-based full-stack architecture.
 2. Express route processes request  
 3. Data retrieved/stored in MySQL  
 4. Pug template renders dynamic page  
-5. Response returned to user  
+5. Response returned to user
 
-This architecture ensures:
-- Scalability
-- Separation of concerns
-- Maintainability
-
-The project aligns with the theme of **“Sharing, exchange and building community”** by providing a platform where students can support one another academically without financial exchange.
-
-Relevant database tables such as:
-- Users
-- StudyRequests
-- Messages
-- Ratings
-
-are connected through foreign keys to maintain data integrity and relationships.
+This Scalability and focus separation are guaranteed by this framework.
+The project aligns with the theme of “Sharing, exchange and building community” by
+providing a platform where students can support each other academically without
+financial exchange.
+By giving students, a forum to encourage one another academically without
+exchanging money, the project is in line with the subject of "Sharing, exchange, and
+building community." In order to preserve data integrity and relationships, the
+database's relevant tables—such as Users, StudyRequests, Messages, and Ratings—
+are connected via foreign keys. 
 
 ---
 
 # 5. DevOps and CI/CD Implementation
 
+The routine verifies that the application builds correctly and installs project dependencies. This guarantees early error detection and upholds code quality throughout the
+team.
+
 ## Docker
 
 ### Features
-- Docker containers used to run the application
-- Provides consistent environment for all team members
-- Simplifies deployment and setup
+- Docker containers are used to run the application.
+- guarantees a uniform atmosphere for every team member.
+- makes deployment and setup easier
 
 ---
 
 ## GitHub Actions (CI/CD)
 
-### Features
-- GitHub Actions workflow implemented
-- Runs automatically on code push
-- Verifies successful project build
-- Detects errors early
+- GitHub Actions was used to develop the CI workflow.
+- Operates automatically upon code push
+- Confirms the project's successful construction.
+  
 
-### Importance
-Illustrates the use of modern DevOps practices and continuous integration.
+This illustrates the application of contemporary DevOps techniques.
 
 ---
 
 # 6. Agile Development and Team Collaboration
 
-The team followed an Agile Scrum methodology using a GitHub Kanban Board.
+The team used a GitHub Kanban board and an Agile Scrum methodology.
 
 ## Board Columns
 - Backlog
@@ -1511,6 +1495,8 @@ The team followed an Agile Scrum methodology using a GitHub Kanban Board.
 - In Review
 - Done
 
+To monitor progress and guarantee responsibility, tasks were updated on a frequent basis.
+
 Tasks were updated regularly to:
 - Monitor progress
 - Improve accountability
@@ -1518,62 +1504,25 @@ Tasks were updated regularly to:
 
 ---
 
-## Example GitHub Commits
 
-| Commit Feature | Status |
-|---|---|
-| Add logo to homepage | Completed |
-| Add pagination to study buddies page | Completed |
-| Improve logged in student navigation | Completed |
-| Save creator when creating study request | Completed |
-| Add register link to login page | Completed |
-| Update homepage navigation and about page | Completed |
-
----
-
-## Example Kanban Tasks
-
-### Backlog
-- Manual testing of all main pages
-- Take final application screenshots
-- Prepare Sprint 4 PDF
-- Prepare final presentation slides
-- Final demo rehearsal
-
-### Ready
-- Check GitHub Actions result
-- Show newest request first
-
-### In Progress
-- Improve homepage design
-- Improve student list page design
-- Improve request detail page
-- Add student pagination
-- Fix broken routes and links
-
-### In Review
-- Add student search/filter
-- Improve student profile page
-- Add study request pagination
-
-### Done
-- Add navigation links
-- Add register link to login page
-- Test login and logout flow
-- Create study request form
-- Link request to logged-in student
-- Add GitHub Actions workflow
-- Add study request filter
-
----
 
 # 7. Team Contribution
 
-| Team Member | Contribution |
-|---|---|
-| Usha | Implemented authentication system, managed GitHub repository, added GitHub Actions, backend development |
-| Niraj | Database updates for messaging, backend logic for filtering and messaging, debugging and integration |
-| Prasansa | UI design improvements, created forms, improved user experience |
+**Usha**
+-Implemented authentication system
+- Managed GitHub repository and workflow
+- Added GitHub Actions
+- Backend Development
+  
+**Niraj**
+-Database updates for messaging
+- Backend logic for filtering and messaging
+- Debugging and integration support
+  
+**Prasansa**
+- UI design and layout improvements
+- Created Forms(study request, messaging)
+- Improved user experience
 
 ---
 
@@ -1581,19 +1530,32 @@ Tasks were updated regularly to:
 
 ## Included Screenshots
 
-1. Home Page  
-2. Register Page  
-3. Login Page  
-4. User List / Study Buddies Page  
-5. User Profile Page  
-6. Study Requests / Listing Page  
-7. Create Study Request Page  
-8. Messaging Page  
-9. View Messages  
-10. Give Rating to Another User  
-11. View and Edit Own Profile Page  
+I. Home Page  
 
-The screenshots demonstrate the application's major features and complete user journey.
+![]()
+II. Register Page 
+![]()
+III. Login Page  
+![]()
+IV. User List / Study Buddies Page  
+![]()
+V. User Profile Page
+![]()
+VI. Study Requests / Listing Page 
+![]()
+7. Create Study Request Page  
+![]()
+8. Messaging Page  
+![]()
+9. View Messages  
+![]()
+10. Give Rating to Another User  
+![]()
+11. View and Edit Own Profile Page  
+![]()
+
+The following screenshots are organized to show the application's main
+features and user journey.
 
 ---
 
@@ -1601,13 +1563,13 @@ The screenshots demonstrate the application's major features and complete user j
 
 The following ethical considerations were taken into account:
 
-## Privacy
+**Privacy**  
 Only essential user information is stored and protected.
 
-## User Safety
+**User Safety**  
 The platform is designed to reduce misuse and inappropriate behavior.
 
-## Inclusivity
+**Inclusivity**  
 The system is accessible to students from diverse backgrounds.
 
 ---
@@ -1626,21 +1588,14 @@ The application is functional, scalable, and ready for future enhancement.
 
 # 11. Conclusion
 
-Sprint 4 successfully delivered a functional MVP of the Study Buddies platform.
-
-Implemented features include:
-- User authentication
-- Study request creation
-- Messaging
-- Filtering and matching systems
-
-The project demonstrates:
+In Sprint 4, A functional MVP of the Study Buddies platform was successfully delivered. User login, the ability to create study requests, messaging, and filtering are now
+features of the system.
+The project illustrates:
 - Full-stack web development
-- Agile teamwork and collaboration
-- Usage of modern development tools
-- Real-world application of user requirements
-
-The system is scalable, operational, and ready for future improvements.
+- Agile cooperation and teamwork
+- Utilizing contemporary tools (GitHub, Docker, CI/CD)
+- Application of actual user requirements  
+The program is scalable, operational, and prepared for additional improvement.
 
 ---
 
