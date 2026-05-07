@@ -309,7 +309,7 @@ Considerations:
 ## Meeting Notes
 
 **Meeting 1 – Project Setup**
-- Date: 30/01/2026
+- **Date:** 30/01/2026
 - Time: 11 am
 - Mode: WhatsApp
 - Sprint: Sprint 1 (Project Setup and Planning)
@@ -1288,7 +1288,379 @@ materials.
 - All : Give your final approval. 
 
  
- 
+ # Sprint 4 – Final Submission Document  
+## Study Buddies – Sprint 4  
+
+**Module:** Software Engineering (CMP-N204-0)  
+**Group Name:** Study Buddies  
+
+### Team Members
+| Name | Student ID |
+|---|---|
+| Usha Kiran Bhusal | A00027156 |
+| Niraj Kumar Sah | A00023606 |
+| Prasansa Senchuri | A00026066 |
+
+### Project Links
+- GitHub Repository:  
+  https://github.com/kiranbhusalusha-bit/study-buddies
+
+- Kanban Board:  
+  https://github.com/users/kiranbhusalusha-bit/projects/6
+
+---
+
+# 1. Application Idea Summary
+
+## Project Title: Study Buddies
+
+Study Buddies is a dynamic full-stack web application designed to facilitate student cooperation and peer learning. In an organized and user-friendly setting, the system lets users identify study companions, exchange knowledge, and ask for academic assistance.
+
+Students can use the app to make study requests, look for study partners, browse other students, and establish profiles. In order to make well-informed judgments regarding collaboration, users can access comprehensive information about other students and study requests.
+
+---
+
+# 2. Sprint 4 Objectives
+
+The objectives of Sprint 4 were to produce a Minimum Viable Product (MVP) by:
+
+- Implementing advanced user features
+- Improving user interface and usability
+- Enabling user interaction (messaging and requests)
+- Integrating DevOps practices such as CI/CD
+
+---
+
+# 3. Features Implemented in Sprint 4
+
+## I. User Authentication (Login System)
+
+### Features
+- Users can register and log in
+- Session-based authentication is used
+- Logout feature implemented
+
+### User Story Link
+> "I want to create and access my profile as a student so that I can communicate with other users."
+
+### Importance
+Secure access and a customized user experience are made possible by this feature.
+
+---
+
+## II. Create Study Request
+
+### Features
+- Users can create new study requests
+- Requests include title and description
+- Data is stored dynamically in MySQL
+
+### User Story Link
+> "I want to make a study request as a student so that others can assist me."
+
+### Importance
+Enables students to actively seek academic assistance.
+
+---
+
+## III. Messaging System
+
+### Features
+- Messages can be sent between users
+- Messages are stored in the database
+- Supports communication between study partners
+
+### User Story Link
+> "I want to send messages as a student in order to communicate and set up study sessions."
+
+### Importance
+Facilitates user connection and collaboration.
+
+---
+
+## IV. Matching and Filtering System
+
+### Features
+- Listings can be filtered by tags and categories
+- Helps users locate suitable study partners
+
+### User Story Link
+> "As a student, I want to search for relevant study sessions by browsing tags."
+
+### Importance
+Improves usability and helps users efficiently find appropriate matches.
+
+---
+
+## V. User Interface Enhancements
+
+### Features
+- Navigation bar implemented
+- Improved layout and consistency
+- Better user experience across pages
+
+---
+
+## VI. User Ratings System
+
+### Features
+- Users can rate study partners from 1–5
+- Ratings are stored in the database
+- Average ratings displayed on profiles
+
+### User Story Link
+> "As a student, I want to rate other users so that I can provide feedback on their collaboration."
+
+### Importance
+Enhances trust and assists users in finding reliable study companions.
+
+### Recommendation Logic
+The recommendation algorithm prioritizes:
+- Users with higher average ratings
+- Users with matching study subjects
+
+This increases the relevance of suggested study partners.
+
+---
+
+## VII. Advanced Matching / Recommendation System
+
+### Features
+- Suggests study partners based on:
+  - Shared subjects
+  - User ratings
+- Prioritizes users with stronger compatibility
+
+### User Story Link
+> "As a student, I want to find the best study partners based on my interests and ratings."
+
+### Importance
+Improves user experience by helping users quickly find high-quality matches.
+
+---
+
+# 4. System Architecture and Technical Overview
+
+The application follows an MVC-based full-stack architecture.
+
+| Layer | Technology Used |
+|---|---|
+| Frontend | Pug Templates |
+| Backend | Node.js + Express.js |
+| Database | MySQL |
+| Authentication | Express-session |
+
+## System Workflow
+
+1. User sends request from browser  
+2. Express route processes request  
+3. Data retrieved/stored in MySQL  
+4. Pug template renders dynamic page  
+5. Response returned to user  
+
+This architecture ensures:
+- Scalability
+- Separation of concerns
+- Maintainability
+
+The project aligns with the theme of **“Sharing, exchange and building community”** by providing a platform where students can support one another academically without financial exchange.
+
+Relevant database tables such as:
+- Users
+- StudyRequests
+- Messages
+- Ratings
+
+are connected through foreign keys to maintain data integrity and relationships.
+
+---
+
+# 5. DevOps and CI/CD Implementation
+
+## Docker
+
+### Features
+- Docker containers used to run the application
+- Provides consistent environment for all team members
+- Simplifies deployment and setup
+
+---
+
+## GitHub Actions (CI/CD)
+
+### Features
+- GitHub Actions workflow implemented
+- Runs automatically on code push
+- Verifies successful project build
+- Detects errors early
+
+### Importance
+Illustrates the use of modern DevOps practices and continuous integration.
+
+---
+
+# 6. Agile Development and Team Collaboration
+
+The team followed an Agile Scrum methodology using a GitHub Kanban Board.
+
+## Board Columns
+- Backlog
+- Ready
+- In Progress
+- In Review
+- Done
+
+Tasks were updated regularly to:
+- Monitor progress
+- Improve accountability
+- Support collaboration
+
+---
+
+## Example GitHub Commits
+
+| Commit Feature | Status |
+|---|---|
+| Add logo to homepage | Completed |
+| Add pagination to study buddies page | Completed |
+| Improve logged in student navigation | Completed |
+| Save creator when creating study request | Completed |
+| Add register link to login page | Completed |
+| Update homepage navigation and about page | Completed |
+
+---
+
+## Example Kanban Tasks
+
+### Backlog
+- Manual testing of all main pages
+- Take final application screenshots
+- Prepare Sprint 4 PDF
+- Prepare final presentation slides
+- Final demo rehearsal
+
+### Ready
+- Check GitHub Actions result
+- Show newest request first
+
+### In Progress
+- Improve homepage design
+- Improve student list page design
+- Improve request detail page
+- Add student pagination
+- Fix broken routes and links
+
+### In Review
+- Add student search/filter
+- Improve student profile page
+- Add study request pagination
+
+### Done
+- Add navigation links
+- Add register link to login page
+- Test login and logout flow
+- Create study request form
+- Link request to logged-in student
+- Add GitHub Actions workflow
+- Add study request filter
+
+---
+
+# 7. Team Contribution
+
+| Team Member | Contribution |
+|---|---|
+| Usha | Implemented authentication system, managed GitHub repository, added GitHub Actions, backend development |
+| Niraj | Database updates for messaging, backend logic for filtering and messaging, debugging and integration |
+| Prasansa | UI design improvements, created forms, improved user experience |
+
+---
+
+# 8. Screenshots of Application
+
+## Included Screenshots
+
+1. Home Page  
+2. Register Page  
+3. Login Page  
+4. User List / Study Buddies Page  
+5. User Profile Page  
+6. Study Requests / Listing Page  
+7. Create Study Request Page  
+8. Messaging Page  
+9. View Messages  
+10. Give Rating to Another User  
+11. View and Edit Own Profile Page  
+
+The screenshots demonstrate the application's major features and complete user journey.
+
+---
+
+# 9. Ethical Considerations
+
+The following ethical considerations were taken into account:
+
+## Privacy
+Only essential user information is stored and protected.
+
+## User Safety
+The platform is designed to reduce misuse and inappropriate behavior.
+
+## Inclusivity
+The system is accessible to students from diverse backgrounds.
+
+---
+
+# 10. Future Improvements
+
+- Instant messaging platform
+- Advanced recommendation algorithm
+- Message notifications
+- Better mobile responsiveness
+- Password encryption and increased security
+
+The application is functional, scalable, and ready for future enhancement.
+
+---
+
+# 11. Conclusion
+
+Sprint 4 successfully delivered a functional MVP of the Study Buddies platform.
+
+Implemented features include:
+- User authentication
+- Study request creation
+- Messaging
+- Filtering and matching systems
+
+The project demonstrates:
+- Full-stack web development
+- Agile teamwork and collaboration
+- Usage of modern development tools
+- Real-world application of user requirements
+
+The system is scalable, operational, and ready for future improvements.
+
+---
+
+# 12. References
+
+1. Node.js Documentation. Available at: https://nodejs.org/en/docs/  
+2. Express.js Documentation. Available at: https://expressjs.com/  
+3. MySQL Documentation. Available at: https://dev.mysql.com/doc/  
+4. Pug Template Engine Documentation. Available at: https://pugjs.org/api/getting-started.html  
+5. Docker Documentation. Available at: https://docs.docker.com/  
+6. GitHub Actions Documentation. Available at: https://docs.github.com/en/actions  
+7. Atlassian Agile Guide. Available at: https://www.atlassian.com/agile  
+8. K. Schwaber and J. Sutherland, *The Scrum Guide*, 2020. Available at: https://scrumguides.org/  
+9. Mozilla Developer Network, “Model View Controller (MVC).” Available at: https://developer.mozilla.org/en-US/docs/Glossary/MVC  
+10. OWASP Authentication Cheat Sheet. Available at: https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html  
+11. Express.js Middleware Guide. Available at: https://expressjs.com/en/guide/using-middleware.html  
+12. MySQL JOIN Syntax. Available at: https://dev.mysql.com/doc/refman/8.0/en/join.html  
+13. Git Documentation. Available at: https://git-scm.com/docs  
+14. WebSockets API Documentation. Available at: https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API  
+15. REST API Architectural Style. Available at: https://restfulapi.net/  
+
  
  
  
