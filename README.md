@@ -803,13 +803,12 @@ wireframes.
 - All : Examine GitHub artifacts prior to final submission.
 
 ### Meeting 3 – Sprint 2 Wrap-Up  
-**Date:** 26 Feb 2026 
-**Project Name:** Study Buddies
-**Meeting Goal:** Finalize Sprint 2 deliverables and get ready to submit
-**Facilitator:** Usha  
+**Date:** 26 Feb 2026  
+**Project Name:** Study Buddies  
+**Meeting Goal:** Finalize Sprint 2 deliverables and get ready to submit  
+**Facilitator:** Usha   
 **Note taker:** Prasansa  
 **Attendees:** Usha.Niraj,Prasansa 
-
 #### Roundtable Updates
 - Usha: Diagrams and documentation are finished, and the final report may 
 be assembled.  
