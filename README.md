@@ -727,6 +727,7 @@ Tasks for Sprints 2 is managed using the GitHub Project Kanban board. The board 
 [Task Board Link:](https://github.com/users/kiranbhusalusha-bit/projects/4)
 
 **Screenshot of Kanboard Board** 
+![images/kanbanboard_sprint2.png](https://github.com/kiranbhusalusha-bit/study-buddies/blob/400d0d470b3b6ce122c9f74756be187aa877bd8a/images/kanbanboard_sprint2.png)
 
 
 
