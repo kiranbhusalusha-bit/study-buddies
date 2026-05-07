@@ -285,7 +285,7 @@ Considerations:
 - Be transparent about how user data is used
   
 ### 2. User Safety and Misuse
-The platform faces the risk of being used for inappropriate behaviour, spam, or harassment.
+The platform faces the risk of being used for inappropriate behaviour, spam, or harassment.  
 Considerations:  
 - Define acceptable behaviour clearly  
 - Provide ways for users to report misuse  
