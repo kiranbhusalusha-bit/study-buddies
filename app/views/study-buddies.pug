@@ -1,0 +1,35 @@
+extends layout
+
+block content
+    div.container
+
+        div.box
+            h2 All User List
+
+        div.box
+            p Search: [ Enter subject or keyword... ][Search]
+
+        div.box
+            p Filters / Tags: [Maths] [Programming] [First Year] [Business] [More...]
+
+        div.box.student-list
+            div.student-card
+                p Student Name: Sarah Doite
+                p Course / Year: Computer Science, Year 2
+                p Subjects: Python, Algorithms, Databases
+                p [ View Profile ]
+
+            div.student-card
+                p Student Name: Daniel Smith
+                p Course / Year: Business, Year 1
+                p Subjects: Accounting, Economics
+                p [ View Profile ]
+
+            div.student-card
+                p Student Name: Aisha Patel
+                p Course / Year: Engineering, Year 3
+                p Subjects: Maths, Physics
+                p [ View Profile ]
+
+            div.pagination
+                p [ Previous ] [ Next ]

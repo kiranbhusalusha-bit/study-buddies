@@ -1,0 +1,40 @@
+extends layout
+
+block content
+    div.container
+
+        div.box
+            h2 Student Profile Page
+
+        div.back-button
+            a(href="/all-students") < Back to User List
+
+        div.box
+            p Student Name: #{student.name}
+            p Student ID: #{student.id}
+
+        div.box
+            p Short Bio / Description
+            if student.note
+                p #{student.note}
+            else
+                p No description added yet.
+
+        div.box
+            p Subjects They Can Help With
+            if student.subjects && student.subjects.length
+                each subject in student.subjects
+                    p • #{subject.name}
+            else
+                p No subjects listed.
+
+        div.box
+            p Subjects They Need Help With
+            p • Not added yet
+
+        div.box
+            p Availability
+            p • Not added yet
+
+        div.message-button
+            button [Send Message] optional

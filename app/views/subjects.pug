@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    h1 Study Subjects
+
+    p These are the subjects available in the Study Buddies system.
+
+    table(border=1)
+        tr
+            th ID
+            th Subject
+            th Action
+
+        each item in data
+            tr
+                td #{item.id}
+                td #{item.name}
+                td
+                    a(href="/subject/" + item.id) View Subject
+
+    p
+        a(href="/") Back to Home

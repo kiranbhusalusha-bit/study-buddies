@@ -1,0 +1,50 @@
+extends layout
+
+block content
+    div.inbox-shell
+        aside.inbox-sidebar
+            div.inbox-sidebar-title
+                strong Conversations
+
+            if messageGroups && messageGroups.length
+                div.inbox-search
+                    input(type="text", placeholder="Search users...", aria-label="Search users")
+
+                div.conversation-list
+                    each group in messageGroups
+                        a.conversation-item(class=(selectedGroup && selectedGroup.sender_id == group.sender_id ? "active" : ""), href="/messages/inbox?sender=" + group.sender_id)
+                            div.conversation-avatar= group.sender_name.charAt(0)
+                            div.conversation-summary
+                                strong= group.sender_name
+                                span= group.latest_body
+                                small= group.latest_time
+            else
+                p.inbox-empty You have no conversations.
+
+        main.inbox-main
+            div.box.inbox-title
+                h1 View Messages
+
+            if selectedGroup
+                div.message-card
+                    div.message-card-header
+                        p
+                            strong From:
+                            |  
+                            a(href="/single-student/" + selectedGroup.sender_id)= selectedGroup.sender_name
+
+                    div.message-thread
+                        each msg in selectedGroup.messages
+                            div.message-bubble
+                                p.message-body #{msg.body}
+                                p.message-time Sent: #{msg.formatted_created_at}
+
+                    form.reply-form(action="/messages/new/" + selectedGroup.sender_id, method="POST")
+                        textarea(name="body", placeholder="Reply to " + selectedGroup.sender_name + "...", rows="3", required=true)
+                        button.reply-button(type="submit") Reply
+            else
+                div.box
+                    p You have no new messages.
+
+            p
+                a(href="/single-student/" + currentUserId) Back to your profile

@@ -1,0 +1,56 @@
+extends layout
+
+block content
+    div.request-page-shell
+        div.request-page-panel
+
+            header.request-page-title
+                h2 Study Request
+
+            if success
+                div.request-success
+                    p #{success}
+
+            div.request-create-link
+                a(href="/create-request") [ Create Study Request ]
+
+            form.request-filter(action="/study-requests" method="GET")
+                label(for="request-search") Filter:
+                input#request-search(type="text" name="q" placeholder="Search request or subject" value=(typeof q !== "undefined" ? q : ""))
+                button(type="submit") Search
+                a(href="/study-requests") [ Clear ]
+
+            div.request-list-panel
+                if data && data.length
+                    each request in data
+                        div.study-request-card
+                            p
+                                strong Request Title: 
+                                | #{request.title}
+                            p
+                                strong Subject: 
+                                | #{request.subject}
+                            if request.description
+                                p
+                                    strong Description: 
+                                    | #{request.description}
+                            else
+                                p
+                                    strong Description: 
+                                    | No description added.
+                            a(href="/study-request/" + request.id) [ View Details ]
+                else
+                    p.request-empty No study requests found.
+
+            div.request-pagination
+                if previousPage
+                    a(href="/study-requests?page=" + previousPage + queryString) [ Previous ]
+                else
+                    span [ Previous ]
+
+                |  
+
+                if nextPage
+                    a(href="/study-requests?page=" + nextPage + queryString) [ Next ]
+                else
+                    span [ Next ]

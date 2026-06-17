@@ -1,0 +1,80 @@
+extends layout
+
+block content
+    div.user-list-shell
+        div.user-list-panel
+            div.user-list-heading
+                span.sparkle *
+                div
+                    h2 All User List
+                    span.heading-mark
+
+            form.user-search(action="/students" method="GET")
+                label.sr-only(for="user-search") Search
+                input#user-search(type="text" name="q" placeholder="Enter subject or keyword..." value=(typeof q !== "undefined" ? q : ""))
+                button(type="submit") Search
+
+            div.filter-card
+                span.filter-title Filters / Tags
+                a.filter-pill.maths(href="/students?tag=Maths") Maths
+                a.filter-pill.programming(href="/students?tag=Programming") Programming
+                a.filter-pill.year(href="/students?tag=First Year") First Year
+                a.filter-pill.business(href="/students?tag=Business") Business
+                a.filter-pill.more(href="/students") More...
+
+            div.study-buddy-list
+                if dbError
+                    p.empty-list #{dbError}
+                if data && data.length
+                    each student in data
+                        div.buddy-card(data-student-id=student.id)
+                            div.avatar-picker
+                                img.buddy-avatar(src=(student.picture || "/images/default-avatar.svg") alt=student.name + " profile picture")
+
+                            div.buddy-info
+                                h3 Student Name: #{student.name}
+                                if student.course || student.study_year
+                                    p.meta-line
+                                        span.icon-circle
+                                        | Course / Year: #{student.course || "Not added"}, Year #{student.study_year || "Not added"}
+                                else
+                                    p.meta-line
+                                        span.icon-circle
+                                        | Course / Year: Not added
+                                if student.subjects
+                                    p.meta-line
+                                        span.book-icon
+                                        | Subjects: #{student.subjects}
+                                else if student.note
+                                    p.meta-line
+                                        span.book-icon
+                                        | Subjects: #{student.note}
+                                else
+                                    p.meta-line
+                                        span.book-icon
+                                        | Subjects: Not added
+                                p.meta-line
+                                    span.rating-icon
+                                    | Average Rating: #{student.avg_rating ? Number(student.avg_rating).toFixed(1) : "0.0"} (#{student.rating_count || 0})
+                                p.meta-line
+                                    span.score-icon
+                                    | Match Score: #{student.match_score ? Number(student.match_score).toFixed(1) : "0.0"} 
+                                    |  = #{student.subject_match_count || 0} subject matches + #{student.avg_rating ? Number(student.avg_rating).toFixed(1) : "0.0"} rating
+
+                            if currentUserId && currentUserId == student.id
+                                a.profile-button(href="/single-student/" + student.id) View Your Page
+                            else
+                                a.profile-button(href="/single-student/" + student.id) View Profile
+                else if !dbError
+                    p.empty-list No students found.
+
+            div.user-pagination
+                if previousPage
+                    a.page-button(href="/students?page=" + previousPage + queryString) Previous
+                else
+                    span.page-button.disabled Previous
+
+                if nextPage
+                    a.page-button.primary(href="/students?page=" + nextPage + queryString) Next
+                else
+                    span.page-button.primary.disabled Next

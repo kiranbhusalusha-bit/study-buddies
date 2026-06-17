@@ -1,0 +1,39 @@
+extends layout
+
+block content
+    div.container
+        div.box
+            h2 Create Study Request
+
+        div.box
+            a(href="/") Home
+            |  | 
+            a(href="/students") All User List
+            |  | 
+            a(href="/study-requests") Study Requests
+            |  | 
+            a(href="/logout") Logout
+
+        if error
+            div.box.create-request-message
+                p #{error}
+
+        if success
+            div.box.create-request-message
+                p #{success}
+
+        div.box.create-request-panel
+            form.create-request-form(action="/create-request" method="POST")
+                label(for="request-title") Title:
+                input#request-title(type="text" name="title" value=title)
+
+                label(for="request-subject") Subject:
+                input#request-subject(type="text" name="subject" value=subject)
+
+                label(for="request-description") Description:
+                textarea#request-description(name="description") #{description}
+
+                button(type="submit") Submit
+
+        div.nav-row
+            a.button-link(href="/study-requests") < Back to Study Requests

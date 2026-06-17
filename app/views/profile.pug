@@ -1,0 +1,63 @@
+extends layout
+
+block content
+    h1 #{heading}
+
+    if student
+        div.profile-container
+            div.profile-info
+                if student.picture
+                    img.profile-pic(src=student.picture, alt="Profile Picture")
+                else
+                    img.profile-pic(src="/images/default-avatar.svg", alt="Default Avatar")
+                h2= student.name
+                p= student.bio || "No bio yet."
+                p Availability: #{student.availability || 'Not set yet.'}
+                p Needs help with: #{student.needs || 'Not set yet.'}
+                p Subjects: #{student.subjects.map(s => s.name).join(', ')}
+
+            div.profile-edit
+                h3 Edit Profile
+                form(action="/profile/" + student.id + "/update", method="POST")
+                    div.form-group
+                        label(for="name") Name:
+                        input(type="text", name="name", id="name", value=student.name || "", required=true)
+                    div.form-group
+                        label(for="picture") Profile picture URL:
+                        input(type="url", name="picture", id="picture", value=student.picture || "", placeholder="https://example.com/my-photo.jpg")
+                    div.form-group
+                        label(for="bio") Bio (max 100 words):
+                        textarea(name="bio", id="bio", rows="4", maxlength="1000")= student.bio || ""
+                        span.word-count 0 / 100 words
+                    div.form-group
+                        label(for="availability") Availability:
+                        input(type="text", name="availability", id="availability", value=student.availability || "")
+                    div.form-group
+                        label(for="needs") Subjects you need help with:
+                        textarea(name="needs", id="needs", rows="3")= student.needs || ""
+                    button(type="submit") Update Profile
+
+                form(action="/profile/" + student.id + "/delete", method="POST", onsubmit="return confirm('Are you sure you want to delete your account? This cannot be undone.');")
+                    button(type="submit", class="delete-account") Delete Account
+
+    script.
+        const bioTextarea = document.getElementById('bio');
+        const wordCount = document.querySelector('.word-count');
+
+        function updateWordCount() {
+            const words = bioTextarea.value.trim().split(/\s+/).filter(word => word.length > 0);
+            wordCount.textContent = words.length + ' / 100 words';
+            if (words.length > 100) {
+                wordCount.style.color = 'red';
+                bioTextarea.setCustomValidity('Bio must be 100 words or less');
+            } else {
+                wordCount.style.color = 'black';
+                bioTextarea.setCustomValidity('');
+            }
+        }
+
+        bioTextarea.addEventListener('input', updateWordCount);
+        updateWordCount();
+
+    p
+        a(href="/students") Back to All User List

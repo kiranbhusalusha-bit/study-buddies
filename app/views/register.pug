@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    div.auth-page
+        div.auth-card
+            div.auth-left
+                img.auth-logo(src="/images/logo.svg" alt="Study Buddies logo")
+                h2 Study Buddies
+                p Learn together. Grow together.
+            div.auth-right
+                h2.auth-heading Register
+                form.auth-form(action='/set-password' method='POST')
+                    div.form-group
+                        label(for='email') Email
+                        input.auth-input(type='email' name='email' placeholder='Enter your email' required)
+                    div.form-group
+                        label(for='password') Password
+                        input.auth-input(type='password' name='password' placeholder='Enter your password' required)
+                    button.auth-submit(type='submit') Register
+                p.auth-footer
+                    | Already have an account? 
+                    a.auth-link(href="/login") Sign in here

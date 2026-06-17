@@ -1,0 +1,44 @@
+extends layout
+
+block content
+    h1 Student page for: #{student.name}
+
+    p Student ID: #{student.id}
+
+    h2 Subjects
+
+    if student.subjects.length
+        ul
+            each subject in student.subjects
+                li
+                    a(href="/subject/" + subject.id) #{subject.name}
+    else
+        p No subjects linked to this student yet.
+
+    p Note for this student: #{student.note}
+
+    p
+        a(href="/students") Back to All User List
+
+    h2 Add a note about this student
+
+    form(action="/add-note", method="POST")
+        input(type="hidden", name="id", value=student.id)
+        textarea(name="note", rows="6", cols="50")
+        div
+            input(type="submit", value="Submit")
+
+    h2 Change Programme
+
+    form(action="/allocate-programme", method="POST")
+        input(type="hidden", name="id", value=student.id)
+
+        select(name="programme")
+            each programme in programmes
+                if student.programme && programme.id == student.programme.id
+                    option(value=programme.id, selected="selected") #{programme.pName}
+                else
+                    option(value=programme.id) #{programme.pName}
+
+        div
+            input(type="submit", value="Update Programme")

@@ -1,0 +1,41 @@
+extends layout
+
+block content
+    div.container
+
+        // Header box
+        div.box
+            h1 Study Buddies (Logo + Site Name)
+
+        // Navigation (ONLY KEEP ONE NAV)
+        div.box
+            a(href="/") Home |
+            a(href="/study-buddies") Study Buddies |
+            a(href="/study-requests") Study Requests |
+            a(href="/login") Login/Profile
+
+        // Welcome
+        div.box
+            h2 Welcome to Study Buddies
+            p A platform to find study partners, share knowledge, and collaborate.
+
+        // Buttons
+        div.button-group
+            a(href="/study-buddies")
+                button View Study Buddies
+            a(href="/study-requests")
+                button View Study Request
+
+        // How it works
+        div.box
+            h2 How It Works
+            ul
+                li Create your profile
+                li Search by subject or tags
+                li Browse study buddies
+                li Create and view study requests
+                li Message students to arrange sessions
+
+        // Footer
+        div.box
+            p Contact | About | Privacy Policy | © 2026 Study Buddies
